@@ -1,6 +1,14 @@
 /* Shared breakpoint values, mirrored in tokens.css as JS-unreadable custom properties.
    Kept as plain numbers here because CSS custom properties cannot be used inside
-   @media conditions. Tablet: 780px, Desktop: 1512px, per the design breakpoints. */
+   @media conditions.
+
+   The desktop layout activates at 1024px, not at the 1512px Figma canvas width:
+   real "desktop" viewports rarely report a CSS width of exactly 1512px (e.g. a
+   13" MacBook Air's default scaled resolution is ~1440px, a maximized browser
+   window is often narrower than the full screen), so gating the desktop layout
+   on min-width:1512px left most real desktop users stuck on the tablet layout.
+   1512px is preserved as the reference width the design is pixel-accurate at
+   (see .container's max-width), and the layout is fluid from 1024px up. */
 
 @media (min-width: 780px) {
   :root {
@@ -9,7 +17,7 @@
   }
 }
 
-@media (min-width: 1512px) {
+@media (min-width: 1024px) {
   :root {
     --text-display: 50px;
     --text-subheading: 32px;

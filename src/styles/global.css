@@ -45,7 +45,7 @@ button {
   padding-inline: var(--space-xl);
 }
 
-@media (min-width: 1512px) {
+@media (min-width: 1024px) {
   .container {
     padding-inline: var(--space-3xl);
   }

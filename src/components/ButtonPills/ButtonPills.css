@@ -10,7 +10,7 @@
   width: 100%;
 }
 
-@media (min-width: 1512px) {
+@media (min-width: 1024px) {
   .button-pills {
     width: fit-content;
   }
@@ -34,7 +34,7 @@
     color 0.2s ease;
 }
 
-@media (min-width: 1512px) {
+@media (min-width: 1024px) {
   .button-pills__tab {
     flex: none;
   }

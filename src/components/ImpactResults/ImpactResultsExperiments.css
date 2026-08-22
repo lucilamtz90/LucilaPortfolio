@@ -43,7 +43,7 @@
   color: var(--color-text-primary);
 }
 
-@media (min-width: 1512px) {
+@media (min-width: 1024px) {
   .impact-experiments__row {
     flex-direction: row;
     gap: 72px;

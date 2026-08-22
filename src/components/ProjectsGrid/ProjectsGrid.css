@@ -14,7 +14,7 @@
   animation: scroll-nudge 1.4s ease-in-out 0.6s 1;
 }
 
-@media (min-width: 1512px) {
+@media (min-width: 1024px) {
   .projects-grid__track {
     gap: var(--space-2xl);
   }

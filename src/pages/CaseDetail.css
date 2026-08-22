@@ -16,7 +16,7 @@
   width: 100%;
 }
 
-@media (min-width: 1512px) {
+@media (min-width: 1024px) {
   .case-detail.container {
     max-width: 952px;
     margin-inline: auto;

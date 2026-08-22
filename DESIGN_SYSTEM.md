@@ -44,13 +44,15 @@ Defined as `--space-*` tokens in `src/styles/tokens.css`, matching the gaps/padd
 
 ## Breakpoints
 
-| Name | Width | Notes |
-|---|---|---|
-| Mobile | 440px | Figma default; base/mobile-first styles |
-| Tablet | 780px | No dedicated Figma frame — built to desktop standards, scaled down |
-| Desktop | 1512px | Figma default; `.container` max-width is 1384px (1512 − 2×64 padding) |
+| Name | Figma reference width | CSS activation | Notes |
+|---|---|---|---|
+| Mobile | 440px | base (mobile-first) | Figma default |
+| Tablet | 780px | `min-width: 780px` | No dedicated Figma frame — built to desktop standards, scaled down |
+| Desktop | 1512px | `min-width: 1024px` | Figma default width, but the desktop *layout* activates at 1024px — see below |
 
 Implemented as `min-width` media queries (mobile-first). Below 440px and above 1512px, layout degrades gracefully via fluid widths and a centered max-width container rather than fixed breakpoints.
+
+**Why the desktop layout activates at 1024px instead of 1512px:** real desktop/laptop browsers rarely report a CSS viewport width of exactly 1512px — a 13" MacBook Air's default scaled resolution is ~1440px, and browser windows are frequently narrower than the full screen. Gating the row-layout/desktop styles on `min-width: 1512px` meant most real "desktop" users still saw the tablet-stacked layout. 1512px remains the width the design is pixel-accurate at (`.container`'s `max-width` is 1384px, i.e. 1512 − 2×64px padding); the desktop layout is fluid from 1024px up to and beyond 1512px.
 
 ## Radius & motion
 
