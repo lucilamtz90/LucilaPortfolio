@@ -47,7 +47,7 @@ export function Home() {
 
   return (
     <>
-      <LoadingScreen visible={isLoading} />
+      <LoadingScreen visible={isLoading} images={cases.map((c) => c.heroMedia)} />
       <div className={`home container ${isLoading ? '' : 'home--revealed'}`}>
         <NavigationBar />
         <Hero />
