@@ -1,0 +1,27 @@
+.section-two-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.section-two-col__heading {
+  width: 100%;
+}
+
+@media (min-width: 1512px) {
+  .section-two-col {
+    flex-direction: row;
+    gap: 100px;
+    align-items: flex-start;
+  }
+
+  .section-two-col__heading {
+    width: 154px;
+    flex-shrink: 0;
+  }
+
+  .section-two-col__body {
+    flex: 1;
+  }
+}

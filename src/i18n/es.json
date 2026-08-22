@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "aboutMe": "Sobre mí",
+    "linkedin": "LinkedIn",
+    "resume": "Currículum",
+    "contact": "Contacto",
+    "back": "Volver"
+  },
+  "hero": {
+    "title": "Diseñadora de Producto Estratégica",
+    "bio1": "Hola, soy Lucila — una diseñadora de producto que convierte problemas complejos en experiencias que a la gente le encanta usar.",
+    "bio2": "Mi enfoque: crecimiento, retención y experimentación, con más de 10 años haciéndolo a escala."
+  },
+  "pillStatus": {
+    "openToWork": "Disponible para nuevos proyectos"
+  },
+  "buttonPills": {
+    "professionalWork": "Trabajo profesional",
+    "aiSideProjects": "Proyectos con IA"
+  },
+  "aiCases": {
+    "comingSoonTitle": "Proyecto con IA",
+    "comingSoonBody": "Próximamente"
+  },
+  "footer": {
+    "credit": "Hecho con Claude Code y Figma, 2026 por Lucila Martínez"
+  },
+  "contactFab": {
+    "openLabel": "Contacto",
+    "closeLabel": "Cerrar",
+    "title": "¡Quiero escuchar sobre tu proyecto!",
+    "emailLabel": "Correo"
+  },
+  "caseHeader": {
+    "share": "Compartir",
+    "shareText": "Mira el caso de estudio de Lucila sobre {{name}}",
+    "linkCopied": "Enlace copiado al portapapeles"
+  },
+  "loading": {
+    "label": "Cargando"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "body": "El case que buscas no existe.",
+    "cta": "Volver al inicio"
+  }
+}

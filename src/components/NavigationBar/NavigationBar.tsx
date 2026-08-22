@@ -1,0 +1,33 @@
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.svg';
+import { LINKEDIN_URL } from '../../config/links';
+import { LanguageToggle } from '../LanguageToggle/LanguageToggle';
+import { PillStatus } from '../PillStatus/PillStatus';
+import './NavigationBar.css';
+
+export function NavigationBar() {
+  const { t } = useTranslation();
+
+  return (
+    <nav className="nav-bar">
+      <div className="nav-bar__row">
+        <Link to="/" className="nav-bar__logo">
+          <img src={logo} alt="Lucila Martínez" />
+        </Link>
+        <div className="nav-bar__links">
+          <Link to="/#hero" className="text-link">
+            {t('nav.aboutMe')}
+          </Link>
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-link">
+            {t('nav.linkedin')}
+          </a>
+          <LanguageToggle />
+        </div>
+        <div className="nav-bar__status">
+          <PillStatus />
+        </div>
+      </div>
+    </nav>
+  );
+}

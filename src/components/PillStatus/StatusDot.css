@@ -1,0 +1,27 @@
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-accent-primary);
+  animation: status-dot-glow 2.2s ease-in-out infinite;
+}
+
+@keyframes status-dot-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(148, 207, 19, 0.55);
+    opacity: 0.85;
+  }
+  50% {
+    box-shadow: 0 0 6px 3px rgba(148, 207, 19, 0.55);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot {
+    animation: none;
+  }
+}

@@ -1,0 +1,18 @@
+.pill-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-2xs) var(--space-xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-accent);
+}
+
+.pill-status__label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-badge);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}

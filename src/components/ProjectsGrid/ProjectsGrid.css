@@ -1,0 +1,43 @@
+.projects-grid {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.projects-grid__track {
+  display: flex;
+  gap: var(--space-2xl);
+  width: max-content;
+  animation: scroll-nudge 1.4s ease-in-out 0.6s 1;
+}
+
+@media (min-width: 1512px) {
+  .projects-grid__track {
+    gap: var(--space-2xl);
+  }
+}
+
+/* --- ANIMACIÓN DE NUDGE (El "pequeño gesto") --- */
+@keyframes scroll-nudge {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-30px);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-grid__track {
+    animation: none;
+  }
+}

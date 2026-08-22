@@ -1,0 +1,18 @@
+/* Shared breakpoint values, mirrored in tokens.css as JS-unreadable custom properties.
+   Kept as plain numbers here because CSS custom properties cannot be used inside
+   @media conditions. Tablet: 780px, Desktop: 1512px, per the design breakpoints. */
+
+@media (min-width: 780px) {
+  :root {
+    --text-heading: 28px;
+    --text-subheading: 30px;
+  }
+}
+
+@media (min-width: 1512px) {
+  :root {
+    --text-display: 50px;
+    --text-subheading: 32px;
+    --text-body: 18px;
+  }
+}

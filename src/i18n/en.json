@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "aboutMe": "About me",
+    "linkedin": "LinkedIn",
+    "resume": "Resume",
+    "contact": "Contact",
+    "back": "Back"
+  },
+  "hero": {
+    "title": "Strategic Product Designer",
+    "bio1": "Hi, I'm Lucila — a product designer who turns complex problems into experiences people enjoy using.",
+    "bio2": "My focus: growth, retention, and experimentation, with 10+ years doing it at scale."
+  },
+  "pillStatus": {
+    "openToWork": "I'm open to work"
+  },
+  "buttonPills": {
+    "professionalWork": "Professional work",
+    "aiSideProjects": "Ai-side projects"
+  },
+  "aiCases": {
+    "comingSoonTitle": "AI-side project",
+    "comingSoonBody": "Coming soon"
+  },
+  "footer": {
+    "credit": "Made with Claude Code & Figma, 2026 by Lucila Martínez"
+  },
+  "contactFab": {
+    "openLabel": "Contact",
+    "closeLabel": "Close",
+    "title": "I wanna hear about your project!",
+    "emailLabel": "Email"
+  },
+  "caseHeader": {
+    "share": "Share",
+    "shareText": "Check out Lucila's case study about {{name}}",
+    "linkCopied": "Link copied to clipboard"
+  },
+  "loading": {
+    "label": "Loading"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The case you're looking for doesn't exist.",
+    "cta": "Back to home"
+  }
+}

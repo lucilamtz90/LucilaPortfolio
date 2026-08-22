@@ -1,0 +1,35 @@
+.process-step {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--space-xl);
+  align-items: center;
+  width: 100%;
+}
+
+.process-step__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  align-items: flex-start;
+  width: 100%;
+}
+
+.process-step__media {
+  width: 100%;
+}
+
+@media (min-width: 1512px) {
+  .process-step {
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  .process-step__text {
+    flex: 1;
+  }
+
+  .process-step__media {
+    width: 321px;
+    flex-shrink: 0;
+  }
+}

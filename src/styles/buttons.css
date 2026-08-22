@@ -1,0 +1,33 @@
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xs) var(--space-xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.btn-pill:hover {
+  opacity: 0.75;
+}
+
+.btn-pill--solid {
+  background: var(--color-border);
+  color: var(--color-surface);
+}
+
+.text-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-link);
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

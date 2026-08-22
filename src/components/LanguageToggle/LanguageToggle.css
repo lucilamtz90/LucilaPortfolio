@@ -1,0 +1,24 @@
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+}
+
+.language-toggle__option {
+  color: var(--color-text-secondary);
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.language-toggle__option--active {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.language-toggle__divider {
+  color: var(--color-text-secondary);
+}
