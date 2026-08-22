@@ -7,15 +7,25 @@ interface LoadingScreenProps {
   durationMs?: number;
 }
 
+function shuffledIndices(length: number): number[] {
+  const indices = Array.from({ length }, (_, i) => i);
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  return indices;
+}
+
+const STEP_MS = 220;
+
 /**
- * Full-screen preloader: two columns of the case media images, each stacked
- * in an endless vertical loop, offset by half a cycle from one another.
- * Modeled on thomasmonavon.com's loading state (inspected live via DevTools —
- * a fixed, full-viewport, two-column marquee of project stills with a percent
- * counter), reusing our own Media images rather than a generic spinner.
+ * Full-screen preloader: a spaced grid of the case media images, each card
+ * fading/scaling in one at a time in a randomized order until the grid is
+ * complete — reusing our own case images rather than a generic spinner.
  */
 export function LoadingScreen({ visible, images, durationMs = 1800 }: LoadingScreenProps) {
   const [percent, setPercent] = useState(0);
+  const [order] = useState(() => shuffledIndices(images.length));
 
   useEffect(() => {
     if (!visible) return;
@@ -36,33 +46,18 @@ export function LoadingScreen({ visible, images, durationMs = 1800 }: LoadingScr
 
   if (images.length === 0) return null;
 
-  const track = [...images, ...images];
-  const marqueeDuration = `${images.length * 900}ms`;
-
   return (
     <div className={`loading-screen ${visible ? '' : 'loading-screen--hidden'}`} aria-hidden={!visible}>
-      <div
-        className="loading-screen__columns"
-        style={{ '--marquee-duration': marqueeDuration } as CSSProperties}
-      >
-        <div className="loading-marquee">
-          <div className="loading-marquee__track">
-            {track.map((src, i) => (
-              <div className="loading-marquee__tile" key={i}>
-                <img src={src} alt="" loading="eager" decoding="async" draggable={false} />
-              </div>
-            ))}
+      <div className="loading-grid">
+        {images.map((src, i) => (
+          <div
+            className="loading-grid__cell"
+            key={i}
+            style={{ animationDelay: `${order[i] * STEP_MS}ms` } as CSSProperties}
+          >
+            <img src={src} alt="" loading="eager" decoding="async" draggable={false} />
           </div>
-        </div>
-        <div className="loading-marquee loading-marquee--offset">
-          <div className="loading-marquee__track">
-            {track.map((src, i) => (
-              <div className="loading-marquee__tile" key={i}>
-                <img src={src} alt="" loading="eager" decoding="async" draggable={false} />
-              </div>
-            ))}
-          </div>
-        </div>
+        ))}
       </div>
 
       <span className="loading-screen__percent">{String(displayPercent).padStart(2, '0')}%</span>
