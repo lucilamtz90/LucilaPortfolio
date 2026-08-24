@@ -1,3 +1,4 @@
+import dynamicUnitsCover from '../assets/images/dynamic-units-cover.gif';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import type { CaseData } from './types';
 
@@ -10,7 +11,7 @@ export const casesEs: CaseData[] = [
     cardTitle: 'Dynamic Units para Affiliates',
     cardMeta: 'De discovery a lanzamiento',
     cardType: 'B2B',
-    heroMedia: placeholder,
+    heroMedia: dynamicUnitsCover,
 
     headerCompany: 'Etsy',
     headerYear: '2023',
