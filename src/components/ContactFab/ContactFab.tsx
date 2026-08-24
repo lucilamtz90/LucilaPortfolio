@@ -18,14 +18,14 @@ export function ContactFab({ open, onClose }: ContactFabProps) {
       {open && <div className="contact-fab__scrim" onClick={onClose} />}
 
       <div className={`contact-fab-panel ${open ? 'contact-fab-panel--open' : ''}`} role="dialog" aria-modal="true" aria-hidden={!open}>
-        <button type="button" className="contact-fab-panel__close btn-pill" onClick={onClose}>
-          {t('contactFab.closeLabel')}
-        </button>
         <p className="contact-fab-panel__title">{t('contactFab.title')}</p>
         <a href={`mailto:${CONTACT_EMAIL}`} className="contact-fab-panel__email">
           {CONTACT_EMAIL}
         </a>
         {features.voiceNote && <VoiceNoteRecorder />}
+        <button type="button" className="contact-fab-panel__close btn-pill" onClick={onClose}>
+          {t('contactFab.closeLabel')}
+        </button>
       </div>
     </>
   );
