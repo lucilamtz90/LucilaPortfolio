@@ -9,10 +9,22 @@
   gap: var(--space-lg);
 }
 
+.nav-bar__brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  width: 100%;
+}
+
 .nav-bar__logo img {
   height: 32px;
   width: auto;
   display: block;
+}
+
+.nav-bar__mobile-toggle {
+  display: flex;
 }
 
 .nav-bar__links {
@@ -32,8 +44,16 @@
     justify-content: space-between;
   }
 
+  .nav-bar__brand {
+    width: auto;
+  }
+
   .nav-bar__logo img {
     height: 38px;
+  }
+
+  .nav-bar__mobile-toggle {
+    display: none;
   }
 
   .nav-bar__status {

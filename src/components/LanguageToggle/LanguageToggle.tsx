@@ -1,11 +1,15 @@
 import { useLocale } from '../../hooks/useLocale';
 import './LanguageToggle.css';
 
-export function LanguageToggle() {
+interface LanguageToggleProps {
+  className?: string;
+}
+
+export function LanguageToggle({ className = '' }: LanguageToggleProps) {
   const { language, setLanguage } = useLocale();
 
   return (
-    <div className="language-toggle" role="group" aria-label="Language">
+    <div className={`language-toggle ${className}`} role="group" aria-label="Language">
       <button
         type="button"
         className={`language-toggle__option ${language === 'en' ? 'language-toggle__option--active' : ''}`}

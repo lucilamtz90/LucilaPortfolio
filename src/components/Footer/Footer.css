@@ -22,8 +22,13 @@
   margin: 0;
 }
 
+.footer__language {
+  display: none;
+}
+
 @media (min-width: 1024px) {
   .footer {
+    position: relative;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -35,5 +40,13 @@
 
   .footer__credit {
     order: 1;
+  }
+
+  .footer__language {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }

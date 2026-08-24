@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { RESUME_URL } from '../../config/links';
+import { LanguageToggle } from '../LanguageToggle/LanguageToggle';
 import './Footer.css';
 
 interface FooterProps {
@@ -20,6 +21,7 @@ export function Footer({ onContactClick }: FooterProps) {
         </a>
       </div>
       <p className="footer__credit">{t('footer.credit')}</p>
+      <LanguageToggle className="footer__language" />
     </footer>
   );
 }

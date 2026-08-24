@@ -12,9 +12,12 @@ export function NavigationBar() {
   return (
     <nav className="nav-bar">
       <div className="nav-bar__row">
-        <Link to="/" className="nav-bar__logo">
-          <img src={logo} alt="Lucila Martínez" />
-        </Link>
+        <div className="nav-bar__brand">
+          <Link to="/" className="nav-bar__logo">
+            <img src={logo} alt="Lucila Martínez" />
+          </Link>
+          <LanguageToggle className="nav-bar__mobile-toggle" />
+        </div>
         <div className="nav-bar__links">
           <Link to="/#hero" className="text-link">
             {t('nav.aboutMe')}
@@ -22,7 +25,6 @@ export function NavigationBar() {
           <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-link">
             {t('nav.linkedin')}
           </a>
-          <LanguageToggle />
         </div>
         <div className="nav-bar__status">
           <PillStatus />
