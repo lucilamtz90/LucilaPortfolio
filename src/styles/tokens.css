@@ -15,6 +15,7 @@
   /* Type scale — mobile-first values; desktop overrides live in breakpoints.css */
   --text-display: 48px;
   --text-heading: 28px;
+  --text-heading-sm: 24px;
   --text-subheading: 28px;
   --text-body: 16px;
   --text-link: 22px;

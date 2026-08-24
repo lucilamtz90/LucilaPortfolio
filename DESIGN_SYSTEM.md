@@ -27,6 +27,7 @@ All Gabarito styles use `letter-spacing: -0.3px`. SUSE Mono styles use `letter-s
 |---|---|---|---|
 | Display | Gabarito SemiBold | 50px | 48px |
 | Heading | Gabarito SemiBold | 28px | 28px |
+| Heading Small (`--text-heading-sm`) | Gabarito SemiBold | 24px | 24px |
 | Subheading | Gabarito Regular | 32px | 28–30px |
 | Body | Gabarito Regular | 18px | 16px |
 | Link | Gabarito SemiBold, underline | 22px | 22px |
