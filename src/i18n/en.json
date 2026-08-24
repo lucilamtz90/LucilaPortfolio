@@ -15,8 +15,8 @@
     "openToWork": "I'm open to work"
   },
   "buttonPills": {
-    "professionalWork": "Professional work",
-    "aiSideProjects": "Ai-side projects"
+    "professionalWork": "Case studies",
+    "aiSideProjects": "Ai-playground"
   },
   "aiCases": {
     "comingSoonTitle": "AI-side project",
