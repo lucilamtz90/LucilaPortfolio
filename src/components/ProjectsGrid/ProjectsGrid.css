@@ -4,7 +4,12 @@
   overflow-y: hidden;
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge */
+}
+
+.projects-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge Chromium */
 }
 
 .projects-grid__track {
