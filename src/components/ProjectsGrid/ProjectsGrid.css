@@ -1,14 +1,13 @@
 /* Full-bleed: breaks out of .container so the carousel can scroll all the
-   way to the true viewport edge instead of stopping at the container's
-   padding. --container-inset is applied on both sides so the first and
-   last card share the same edge spacing as the rest of the page content. */
+   way to the true right edge of the viewport instead of stopping at the
+   container's padding. Left edge stays aligned with the rest of the page
+   content via --container-inset. */
 .projects-grid {
   width: 100vw;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
   padding-left: var(--container-inset);
-  padding-right: var(--container-inset);
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x proximity;
