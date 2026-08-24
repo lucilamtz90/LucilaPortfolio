@@ -1,4 +1,4 @@
-import dynamicUnitsCover from '../assets/images/dynamic-units-cover.gif';
+import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import type { CaseData } from './types';
 
