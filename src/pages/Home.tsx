@@ -32,7 +32,7 @@ export function Home() {
 
   useEffect(() => {
     let cancelled = false;
-    const timeout = new Promise<void>((resolve) => setTimeout(resolve, 1800));
+    const timeout = new Promise<void>((resolve) => setTimeout(resolve, 2500));
     const images = Promise.all(cases.map((c) => preloadImage(c.heroMedia)));
 
     Promise.race([Promise.all([images, timeout]), timeout]).then(() => {
@@ -47,7 +47,7 @@ export function Home() {
 
   return (
     <>
-      <LoadingScreen visible={isLoading} images={cases.map((c) => c.heroMedia)} />
+      <LoadingScreen visible={isLoading} />
       <div className={`home container ${isLoading ? '' : 'home--revealed'}`}>
         <NavigationBar />
         <Hero />

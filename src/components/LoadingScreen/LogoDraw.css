@@ -1,0 +1,27 @@
+.logo-draw {
+  display: block;
+  width: 100vw;
+  height: auto;
+  overflow: visible;
+}
+
+.logo-draw__path {
+  fill: var(--color-text-primary);
+  fill-opacity: 0;
+  stroke: var(--color-text-primary);
+  stroke-width: 1.4;
+  transition: fill-opacity 450ms ease-out;
+}
+
+.logo-draw--filled .logo-draw__path {
+  fill-opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-draw__path {
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+    fill-opacity: 1;
+  }
+}

@@ -2,6 +2,11 @@
   position: fixed;
   inset: 0;
   z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
   overflow: hidden;
   background: var(--color-background);
   opacity: 1;
@@ -14,81 +19,8 @@
   pointer-events: none;
 }
 
-.loading-screen__columns {
-  display: flex;
-  gap: var(--space-lg);
-  width: 100%;
-  height: 100%;
-  padding: var(--space-lg);
-}
-
-.loading-marquee {
-  position: relative;
-  flex: 1;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* Second column only on wider screens — mirrors the reference site's
-   two-column layout; a single column reads better on narrow phones. */
-.loading-marquee--offset {
-  display: none;
-}
-
-.loading-marquee__track {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  width: 100%;
-  animation: loading-marquee-scroll var(--marquee-duration) linear infinite;
-}
-
-.loading-marquee--offset .loading-marquee__track {
-  animation-delay: calc(var(--marquee-duration) / -2);
-}
-
-.loading-marquee__tile {
-  width: 100%;
-  height: 48dvh;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.loading-marquee__tile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-@keyframes loading-marquee-scroll {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-50%);
-  }
-}
-
 .loading-screen__percent {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-family: var(--font-mono);
   font-size: var(--text-label);
-  color: var(--color-text-primary);
-  background: var(--color-background);
-  padding: var(--space-3xs) var(--space-2xs);
-}
-
-@media (min-width: 780px) {
-  .loading-marquee--offset {
-    display: block;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .loading-marquee__track {
-    animation: none;
-  }
+  color: var(--color-text-secondary);
 }
