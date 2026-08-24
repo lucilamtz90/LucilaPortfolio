@@ -49,6 +49,13 @@
   --breakpoint-tablet: 780px;
   --breakpoint-desktop: 1512px;
   --content-max-width: 1384px;
+
+  /* Distance from the true viewport edge to .container's content edge —
+     the auto-centering margin (once the viewport exceeds --content-max-width)
+     plus the container's own inline padding. Used by full-bleed elements
+     (e.g. ProjectsGrid) that need to align with page content on one side
+     while extending past the container on the other. */
+  --container-inset: calc(max(0px, (100vw - var(--content-max-width)) / 2) + var(--space-xl));
 }
 
 @media (prefers-reduced-motion: reduce) {

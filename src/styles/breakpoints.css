@@ -22,5 +22,6 @@
     --text-display: 50px;
     --text-subheading: 32px;
     --text-body: 18px;
+    --container-inset: calc(max(0px, (100vw - var(--content-max-width)) / 2) + var(--space-3xl));
   }
 }
