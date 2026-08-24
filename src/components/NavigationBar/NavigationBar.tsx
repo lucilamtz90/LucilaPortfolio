@@ -6,7 +6,11 @@ import { LanguageToggle } from '../LanguageToggle/LanguageToggle';
 import { PillStatus } from '../PillStatus/PillStatus';
 import './NavigationBar.css';
 
-export function NavigationBar() {
+interface NavigationBarProps {
+  playPillIntro?: boolean;
+}
+
+export function NavigationBar({ playPillIntro = true }: NavigationBarProps) {
   const { t } = useTranslation();
 
   return (
@@ -27,7 +31,7 @@ export function NavigationBar() {
           </a>
         </div>
         <div className="nav-bar__status">
-          <PillStatus />
+          <PillStatus playIntro={playPillIntro} />
         </div>
       </div>
     </nav>

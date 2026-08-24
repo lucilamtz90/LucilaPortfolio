@@ -49,8 +49,8 @@ export function Home() {
     <>
       <LoadingScreen visible={isLoading} />
       <div className={`home container ${isLoading ? '' : 'home--revealed'}`}>
-        <NavigationBar />
-        <Hero />
+        <NavigationBar playPillIntro={!isLoading} />
+        <Hero playPillIntro={!isLoading} />
 
         <section className="home__projects" aria-label={t('buttonPills.professionalWork')}>
           <ButtonPills active={activeTab} onChange={setActiveTab} />
