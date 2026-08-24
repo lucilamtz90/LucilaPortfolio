@@ -13,7 +13,7 @@ interface LoadingScreenProps {
  */
 export function LoadingScreen({ visible }: LoadingScreenProps) {
   const [percent, setPercent] = useState(0);
-  const [durationMs, setDurationMs] = useState(2200);
+  const [durationMs, setDurationMs] = useState(2600);
 
   useEffect(() => {
     if (!visible) return;

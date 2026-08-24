@@ -32,7 +32,7 @@ export function Home() {
 
   useEffect(() => {
     let cancelled = false;
-    const timeout = new Promise<void>((resolve) => setTimeout(resolve, 2500));
+    const timeout = new Promise<void>((resolve) => setTimeout(resolve, 2900));
     const images = Promise.all(cases.map((c) => preloadImage(c.heroMedia)));
 
     Promise.race([Promise.all([images, timeout]), timeout]).then(() => {
