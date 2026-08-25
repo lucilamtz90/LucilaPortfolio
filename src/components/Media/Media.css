@@ -39,8 +39,8 @@
 
 .media-container__pill {
   position: absolute;
-  right: var(--space-sm);
-  bottom: var(--space-sm);
+  top: 0;
+  left: 0;
   z-index: 1;
   padding: var(--space-2xs) var(--space-sm);
   border-radius: var(--radius-pill);
@@ -49,15 +49,13 @@
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: var(--text-badge);
+  white-space: nowrap;
   opacity: 0;
-  transform: translateY(6px);
-  transition:
-    opacity var(--duration-fade) ease-out,
-    transform var(--duration-fade) ease-out;
+  transition: opacity var(--duration-fade) ease-out;
   pointer-events: none;
+  will-change: transform;
 }
 
 .media-container--interactive:hover .media-container__pill {
   opacity: 1;
-  transform: translateY(0);
 }

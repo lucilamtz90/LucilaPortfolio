@@ -16,6 +16,11 @@ interface MediaProps {
 
 const VIDEO_EXTENSIONS = /\.(mp4|webm|mov)($|\?)/i;
 
+/** Cursor offset (px) so the pill floats just past the pointer instead of under it. */
+const PILL_OFFSET = 16;
+/** Clearance (px) kept between the pill and the container edge so it never clips. */
+const PILL_EDGE_MARGIN = 4;
+
 /** Shared media wrapper: lazy-loaded image or video, reveals on scroll. */
 export function Media({
   src,
@@ -32,7 +37,9 @@ export function Media({
 
   const isInteractive = interactive && isDesktop;
   const [isHovered, setIsHovered] = useState(false);
+  const [pillPos, setPillPos] = useState({ x: 0, y: 0 });
   const videoRef = useRef<HTMLVideoElement>(null);
+  const pillRef = useRef<HTMLSpanElement>(null);
   const hasEndedRef = useRef(false);
 
   useEffect(() => {
@@ -47,13 +54,27 @@ export function Media({
     }
   }, [isHovered, isInteractive, isVideo]);
 
+  const updatePillPosition = (e: React.MouseEvent<HTMLElement>) => {
+    if (!isInteractive) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pillWidth = pillRef.current?.offsetWidth ?? 0;
+    const pillHeight = pillRef.current?.offsetHeight ?? 0;
+    const x = Math.min(e.clientX - rect.left + PILL_OFFSET, rect.width - pillWidth - PILL_EDGE_MARGIN);
+    const y = Math.min(e.clientY - rect.top + PILL_OFFSET, rect.height - pillHeight - PILL_EDGE_MARGIN);
+    setPillPos({ x, y });
+  };
+
   return (
     <figure
       ref={ref}
       className={`media-container ${isInView ? 'media-container--visible' : ''} ${
         isInteractive ? 'media-container--interactive' : ''
       } ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={(e) => {
+        setIsHovered(true);
+        updatePillPosition(e);
+      }}
+      onMouseMove={updatePillPosition}
       onMouseLeave={() => setIsHovered(false)}
     >
       {isVideo ? (
@@ -81,7 +102,15 @@ export function Media({
           style={style}
         />
       )}
-      {isInteractive && <span className="media-container__pill">{t('media.open')}</span>}
+      {isInteractive && (
+        <span
+          ref={pillRef}
+          className="media-container__pill"
+          style={{ transform: `translate(${pillPos.x}px, ${pillPos.y}px)` }}
+        >
+          {t('media.open')}
+        </span>
+      )}
     </figure>
   );
 }
