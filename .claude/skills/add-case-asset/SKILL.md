@@ -46,7 +46,7 @@ Lucila will give you a local file path (usually somewhere in `~/Downloads`) and 
 ## Reference: assets already wired this way
 - `dynamic-units` case → `dynamic-units-cover.mp4` (converted from GIF, 2.9MB → 454KB)
 - `etsy-insider-rewards` case → `etsy-insider-rewards-cover.mp4` (converted from GIF, 8.09MB → 874KB, scaled to 480px wide, `heroMediaPosition: 'top'`)
-- `rappi-card` case → `rappi-card-cover.mp4` (source `.mov`, background cropped out via `cropdetect` — see below — 4.4MB → 420KB, `heroMediaPosition: 'top'`)
+- `rappi-card` case → `rappi-card-cover.mp4` (source `.mov`, background cropped out via `cropdetect` — see below — then scaled to 480px wide to match the others, `heroMediaPosition: 'top'`)
 
 ## If the source has background around a device mockup to remove
 "Remove the background" from a screen recording means crop out the empty space around a phone/device mockup — not real background removal/rotoscoping. Use ffmpeg's `cropdetect` to find the mockup's exact bounding box against the surrounding (usually solid-color) backdrop, then bake that crop into the same encode as step 2:
@@ -55,7 +55,7 @@ ffmpeg -i "<source>" -vf "cropdetect=limit=24:round=2:reset=1" -f null - 2>&1 | 
 ```
 Take whichever `crop=W:H:X:Y` value the overwhelming majority of sampled frames agree on, then add `-vf "crop=W:H:X:Y"` (combine with a `scale` filter in the same `-vf` chain, comma-separated, if downscaling too) to the encode command.
 
-**Watch for rounded-corner artifacts after cropping.** `cropdetect` gives a rectangular bounding box, but a device mockup has rounded corners — the rectangle still includes small black wedges in its four corners. Whether that matters depends on whether the browser ends up cropping those corners away: if the cropped video's aspect ratio is close enough to the card frame's that `object-fit: cover` does no (or minimal) horizontal cropping, those corner wedges stay visible right at the card's edges and read as leftover "background." Check for this explicitly — don't assume the crop is clean just because a single extracted frame looks fine — with a quick pixel scan:
+**Rounded-corner artifacts after cropping — don't overcorrect.** `cropdetect` gives a rectangular bounding box, but a device mockup has rounded corners, so the box still includes small black wedges in its four corners. Whether that reads as visible "background" in the card depends on whether `object-fit: cover` ends up doing any horizontal cropping in the browser — check with a pixel scan on an extracted frame:
 ```python
 from PIL import Image
 im = Image.open("<extracted-frame>.png")
@@ -63,4 +63,8 @@ for y in [0, 5, 10, 20, 30, 40]:
     row = [im.getpixel((x, y))[0] for x in range(im.size[0])]
     print(y, next((x for x, v in enumerate(row) if v > 30), None))  # first non-black x from the left
 ```
-If corners show up, narrow the crop (trim more off the sides) rather than shifting it down — shifting down risks cutting off the notch/status bar you were trying to keep in frame. Find where the notch actually sits first (scan a center-x column for a dark blob against the lighter bezel) so you know how much headroom you have.
+**If corners show up, prioritize matching the other assets' size/position/sharpness over fully eliminating the corners.** (Learned the hard way on `rappi-card`: narrowing the crop to chase zero corner pixels changed its aspect ratio enough that `object-fit: cover` zoomed in and cut off visible content — worse than the tiny corners were.) The right sequence:
+1. Crop out *only* the background margin (`cropdetect`'s box, nothing more).
+2. Scale to the same 480px-wide convention every other asset uses (`scale=480:-2`), so sharpness matches.
+3. Look at it next to an asset that's already correct (e.g. `etsy-insider-rewards`) at the same viewport — same apparent zoom level, same crop position, comparable sharpness.
+4. Only if the corner wedges are actually distracting at that point, trim a *small* amount off the sides (not enough to visibly change the zoom level) — never move the crop's Y position, since that's what protects the notch/status bar.
