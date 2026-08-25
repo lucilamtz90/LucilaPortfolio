@@ -1,6 +1,7 @@
 import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import placeholder from '../assets/images/project-placeholder.jpg';
+import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
 import type { CaseData } from './types';
 
 export const casesEn: CaseData[] = [
@@ -234,7 +235,7 @@ export const casesEn: CaseData[] = [
     cardTitle: 'Reducing late payments',
     cardMeta: 'Discovery to hand-off',
     cardType: 'B2C',
-    heroMedia: placeholder,
+    heroMedia: rappiCardCover,
 
     headerCompany: 'Rappi Card',
     headerYear: '2021',
