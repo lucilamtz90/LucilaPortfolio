@@ -1,5 +1,6 @@
 import checkoutErrorsCover from '../assets/images/checkout-errors-cover.mp4';
 import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
+import dynamicUnitsWorkshop from '../assets/images/dynamic-units-workshop.mp4';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
@@ -33,7 +34,7 @@ export const casesEn: CaseData[] = [
         type: 'processStep',
         heading: 'Facilitated a 2-day cross-functional workshop to align the team on vision',
         body: 'I organized and led a two-day workshop with Product, Marketing, Analytics, and Design to establish a shared vision, key needs, and goals for the tool. On Day 2, I ran a SCAMPER exercise to identify what to improve, modify, or retain from Static Units, then facilitated voting and affinity mapping to prioritize themes against our business pillars.',
-        image: placeholder,
+        image: dynamicUnitsWorkshop,
       },
       {
         type: 'processStepsRow',

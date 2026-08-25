@@ -1,5 +1,6 @@
 import checkoutErrorsCover from '../assets/images/checkout-errors-cover.mp4';
 import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
+import dynamicUnitsWorkshop from '../assets/images/dynamic-units-workshop.mp4';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
@@ -33,7 +34,7 @@ export const casesEs: CaseData[] = [
         type: 'processStep',
         heading: 'Facilité un taller multidisciplinario de 2 días para alinear al equipo en la visión',
         body: 'Organicé y lideré un taller de dos días con Producto, Marketing, Analytics y Diseño para establecer una visión compartida, necesidades clave y objetivos para la herramienta. El segundo día realicé un ejercicio SCAMPER para identificar qué mejorar, modificar o conservar de Static Units, y facilité una votación y un affinity mapping para priorizar los temas frente a nuestros pilares de negocio.',
-        image: placeholder,
+        image: dynamicUnitsWorkshop,
       },
       {
         type: 'processStepsRow',
