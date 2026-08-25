@@ -8,9 +8,12 @@
   left: 50%;
   transform: translateX(-50%);
   padding-left: var(--container-inset);
+  padding-right: var(--container-inset);
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x proximity;
+  scroll-padding-left: var(--container-inset);
+  scroll-padding-right: var(--container-inset);
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* legacy Edge */
