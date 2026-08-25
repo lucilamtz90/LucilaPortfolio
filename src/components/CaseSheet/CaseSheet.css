@@ -1,0 +1,45 @@
+.case-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+}
+
+.case-sheet__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(var(--color-button-primary-hover-rgb), 0.7);
+  opacity: 0;
+  transition: opacity var(--duration-sheet) var(--ease-media);
+}
+
+.case-sheet__panel {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--color-background);
+  transform: translateY(100%);
+  transition: transform var(--duration-sheet) var(--ease-media);
+}
+
+.case-sheet--open .case-sheet__overlay {
+  opacity: 1;
+}
+
+.case-sheet--open .case-sheet__panel {
+  transform: translateY(0);
+}
+
+@media (min-width: 1024px) {
+  .case-sheet__panel {
+    top: var(--space-2xl);
+    border-radius: var(--space-lg) var(--space-lg) 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-sheet__overlay,
+  .case-sheet__panel {
+    transition: none;
+  }
+}

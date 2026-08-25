@@ -10,8 +10,12 @@
   display: flex;
   align-items: center;
   gap: var(--space-3xs);
+  border: none;
+  padding: 0;
+  background: none;
   text-decoration: none;
   color: var(--color-text-secondary);
+  cursor: pointer;
 }
 
 .trip-header__chevron {

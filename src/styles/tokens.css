@@ -7,6 +7,9 @@
   --color-border: #2a2d2d;
   --color-surface: #fffefc;
   --color-background: #f8f7f7;
+  /* Figma "Buttons/Primary/Hover" — used for the case-sheet overlay backdrop. */
+  --color-button-primary-hover: #2f2f50;
+  --color-button-primary-hover-rgb: 47, 47, 80;
 
   /* Font families */
   --font-display: 'Gabarito', 'Helvetica Neue', Arial, sans-serif;
@@ -44,6 +47,7 @@
   --ease-media: cubic-bezier(0.16, 1, 0.3, 1);
   --duration-media: 0.6s;
   --duration-fade: 0.5s;
+  --duration-sheet: 0.5s;
 
   /* Layout */
   --breakpoint-tablet: 780px;

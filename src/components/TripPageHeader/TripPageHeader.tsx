@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import chevronLeft from '../../assets/icons/chevron-left.svg';
 import microphoneIcon from '../../assets/icons/microphone.svg';
 import shareIcon from '../../assets/icons/share.svg';
@@ -11,19 +10,20 @@ import './TripPageHeader.css';
 interface TripPageHeaderProps {
   caseData: CaseData;
   onShare: () => void;
+  onBack: () => void;
 }
 
-export function TripPageHeader({ caseData, onShare }: TripPageHeaderProps) {
+export function TripPageHeader({ caseData, onShare, onBack }: TripPageHeaderProps) {
   const { t } = useTranslation();
 
   return (
     <header className="trip-header">
-      <Link to="/" className="trip-header__handle">
+      <button type="button" className="trip-header__handle" onClick={onBack}>
         <img src={chevronLeft} alt="" className="trip-header__chevron" />
         <span className="trip-header__handle-text">
           {caseData.headerCompany} • {caseData.headerYear}
         </span>
-      </Link>
+      </button>
 
       <div className="trip-header__main">
         <div className="trip-header__info">
