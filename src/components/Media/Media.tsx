@@ -10,7 +10,7 @@ interface MediaProps {
   className?: string;
   /** Where to anchor the crop when the media is taller/wider than its frame. Defaults to centered. */
   objectPosition?: 'center' | 'top' | 'bottom';
-  /** Desktop-only hover treatment (grayscale until hover, hover-to-play once, "Open" pill) — used for Home's linked project cards. */
+  /** Desktop-only hover treatment (hover-to-play once, "Open" pill) — used for Home's linked project cards. */
   interactive?: boolean;
 }
 

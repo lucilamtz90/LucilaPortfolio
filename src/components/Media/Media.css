@@ -22,19 +22,10 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  transition: filter var(--duration-media) var(--ease-media);
 }
 
 .media-container--interactive {
   cursor: pointer;
-}
-
-.media-container--interactive .media-container__img {
-  filter: grayscale(1);
-}
-
-.media-container--interactive:hover .media-container__img {
-  filter: grayscale(0);
 }
 
 .media-container__pill {
