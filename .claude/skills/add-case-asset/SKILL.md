@@ -46,7 +46,7 @@ Lucila will give you a local file path (usually somewhere in `~/Downloads`) and 
 ## Reference: assets already wired this way
 - `dynamic-units` case → `dynamic-units-cover.mp4` (converted from GIF, 2.9MB → 454KB)
 - `etsy-insider-rewards` case → `etsy-insider-rewards-cover.mp4` (converted from GIF, 8.09MB → 874KB, scaled to 480px wide, `heroMediaPosition: 'top'`)
-- `rappi-card` case → `rappi-card-cover.mp4` (source `.mov`, background cropped out via `cropdetect`, then corners trimmed with width+height kept in the same 0.5 aspect ratio (`crop=300:600:75:22`) before scaling to 480px wide, `heroMediaPosition: 'top'`)
+- `rappi-card` case → `rappi-card-cover.mp4` (source `.mov`, background cropped out via `cropdetect`, then corners trimmed with width+height kept in the same 0.5 aspect ratio plus a jitter margin (`crop=260:520:95:22`) before scaling to 480px wide, `heroMediaPosition: 'top'`)
 
 ## If the source has background around a device mockup to remove
 "Remove the background" from a screen recording means crop out the empty space around a phone/device mockup — not real background removal/rotoscoping. Use ffmpeg's `cropdetect` to find the mockup's exact bounding box against the surrounding (usually solid-color) backdrop, then bake that crop into the same encode as step 2:
@@ -55,16 +55,25 @@ ffmpeg -i "<source>" -vf "cropdetect=limit=24:round=2:reset=1" -f null - 2>&1 | 
 ```
 Take whichever `crop=W:H:X:Y` value the overwhelming majority of sampled frames agree on, then add `-vf "crop=W:H:X:Y"` (combine with a `scale` filter in the same `-vf` chain, comma-separated, if downscaling too) to the encode command.
 
-**Rounded-corner artifacts after cropping — don't overcorrect.** `cropdetect` gives a rectangular bounding box, but a device mockup has rounded corners, so the box still includes small black wedges in its four corners. Whether that reads as visible "background" in the card depends on whether `object-fit: cover` ends up doing any horizontal cropping in the browser — check with a pixel scan on an extracted frame:
+**Rounded-corner artifacts after cropping — don't overcorrect, and check the WHOLE clip, not one frame.** `cropdetect` gives a rectangular bounding box, but a device mockup has rounded corners, so the box still includes small black wedges in its four corners. Whether that reads as visible "background" in the card depends on whether `object-fit: cover` ends up doing any horizontal cropping in the browser.
+
+**The mockup can shift by a few pixels over the course of the recording** (confirmed on `rappi-card`: a crop that was pixel-perfect at frame 0 still showed black corners at ~70% of the other frames in the same 32s clip — a subtle idle animation or compression jitter, not a one-off). A single extracted frame is not enough evidence that a crop is clean. Check across the whole clip:
 ```python
 from PIL import Image
-im = Image.open("<extracted-frame>.png")
-for y in [0, 5, 10, 20, 30, 40]:
-    row = [im.getpixel((x, y))[0] for x in range(im.size[0])]
-    print(y, next((x for x, v in enumerate(row) if v > 30), None))  # first non-black x from the left
+import glob
+max_left = max_right = 0
+for f in sorted(glob.glob("<frames-dir>/*.png")):  # extract with `ffmpeg -i in.mp4 -vf fps=2 frames/t%03d.png`
+    im = Image.open(f)
+    w, h = im.size
+    for y in [0, 1, 2]:
+        row = [im.getpixel((x, y))[0] for x in range(w)]
+        left = next((x for x, v in enumerate(row) if v > 30), w)
+        right = next((x for x, v in enumerate(reversed(row)) if v > 30), w)
+        max_left, max_right = max(max_left, left), max(max_right, right)
+print(max_left, max_right)  # both must be 0 (or very close) across every sampled frame
 ```
-**If corners show up, trim width AND height in the same proportion — never width alone.** (Learned the hard way on `rappi-card`, twice: trimming width only, e.g. `430:860` → `300:860`, changes the aspect ratio, which is what made `object-fit: cover` zoom in and cut off visible content on the second pass — not the trim amount itself, the *lopsided* trim. The fix that actually worked kept the exact same aspect ratio as the background-only crop while still clearing the corners.) The right sequence:
+**If corners show up, trim width AND height in the same proportion — never width alone**, and trim *more* than the single worst frame needs, to leave margin for jitter. (Learned the hard way on `rappi-card`, three times: (1) trimming width only, e.g. `430:860` → `300:860`, changes the aspect ratio, which made `object-fit: cover` zoom in and cut off visible content; (2) trimming width+height in the right proportion but with zero margin only fixed the one frame checked, not the other ~70% of the clip.) The right sequence:
 1. Crop out *only* the background margin first (`cropdetect`'s box, nothing more) — this is `W0:H0:X0:Y0`, aspect `W0/H0`.
-2. If corners are still visible (pixel-scan check above), pick how much to trim off each side, `T` — then crop again to `(W0 - 2T):(H0 - 2T/aspect):(X0+T):Y0`, i.e. **trim the same amount off left+right and keep the aspect ratio identical** by trimming height off the bottom only (Y stays untouched, protecting the notch/status bar). Concretely: `crop=(W0-2*T):round((W0-2*T)/(W0/H0)):((X0)+T):Y0`.
+2. If corners are still visible on the multi-frame scan above, pick a trim `T` (err generous — a few extra px costs nothing) and crop again to `(W0-2T):round((W0-2T)/(W0/H0)):(X0+T):Y0` — same amount off left+right, height trimmed off the bottom only so Y (and the notch/status bar) stays untouched.
 3. Scale to the 480px-wide convention every other asset uses (`scale=480:-2`), so sharpness matches.
-4. Compare side-by-side with an asset that's already correct (e.g. `etsy-insider-rewards`) at the same viewport — same apparent zoom level, same crop position, comparable sharpness, zero corner pixels (re-run the pixel scan on the final output, not just eyeball one frame).
+4. Re-run the multi-frame pixel scan on the final cropped+scaled output — zero corner pixels across every sampled frame, not just frame 0 — then compare a couple of frames side-by-side with an asset that's already correct (e.g. `etsy-insider-rewards`) for apparent zoom level and sharpness.
