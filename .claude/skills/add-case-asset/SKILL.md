@@ -46,7 +46,7 @@ Lucila will give you a local file path (usually somewhere in `~/Downloads`) and 
 ## Reference: assets already wired this way
 - `dynamic-units` case → `dynamic-units-cover.mp4` (converted from GIF, 2.9MB → 454KB)
 - `etsy-insider-rewards` case → `etsy-insider-rewards-cover.mp4` (converted from GIF, 8.09MB → 874KB, scaled to 480px wide, `heroMediaPosition: 'top'`)
-- `rappi-card` case → `rappi-card-cover.mp4` (source `.mov`, background cropped out via `cropdetect` — see below — then scaled to 480px wide to match the others, `heroMediaPosition: 'top'`)
+- `rappi-card` case → `rappi-card-cover.mp4` (source `.mov`, background cropped out via `cropdetect`, then corners trimmed with width+height kept in the same 0.5 aspect ratio (`crop=300:600:75:22`) before scaling to 480px wide, `heroMediaPosition: 'top'`)
 
 ## If the source has background around a device mockup to remove
 "Remove the background" from a screen recording means crop out the empty space around a phone/device mockup — not real background removal/rotoscoping. Use ffmpeg's `cropdetect` to find the mockup's exact bounding box against the surrounding (usually solid-color) backdrop, then bake that crop into the same encode as step 2:
@@ -63,8 +63,8 @@ for y in [0, 5, 10, 20, 30, 40]:
     row = [im.getpixel((x, y))[0] for x in range(im.size[0])]
     print(y, next((x for x, v in enumerate(row) if v > 30), None))  # first non-black x from the left
 ```
-**If corners show up, prioritize matching the other assets' size/position/sharpness over fully eliminating the corners.** (Learned the hard way on `rappi-card`: narrowing the crop to chase zero corner pixels changed its aspect ratio enough that `object-fit: cover` zoomed in and cut off visible content — worse than the tiny corners were.) The right sequence:
-1. Crop out *only* the background margin (`cropdetect`'s box, nothing more).
-2. Scale to the same 480px-wide convention every other asset uses (`scale=480:-2`), so sharpness matches.
-3. Look at it next to an asset that's already correct (e.g. `etsy-insider-rewards`) at the same viewport — same apparent zoom level, same crop position, comparable sharpness.
-4. Only if the corner wedges are actually distracting at that point, trim a *small* amount off the sides (not enough to visibly change the zoom level) — never move the crop's Y position, since that's what protects the notch/status bar.
+**If corners show up, trim width AND height in the same proportion — never width alone.** (Learned the hard way on `rappi-card`, twice: trimming width only, e.g. `430:860` → `300:860`, changes the aspect ratio, which is what made `object-fit: cover` zoom in and cut off visible content on the second pass — not the trim amount itself, the *lopsided* trim. The fix that actually worked kept the exact same aspect ratio as the background-only crop while still clearing the corners.) The right sequence:
+1. Crop out *only* the background margin first (`cropdetect`'s box, nothing more) — this is `W0:H0:X0:Y0`, aspect `W0/H0`.
+2. If corners are still visible (pixel-scan check above), pick how much to trim off each side, `T` — then crop again to `(W0 - 2T):(H0 - 2T/aspect):(X0+T):Y0`, i.e. **trim the same amount off left+right and keep the aspect ratio identical** by trimming height off the bottom only (Y stays untouched, protecting the notch/status bar). Concretely: `crop=(W0-2*T):round((W0-2*T)/(W0/H0)):((X0)+T):Y0`.
+3. Scale to the 480px-wide convention every other asset uses (`scale=480:-2`), so sharpness matches.
+4. Compare side-by-side with an asset that's already correct (e.g. `etsy-insider-rewards`) at the same viewport — same apparent zoom level, same crop position, comparable sharpness, zero corner pixels (re-run the pixel scan on the final output, not just eyeball one frame).
