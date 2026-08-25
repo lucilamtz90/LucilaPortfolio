@@ -46,7 +46,12 @@ Lucila will give you a local file path (usually somewhere in `~/Downloads`) and 
 ## Reference: assets already wired this way
 - `dynamic-units` case → `dynamic-units-cover.mp4` (converted from GIF, 2.9MB → 454KB)
 - `etsy-insider-rewards` case → `etsy-insider-rewards-cover.mp4` (converted from GIF, 8.09MB → 874KB, scaled to 480px wide, `heroMediaPosition: 'top'`)
-- `rappi-card` case → `rappi-card-cover.mp4` (source `.mov`, background cropped out via `cropdetect`, `crop=430:862:30:36` — background margin only, nothing more — before scaling to 480px wide, `heroMediaPosition: 'top'`)
+- `rappi-card` case → `rappi-card-cover.mp4` (source `.mov`, background cropped out via `cropdetect`, `crop=430:862:30:36` — background margin only, nothing more — before scaling to 480px wide, `heroMediaPosition: 'top'`). Later replaced with a source that needed the OS/browser-chrome-strip approach below instead (`crop=1206:2050:0:336`).
+
+## If the source is a raw iOS/Android screen recording (status bar + browser chrome visible)
+This is a different situation from a device *mockup* recording — here there's no rounded-corner phone frame or backdrop, just the actual OS screen (status bar, and if it's a browser showing a Figma prototype preview, the address bar and bottom toolbar too). `cropdetect` won't help here since there's no solid-color letterboxing to find — the status bar is white, the app content is whatever color, so nothing gets flagged.
+
+Instead, find the fixed chrome boundaries manually: extract a couple of frames from different points in the clip (`ffmpeg -vf "select=eq(n\,0)+eq(n\,700)"`), then sample row-average brightness top-to-bottom (e.g. a small Python/PIL loop) to find where the sharp transitions are — chrome elements (status bar, address bar, bottom toolbar) sit at the *same* pixel rows in every frame since they're OS-level, not part of the recorded content, so confirming the same boundary in two far-apart frames is enough (no need for the full-clip sampling that device-mockup crops require). Crop to just the content band with `crop=W:H:0:Y_TOP`, then scale to 480px wide as usual. No corner artifacts to worry about — a plain screen recording has square corners, not a device mockup's rounded ones.
 
 ## If the source has background around a device mockup to remove
 "Remove the background" from a screen recording means crop out the empty space around a phone/device mockup — not real background removal/rotoscoping. Use ffmpeg's `cropdetect` to find the mockup's exact bounding box against the surrounding (usually solid-color) backdrop, then bake that crop into the same encode as step 2:
