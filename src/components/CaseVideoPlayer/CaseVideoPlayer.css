@@ -37,8 +37,17 @@
   cursor: pointer;
 }
 
-.case-video-player__progress-track {
+.case-video-player__progress-hit {
   flex: 1;
+  display: flex;
+  align-items: center;
+  height: 20px;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.case-video-player__progress-track {
+  width: 100%;
   height: 4px;
   border-radius: var(--radius-pill);
   background: var(--color-surface-accent);
