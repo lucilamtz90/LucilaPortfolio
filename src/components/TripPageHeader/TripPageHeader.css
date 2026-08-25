@@ -35,7 +35,7 @@
   background: none;
   text-align: left;
   font-family: var(--font-mono);
-  font-size: var(--text-label);
+  font-size: var(--text-overline);
   color: var(--color-text-secondary);
   cursor: pointer;
 }
@@ -121,5 +121,9 @@
   .trip-header__icon-btn {
     width: 32px;
     height: 32px;
+  }
+
+  .trip-header__handle-text {
+    font-size: var(--text-label);
   }
 }
