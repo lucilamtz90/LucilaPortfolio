@@ -23,7 +23,7 @@ export const casesEn: CaseData[] = [
     headerCompany: 'Etsy',
     headerYear: '2023',
     headerTitle: 'Dynamic Units: Turning Affiliates Into a Revenue Channel',
-    headerStatus: 'Project launched to the US market',
+    headerStatus: 'For US market only',
     headerMeta: 'Discovery to launch',
     headerRole: 'Sr. Product Designer',
 
