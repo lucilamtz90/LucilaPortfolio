@@ -16,6 +16,7 @@ export const casesEs: CaseData[] = [
     cardMeta: 'De discovery a lanzamiento',
     cardType: 'B2B',
     heroMedia: dynamicUnitsCover,
+    heroMediaPosition: 'top',
 
     headerCompany: 'Etsy',
     headerYear: '2023',
