@@ -36,6 +36,7 @@
     "shareText": "Check out Lucila's case study about {{name}}",
     "linkCopied": "Link copied to clipboard",
     "openExternal": "Open in new tab",
+    "close": "Close",
     "metaYearConnector": "on",
     "roleCompanyConnector": "at"
   },

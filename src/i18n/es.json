@@ -36,6 +36,7 @@
     "shareText": "Mira el caso de estudio de Lucila sobre {{name}}",
     "linkCopied": "Enlace copiado al portapapeles",
     "openExternal": "Abrir en una pestaña nueva",
+    "close": "Cerrar",
     "metaYearConnector": "en",
     "roleCompanyConnector": "en"
   },

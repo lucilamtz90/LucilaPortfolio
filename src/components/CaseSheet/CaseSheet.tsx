@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { CaseCloseButton } from '../CaseCloseButton/CaseCloseButton';
 import { CaseDetail } from '../../pages/CaseDetail';
 import './CaseSheet.css';
 
@@ -59,6 +60,7 @@ export function CaseSheet() {
           <CaseDetail onBack={handleClose} />
         </div>
       </div>
+      <CaseCloseButton onClose={handleClose} scrollContainerRef={panelRef} />
     </div>
   );
 }
