@@ -43,14 +43,11 @@ export function TripPageHeader({ caseData, onShare }: TripPageHeaderProps) {
           <button type="button" className="trip-header__icon-btn" onClick={onShare} aria-label={t('caseHeader.share')}>
             <img src={shareIcon} alt="" />
           </button>
-          <button
-            type="button"
-            className="trip-header__icon-btn"
-            aria-label="Record video"
-            disabled={!features.videoOverlay}
-          >
-            <img src={microphoneIcon} alt="" />
-          </button>
+          {features.videoOverlay && (
+            <button type="button" className="trip-header__icon-btn" aria-label="Record video">
+              <img src={microphoneIcon} alt="" />
+            </button>
+          )}
 
         </div>
       </div>

@@ -22,21 +22,32 @@ function preloadImage(src: string): Promise<void> {
   });
 }
 
+const LOADER_SHOWN_SESSION_KEY = 'lucila-portfolio:loader-shown';
+
+function hasShownLoaderThisSession(): boolean {
+  return window.sessionStorage.getItem(LOADER_SHOWN_SESSION_KEY) === '1';
+}
+
 export function Home() {
   const { t, i18n } = useTranslation();
   const cases = getCases(i18n.language);
 
   const [activeTab, setActiveTab] = useState<ProjectTab>('professional');
   const [contactOpen, setContactOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => !hasShownLoaderThisSession());
 
   useEffect(() => {
+    if (!isLoading) return;
+
     let cancelled = false;
     const timeout = new Promise<void>((resolve) => setTimeout(resolve, 2900));
     const images = Promise.all(cases.map((c) => preloadImage(c.heroMedia)));
 
     Promise.race([Promise.all([images, timeout]), timeout]).then(() => {
-      if (!cancelled) setIsLoading(false);
+      if (!cancelled) {
+        setIsLoading(false);
+        window.sessionStorage.setItem(LOADER_SHOWN_SESSION_KEY, '1');
+      }
     });
 
     return () => {
