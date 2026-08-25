@@ -15,15 +15,20 @@
   align-items: center;
   gap: var(--space-lg);
   width: 100%;
-  padding-block: var(--space-sm);
-  margin-top: calc(-1 * var(--space-sm));
+  /* Carries the page's original top spacing (was .case-detail's padding-top) so the
+     sticky box itself starts flush at scroll-top 0 — see CaseDetail.css. Collapses
+     to a compact bar once scrolled, instead of jumping when sticky engages. */
+  padding-top: calc(var(--space-3xl) + var(--space-sm));
+  padding-bottom: var(--space-sm);
   background-color: transparent;
   transition:
+    padding-top 0.3s ease,
     background-color 0.3s ease,
     box-shadow 0.3s ease;
 }
 
 .trip-header__handle--scrolled {
+  padding-top: var(--space-sm);
   background-color: var(--color-background);
   box-shadow: 0 1px 0 var(--color-border);
 }

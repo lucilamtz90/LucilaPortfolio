@@ -3,7 +3,12 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-3xl);
-  padding-top: var(--space-3xl);
+  /* No padding-top here: it used to push the whole first child (the sticky handle)
+     down before the sheet's own scroll top, so at scrollTop:0 the handle sat in a
+     dead-space gap and only snapped into its "stuck" position once you scrolled
+     past it. That top spacing now lives on .trip-header__handle's own padding
+     instead, so the sticky box starts flush at scroll-top 0 from the start — see
+     TripPageHeader.css. */
   padding-bottom: var(--space-3xl);
 }
 

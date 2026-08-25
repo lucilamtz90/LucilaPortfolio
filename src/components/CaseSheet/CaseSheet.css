@@ -29,6 +29,10 @@
   height: 100%;
   overflow-y: auto;
   overscroll-behavior: contain;
+  /* The sticky handle's padding-top animates (see TripPageHeader.css), which shrinks
+     its box height while still in normal flow. Without this, the browser's scroll
+     anchoring "corrects" for that shrink by fighting the user's own scroll position. */
+  overflow-anchor: none;
 }
 
 .case-sheet--open .case-sheet__overlay {
