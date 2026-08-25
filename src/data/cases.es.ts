@@ -165,6 +165,7 @@ export const casesEs: CaseData[] = [
     cardMeta: 'De definición a hand-off',
     cardType: 'B2C',
     heroMedia: checkoutErrorsCover,
+    heroMediaPosition: 'top',
 
     headerCompany: 'Etsy',
     headerYear: '2026',
