@@ -1,32 +1,59 @@
+/* display:contents so .trip-header__handle and .trip-header__main become direct
+   flex children of .case-detail (see CaseDetail.tsx) instead of being boxed inside
+   this short wrapper. position:sticky only stays stuck within the height of its
+   nearest block ancestor — nested inside a wrapper this short, the handle would
+   scroll away once past ~200px instead of staying fixed for the whole case page. */
 .trip-header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-  align-items: flex-start;
-  width: 100%;
+  display: contents;
 }
 
 .trip-header__handle {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
-  gap: var(--space-3xs);
+  gap: var(--space-lg);
+  width: 100%;
+  padding-block: var(--space-sm);
+  margin-top: calc(-1 * var(--space-sm));
+  background-color: transparent;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.trip-header__handle--scrolled {
+  background-color: var(--color-background);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+.trip-header__handle-text {
+  flex: 1;
   border: none;
   padding: 0;
   background: none;
-  text-decoration: none;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
   color: var(--color-text-secondary);
   cursor: pointer;
 }
 
-.trip-header__chevron {
-  width: 24px;
-  height: 24px;
+.trip-header__handle-text strong {
+  font-weight: 700;
+  color: var(--color-text-primary);
 }
 
-.trip-header__handle-text {
-  font-family: var(--font-mono);
-  font-size: var(--text-label);
-  color: var(--color-text-secondary);
+.trip-header__handle-dot {
+  margin-inline: var(--space-3xs);
+}
+
+.trip-header__icons {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .trip-header__main {
@@ -35,6 +62,10 @@
   gap: var(--space-lg);
   align-items: flex-start;
   width: 100%;
+  /* .trip-header is display:contents, so this and .trip-header__handle sit directly
+     in .case-detail's flex flow and inherit its 64px gap — pull back to the
+     original 32px that .trip-header used to apply between handle and title. */
+  margin-top: calc(var(--space-xl) - var(--space-3xl));
 }
 
 .trip-header__info {
@@ -63,20 +94,6 @@
   color: var(--color-text-secondary);
 }
 
-.trip-header__meta {
-  display: flex;
-  gap: var(--space-3xs);
-  font-family: var(--font-mono);
-  font-size: var(--text-label);
-  color: var(--color-text-secondary);
-}
-
-.trip-header__actions {
-  display: flex;
-  gap: var(--space-lg);
-  align-items: center;
-}
-
 .trip-header__icon-btn {
   display: flex;
   align-items: center;
@@ -87,6 +104,7 @@
   background: none;
   border: none;
   color: var(--color-text-primary);
+  cursor: pointer;
 }
 
 .trip-header__icon-btn img {

@@ -1,5 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import chevronLeft from '../../assets/icons/chevron-left.svg';
+import externalLinkIcon from '../../assets/icons/external-link.svg';
 import microphoneIcon from '../../assets/icons/microphone.svg';
 import shareIcon from '../../assets/icons/share.svg';
 import { StatusDot } from '../PillStatus/StatusDot';
@@ -13,17 +14,55 @@ interface TripPageHeaderProps {
   onBack: () => void;
 }
 
+const SCROLL_THRESHOLD = 4;
+
 export function TripPageHeader({ caseData, onShare, onBack }: TripPageHeaderProps) {
   const { t } = useTranslation();
+  const handleRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const scrollContainer = handleRef.current?.closest('.case-sheet__scroll');
+    if (!scrollContainer) return;
+
+    const onScroll = () => setScrolled(scrollContainer.scrollTop > SCROLL_THRESHOLD);
+    onScroll();
+    scrollContainer.addEventListener('scroll', onScroll);
+    return () => scrollContainer.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const handleOpenExternal = () => {
+    window.open(window.location.href, '_blank', 'noopener');
+  };
 
   return (
     <header className="trip-header">
-      <button type="button" className="trip-header__handle" onClick={onBack}>
-        <img src={chevronLeft} alt="" className="trip-header__chevron" />
-        <span className="trip-header__handle-text">
-          {caseData.headerCompany} • {caseData.headerYear}
-        </span>
-      </button>
+      <div ref={handleRef} className={`trip-header__handle ${scrolled ? 'trip-header__handle--scrolled' : ''}`}>
+        <button type="button" className="trip-header__handle-text" onClick={onBack}>
+          <strong>{caseData.headerMeta}</strong> {t('caseHeader.metaYearConnector')} {caseData.headerYear}
+          <span className="trip-header__handle-dot">•</span>
+          {caseData.headerRole} {t('caseHeader.roleCompanyConnector')} <strong>{caseData.headerCompany}</strong>
+        </button>
+
+        <div className="trip-header__icons">
+          {features.videoOverlay && (
+            <button type="button" className="trip-header__icon-btn" aria-label="Record video">
+              <img src={microphoneIcon} alt="" />
+            </button>
+          )}
+          <button type="button" className="trip-header__icon-btn" onClick={onShare} aria-label={t('caseHeader.share')}>
+            <img src={shareIcon} alt="" />
+          </button>
+          <button
+            type="button"
+            className="trip-header__icon-btn"
+            onClick={handleOpenExternal}
+            aria-label={t('caseHeader.openExternal')}
+          >
+            <img src={externalLinkIcon} alt="" />
+          </button>
+        </div>
+      </div>
 
       <div className="trip-header__main">
         <div className="trip-header__info">
@@ -32,23 +71,6 @@ export function TripPageHeader({ caseData, onShare, onBack }: TripPageHeaderProp
             <span>{caseData.headerStatus}</span>
             <StatusDot />
           </div>
-          <div className="trip-header__meta">
-            <span>{caseData.headerMeta}</span>
-            <span>•</span>
-            <span>{caseData.headerRole}</span>
-          </div>
-        </div>
-
-        <div className="trip-header__actions">
-          <button type="button" className="trip-header__icon-btn" onClick={onShare} aria-label={t('caseHeader.share')}>
-            <img src={shareIcon} alt="" />
-          </button>
-          {features.videoOverlay && (
-            <button type="button" className="trip-header__icon-btn" aria-label="Record video">
-              <img src={microphoneIcon} alt="" />
-            </button>
-          )}
-
         </div>
       </div>
     </header>

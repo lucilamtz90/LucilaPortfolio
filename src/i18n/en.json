@@ -34,7 +34,10 @@
   "caseHeader": {
     "share": "Share",
     "shareText": "Check out Lucila's case study about {{name}}",
-    "linkCopied": "Link copied to clipboard"
+    "linkCopied": "Link copied to clipboard",
+    "openExternal": "Open in new tab",
+    "metaYearConnector": "on",
+    "roleCompanyConnector": "at"
   },
   "loading": {
     "label": "Loading"

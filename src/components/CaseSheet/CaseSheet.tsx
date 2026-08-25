@@ -54,8 +54,10 @@ export function CaseSheet() {
   return (
     <div className={`case-sheet case-sheet--${phase}`}>
       <div className="case-sheet__overlay" onClick={handleClose} />
-      <div className="case-sheet__panel" ref={panelRef} role="dialog" aria-modal="true">
-        <CaseDetail onBack={handleClose} />
+      <div className="case-sheet__panel">
+        <div className="case-sheet__scroll" ref={panelRef} role="dialog" aria-modal="true">
+          <CaseDetail onBack={handleClose} />
+        </div>
       </div>
     </div>
   );

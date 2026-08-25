@@ -15,11 +15,20 @@
 .case-sheet__panel {
   position: absolute;
   inset: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  overflow: hidden;
   background: var(--color-background);
   transform: translateY(100%);
   transition: transform var(--duration-sheet) var(--ease-media);
+}
+
+/* A separate scroll container from the animated .case-sheet__panel: position:sticky
+   breaks inside a scrolling element that also carries a transform (used above for the
+   slide animation), so the actual overflow-y:auto element must stay transform-free. */
+.case-sheet__scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .case-sheet--open .case-sheet__overlay {

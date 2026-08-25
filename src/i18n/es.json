@@ -34,7 +34,10 @@
   "caseHeader": {
     "share": "Compartir",
     "shareText": "Mira el caso de estudio de Lucila sobre {{name}}",
-    "linkCopied": "Enlace copiado al portapapeles"
+    "linkCopied": "Enlace copiado al portapapeles",
+    "openExternal": "Abrir en una pestaña nueva",
+    "metaYearConnector": "en",
+    "roleCompanyConnector": "en"
   },
   "loading": {
     "label": "Cargando"
