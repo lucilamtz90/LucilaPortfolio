@@ -67,6 +67,7 @@ export function Home() {
                   meta={c.cardMeta}
                   type={c.cardType}
                   image={c.heroMedia}
+                  imagePosition={c.heroMediaPosition}
                   to={`/case/${c.slug}`}
                 />
               ))}

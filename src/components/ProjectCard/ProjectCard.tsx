@@ -10,16 +10,17 @@ interface ProjectCardProps {
   meta?: string;
   type?: string;
   image: string;
+  imagePosition?: 'center' | 'top' | 'bottom';
   to?: string;
 }
 
-export function ProjectCard({ number, company, year, title, meta, type, image, to }: ProjectCardProps) {
+export function ProjectCard({ number, company, year, title, meta, type, image, imagePosition, to }: ProjectCardProps) {
   const content = (
     <>
       <div className="project-card__content">
         <span className="project-card__number">{number}</span>
         <div className="project-card__media">
-          <Media src={image} alt={title} />
+          <Media src={image} alt={title} objectPosition={imagePosition} />
         </div>
       </div>
       <div className="project-card__details">

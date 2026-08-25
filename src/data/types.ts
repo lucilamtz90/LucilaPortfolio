@@ -29,6 +29,8 @@ export interface CaseData {
   cardMeta: string;
   cardType: ProjectType;
   heroMedia: string;
+  /** Crop anchor for heroMedia in the home grid card, when its aspect ratio doesn't match the frame. Defaults to centered. */
+  heroMediaPosition?: 'center' | 'top' | 'bottom';
 
   headerCompany: string;
   headerYear: string;
