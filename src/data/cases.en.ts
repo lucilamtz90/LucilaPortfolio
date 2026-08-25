@@ -1,3 +1,4 @@
+import checkoutErrorsCover from '../assets/images/checkout-errors-cover.mp4';
 import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import placeholder from '../assets/images/project-placeholder.jpg';
@@ -162,7 +163,7 @@ export const casesEn: CaseData[] = [
     cardTitle: 'Error handling at checkout',
     cardMeta: 'Definition to hand-off',
     cardType: 'B2C',
-    heroMedia: placeholder,
+    heroMedia: checkoutErrorsCover,
 
     headerCompany: 'Etsy',
     headerYear: '2026',
