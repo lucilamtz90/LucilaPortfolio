@@ -39,6 +39,9 @@
   "loading": {
     "label": "Cargando"
   },
+  "media": {
+    "open": "Ver"
+  },
   "notFound": {
     "title": "Página no encontrada",
     "body": "El case que buscas no existe.",

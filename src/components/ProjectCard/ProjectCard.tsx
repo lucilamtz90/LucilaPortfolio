@@ -20,7 +20,7 @@ export function ProjectCard({ number, company, year, title, meta, type, image, i
       <div className="project-card__content">
         <span className="project-card__number">{number}</span>
         <div className="project-card__media">
-          <Media src={image} alt={title} objectPosition={imagePosition} />
+          <Media src={image} alt={title} objectPosition={imagePosition} interactive={Boolean(to)} />
         </div>
       </div>
       <div className="project-card__details">

@@ -39,6 +39,9 @@
   "loading": {
     "label": "Loading"
   },
+  "media": {
+    "open": "Open"
+  },
   "notFound": {
     "title": "Page not found",
     "body": "The case you're looking for doesn't exist.",
