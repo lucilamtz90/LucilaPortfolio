@@ -16,6 +16,7 @@
 
 .process-step__media {
   width: 100%;
+  aspect-ratio: 321 / 440;
 }
 
 @media (min-width: 1024px) {

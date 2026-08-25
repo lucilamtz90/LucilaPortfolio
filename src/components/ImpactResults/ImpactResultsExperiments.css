@@ -19,6 +19,10 @@
   flex: 1;
 }
 
+.impact-experiments__media {
+  aspect-ratio: 1 / 1;
+}
+
 .impact-experiments__label {
   font-family: var(--font-mono);
   font-size: var(--text-label);
