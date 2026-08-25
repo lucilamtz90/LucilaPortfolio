@@ -6,7 +6,12 @@ export type CaseSection =
       left: { heading: string; body: string; body2?: string };
       right: { heading: string; body: string; body2?: string };
     }
-  | { type: 'heroImage'; image: string }
+  | {
+      type: 'heroImage';
+      image: string;
+      /** Opt-in custom video player (loop + play/pause + progress bar) instead of the default autoplay/loop media. Video only. */
+      player?: boolean;
+    }
   | { type: 'impactResults'; heading: string; stats: { label: string; value: string | string[] }[] }
   | {
       type: 'impactResultsExperiments';
