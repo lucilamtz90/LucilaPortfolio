@@ -1,4 +1,5 @@
 import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
+import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import type { CaseData } from './types';
 
@@ -82,7 +83,7 @@ export const casesEs: CaseData[] = [
     cardTitle: 'Etsy Insider — lanzando Rewards',
     cardMeta: 'De ideación a hand-off',
     cardType: 'B2C',
-    heroMedia: placeholder,
+    heroMedia: etsyInsiderCover,
 
     headerCompany: 'Etsy',
     headerYear: '2025',
