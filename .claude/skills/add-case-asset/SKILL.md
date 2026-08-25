@@ -54,3 +54,13 @@ Lucila will give you a local file path (usually somewhere in `~/Downloads`) and 
 ffmpeg -i "<source>" -vf "cropdetect=limit=24:round=2:reset=1" -f null - 2>&1 | grep -o "crop=[0-9:]*" | sort | uniq -c | sort -rn
 ```
 Take whichever `crop=W:H:X:Y` value the overwhelming majority of sampled frames agree on, then add `-vf "crop=W:H:X:Y"` (combine with a `scale` filter in the same `-vf` chain, comma-separated, if downscaling too) to the encode command.
+
+**Watch for rounded-corner artifacts after cropping.** `cropdetect` gives a rectangular bounding box, but a device mockup has rounded corners — the rectangle still includes small black wedges in its four corners. Whether that matters depends on whether the browser ends up cropping those corners away: if the cropped video's aspect ratio is close enough to the card frame's that `object-fit: cover` does no (or minimal) horizontal cropping, those corner wedges stay visible right at the card's edges and read as leftover "background." Check for this explicitly — don't assume the crop is clean just because a single extracted frame looks fine — with a quick pixel scan:
+```python
+from PIL import Image
+im = Image.open("<extracted-frame>.png")
+for y in [0, 5, 10, 20, 30, 40]:
+    row = [im.getpixel((x, y))[0] for x in range(im.size[0])]
+    print(y, next((x for x, v in enumerate(row) if v > 30), None))  # first non-black x from the left
+```
+If corners show up, narrow the crop (trim more off the sides) rather than shifting it down — shifting down risks cutting off the notch/status bar you were trying to keep in frame. Find where the notch actually sits first (scan a center-x column for a dark blob against the lighter bezel) so you know how much headroom you have.
