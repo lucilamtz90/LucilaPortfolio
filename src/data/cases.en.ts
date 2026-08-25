@@ -1,6 +1,7 @@
 import checkoutErrorsCover from '../assets/images/checkout-errors-cover.mp4';
 import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
 import dynamicUnitsWorkshop from '../assets/images/dynamic-units-workshop.mp4';
+import dynamicUnitsWorkshopWidget from '../assets/images/dynamic-units-workshop-widget.jpg';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
@@ -48,6 +49,7 @@ export const casesEn: CaseData[] = [
           body: "I audited more than six Affiliate programs, analyzing experience, usability, content, and visual design, and built a comparison matrix to speed up analysis — grounding my design decisions in what already worked (and didn't) elsewhere.",
         },
       },
+      { type: 'heroImage', image: dynamicUnitsWorkshopWidget },
       {
         type: 'processStep',
         heading: 'Designed for feasibility and delight, then carried it past the interface',

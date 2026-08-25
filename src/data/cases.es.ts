@@ -1,6 +1,7 @@
 import checkoutErrorsCover from '../assets/images/checkout-errors-cover.mp4';
 import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
 import dynamicUnitsWorkshop from '../assets/images/dynamic-units-workshop.mp4';
+import dynamicUnitsWorkshopWidget from '../assets/images/dynamic-units-workshop-widget.jpg';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
@@ -48,6 +49,7 @@ export const casesEs: CaseData[] = [
           body: 'Auditué más de seis programas de Affiliates, analizando experiencia, usabilidad, contenido y diseño visual, y construí una matriz comparativa para agilizar el análisis — fundamentando mis decisiones de diseño en lo que ya funcionaba (y lo que no) en otros lugares.',
         },
       },
+      { type: 'heroImage', image: dynamicUnitsWorkshopWidget },
       {
         type: 'processStep',
         heading: 'Diseñé pensando en viabilidad y deleite, y lo llevé más allá de la interfaz',
