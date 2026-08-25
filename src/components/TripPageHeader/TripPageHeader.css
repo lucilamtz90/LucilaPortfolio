@@ -98,8 +98,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 18px;
+  height: 18px;
   padding: 0;
   background: none;
   border: none;
@@ -115,4 +115,11 @@
 .trip-header__icon-btn:disabled {
   opacity: 0.35;
   cursor: default;
+}
+
+@media (min-width: 1024px) {
+  .trip-header__icon-btn {
+    width: 32px;
+    height: 32px;
+  }
 }
