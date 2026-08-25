@@ -35,6 +35,8 @@ Lucila will give you a local file path (usually somewhere in `~/Downloads`) and 
 
 6. **Video vs image is automatic** — `Media` detects `.mp4`/`.webm`/`.mov` by extension and renders a looping, muted, autoplaying `<video>` instead of an `<img>`; nothing else to configure.
 
+6b. **Custom video player is opt-in, only when Lucila explicitly asks for it.** Default `heroImage` sections (and every other video-bearing section) use the plain `Media` component — autoplay, loop, no controls. Only when she specifically asks for "a nice video player" / play-pause / a progress line (as she did for Dynamic Units' final video) should you set `player: true` on that `heroImage` section (`{ type: 'heroImage', image: ..., player: true }`, both locale files) — this swaps in `CaseVideoPlayer` (`src/components/CaseVideoPlayer/`), which loops forever, stays muted, and renders a minimal play/pause button + a progress line colored with `--color-accent-primary` (fill) and `--color-surface-accent` (track), no native controls/seeking. Don't apply this to other sections or other cases unless asked — it's a per-asset, per-request configuration, not a new default. Case-page videos placed via `Media` elsewhere (processStep images, etc.) are unaffected either way.
+
 7. **Verify before shipping:**
    ```
    npm run build && npm run lint
