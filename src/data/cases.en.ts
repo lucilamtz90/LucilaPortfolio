@@ -236,6 +236,7 @@ export const casesEn: CaseData[] = [
     cardMeta: 'Discovery to hand-off',
     cardType: 'B2C',
     heroMedia: rappiCardCover,
+    heroMediaPosition: 'top',
 
     headerCompany: 'Rappi Card',
     headerYear: '2021',

@@ -31,7 +31,7 @@ Lucila will give you a local file path (usually somewhere in `~/Downloads`) and 
    - Add an `import <name>Cover from '../assets/images/<slug>-cover.mp4';` at the top.
    - Replace the relevant field (`heroMedia:` or a section's `image:`) with the new import, for the matching case entry (find it by `slug:`).
 
-5. **Crop position, only if needed.** `Media` (`src/components/Media/Media.tsx`) does `object-fit: cover`, which crops symmetrically by default. If the asset's aspect ratio is much taller/wider than its frame and the crop cuts off something that matters (e.g. a phone mockup's top edge), set `heroMediaPosition: 'top' | 'bottom'` on that case's entry in **both** locale files — it flows through automatically (`Home.tsx` → `ProjectCard` → `Media`'s `objectPosition` prop). Default (unset) is centered.
+5. **Crop position — check this every time, don't skip it.** `Media` (`src/components/Media/Media.tsx`) does `object-fit: cover`, which crops symmetrically (centered) by default. The grid card frame is much shorter/wider than a typical tall phone-mockup recording, so a centered crop almost always cuts off the top of the device (notch/status bar) and the bottom in equal measure — every asset wired so far (`etsy-insider-rewards`, `rappi-card`) has needed `heroMediaPosition: 'top'` for exactly this reason. **Default assumption: if the source is a phone/device mockup taller than it is wide, set `heroMediaPosition: 'top'` up front** rather than waiting to be told — then confirm it in the verification screenshot (step 7) and adjust to `'bottom'` or unset (centered) only if `'top'` visibly looks wrong for that particular asset. Set it on that case's entry in **both** locale files — it flows through automatically (`Home.tsx` → `ProjectCard` → `Media`'s `objectPosition` prop).
 
 6. **Video vs image is automatic** — `Media` detects `.mp4`/`.webm`/`.mov` by extension and renders a looping, muted, autoplaying `<video>` instead of an `<img>`; nothing else to configure.
 
@@ -46,3 +46,11 @@ Lucila will give you a local file path (usually somewhere in `~/Downloads`) and 
 ## Reference: assets already wired this way
 - `dynamic-units` case → `dynamic-units-cover.mp4` (converted from GIF, 2.9MB → 454KB)
 - `etsy-insider-rewards` case → `etsy-insider-rewards-cover.mp4` (converted from GIF, 8.09MB → 874KB, scaled to 480px wide, `heroMediaPosition: 'top'`)
+- `rappi-card` case → `rappi-card-cover.mp4` (source `.mov`, background cropped out via `cropdetect` — see below — 4.4MB → 420KB, `heroMediaPosition: 'top'`)
+
+## If the source has background around a device mockup to remove
+"Remove the background" from a screen recording means crop out the empty space around a phone/device mockup — not real background removal/rotoscoping. Use ffmpeg's `cropdetect` to find the mockup's exact bounding box against the surrounding (usually solid-color) backdrop, then bake that crop into the same encode as step 2:
+```
+ffmpeg -i "<source>" -vf "cropdetect=limit=24:round=2:reset=1" -f null - 2>&1 | grep -o "crop=[0-9:]*" | sort | uniq -c | sort -rn
+```
+Take whichever `crop=W:H:X:Y` value the overwhelming majority of sampled frames agree on, then add `-vf "crop=W:H:X:Y"` (combine with a `scale` filter in the same `-vf` chain, comma-separated, if downscaling too) to the encode command.
