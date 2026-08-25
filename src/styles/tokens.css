@@ -3,11 +3,12 @@
   --color-text-primary: #22221a;
   --color-text-secondary: #676e6f;
   --color-accent-primary: #94cf13;
+  --color-accent-primary-rgb: 148, 207, 19;
   --color-surface-accent: #f0f5e5;
   --color-border: #2a2d2d;
   --color-surface: #fffefc;
   --color-background: #f8f7f7;
-  /* Figma "Buttons/Primary/Hover" — used for the case-sheet overlay backdrop. */
+  /* Figma "Buttons/Primary/Hover". */
   --color-button-primary-hover: #2f2f50;
   --color-button-primary-hover-rgb: 47, 47, 80;
 
