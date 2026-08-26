@@ -60,6 +60,11 @@ export const casesEs: CaseData[] = [
       },
       { type: 'heroImage', image: dynamicUnitsPerformanceDashboard, player: true },
       {
+        type: 'toolCredit',
+        lead: 'Explora la demo en vivo que construí:',
+        url: 'https://etsy-affiliates-hub.figma.site',
+      },
+      {
         type: 'impactResults',
         heading: 'Impacto y resultados',
         stats: [
