@@ -22,6 +22,15 @@
   color: var(--color-surface);
 }
 
+.panel-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-heading-sm);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+}
+
 .text-link {
   font-family: var(--font-display);
   font-weight: 600;

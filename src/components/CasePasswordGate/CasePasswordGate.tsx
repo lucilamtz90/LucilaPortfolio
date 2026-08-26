@@ -59,7 +59,7 @@ export function CasePasswordGate({ children }: CasePasswordGateProps) {
       </div>
 
       <div className="case-gate__panel">
-        <p className="case-gate__prompt">{t('caseGate.prompt')}</p>
+        <p className="panel-title">{t('caseGate.prompt')}</p>
         <form className="case-gate__form" onSubmit={handleSubmit}>
           <input
             type="password"
@@ -78,7 +78,9 @@ export function CasePasswordGate({ children }: CasePasswordGateProps) {
         </form>
         {showError && <p className="case-gate__error">{t('caseGate.error')}</p>}
         <a href={`mailto:${CONTACT_EMAIL}`} className="case-gate__help">
-          {t('caseGate.help')}
+          {t('caseGate.helpQuestion')}
+          <br />
+          {t('caseGate.helpAction')}
         </a>
       </div>
     </div>

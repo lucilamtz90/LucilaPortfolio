@@ -18,7 +18,7 @@ export function ContactFab({ open, onClose }: ContactFabProps) {
       {open && <div className="contact-fab__scrim" onClick={onClose} />}
 
       <div className={`contact-fab-panel ${open ? 'contact-fab-panel--open' : ''}`} role="dialog" aria-modal="true" aria-hidden={!open}>
-        <p className="contact-fab-panel__title">{t('contactFab.title')}</p>
+        <p className="panel-title">{t('contactFab.title')}</p>
         <a href={`mailto:${CONTACT_EMAIL}`} className="contact-fab-panel__email">
           {CONTACT_EMAIL}
         </a>

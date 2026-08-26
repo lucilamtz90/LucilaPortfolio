@@ -47,11 +47,12 @@
     "open": "Open"
   },
   "caseGate": {
-    "prompt": "Enter a password to keep reading.",
+    "prompt": "Enter a password to keep reading",
     "placeholder": "Password",
     "submit": "Unlock",
     "error": "That password isn't right — try again.",
-    "help": "Need a password? Reach out to Lucy and request it."
+    "helpQuestion": "Need a password?",
+    "helpAction": "Reach out to Lucy and request it."
   },
   "notFound": {
     "title": "Page not found",
