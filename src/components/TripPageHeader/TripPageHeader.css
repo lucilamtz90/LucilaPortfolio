@@ -19,7 +19,8 @@
      64px page-top breathing room (that made sense when the handle scrolled away
      with the rest of the page; now that it's always visible, it just reads as a
      big empty gap above it). */
-  padding-block: var(--space-sm);
+  padding-top: 20px;
+  padding-bottom: var(--space-sm);
   background-color: transparent;
   transition:
     background-color 0.3s ease,
