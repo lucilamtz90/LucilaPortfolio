@@ -11,6 +11,30 @@
   width: 32px;
   height: 32px;
   color: var(--color-text-primary);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.tool-credit__icon--flip {
+  animation: tool-credit-flip var(--duration-media) var(--ease-media) both;
+}
+
+@keyframes tool-credit-flip {
+  0% {
+    transform: rotateY(0deg) scale(1);
+  }
+  50% {
+    transform: rotateY(180deg) scale(1.15);
+  }
+  100% {
+    transform: rotateY(360deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-credit__icon--flip {
+    animation: none;
+  }
 }
 
 .tool-credit__text {
