@@ -5,6 +5,9 @@
   gap: var(--space-sm);
   width: 100%;
   text-align: center;
+  /* A tight perspective relative to the icon's own size is what makes the flip
+     below actually read as a 3D rotation instead of a flat horizontal squish. */
+  perspective: 180px;
 }
 
 .tool-credit__icon {
@@ -16,15 +19,22 @@
 }
 
 .tool-credit__icon--flip {
-  animation: tool-credit-flip var(--duration-media) var(--ease-media) both;
+  animation: tool-credit-flip 0.8s ease-in-out both;
 }
 
 @keyframes tool-credit-flip {
   0% {
     transform: rotateY(0deg) scale(1);
   }
+  20% {
+    transform: rotateY(15deg) scale(1.2);
+  }
   50% {
-    transform: rotateY(180deg) scale(1.15);
+    transform: rotateY(180deg) scale(1.6);
+    opacity: 0.4;
+  }
+  80% {
+    transform: rotateY(345deg) scale(1.2);
   }
   100% {
     transform: rotateY(360deg) scale(1);
