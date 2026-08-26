@@ -119,14 +119,3 @@
   opacity: 0.35;
   cursor: default;
 }
-
-@media (min-width: 1024px) {
-  .trip-header__icon-btn {
-    width: 32px;
-    height: 32px;
-  }
-
-  .trip-header__handle-text {
-    font-size: var(--text-label);
-  }
-}
