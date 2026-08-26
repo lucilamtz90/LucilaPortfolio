@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navigate, useParams } from 'react-router-dom';
+import { CasePasswordGate } from '../components/CasePasswordGate/CasePasswordGate';
 import { CaseSectionRenderer } from '../components/CaseSectionRenderer';
 import { ContactFab } from '../components/ContactFab/ContactFab';
 import { Footer } from '../components/Footer/Footer';
@@ -30,9 +31,11 @@ export function CaseDetail({ onBack }: CaseDetailProps) {
         <TripPageHeader caseData={caseData} onShare={() => share(caseData.headerTitle, caseData.heroMedia)} onBack={onBack} />
 
         <div className="case-detail__content">
-          {caseData.sections.map((section, index) => (
-            <CaseSectionRenderer key={index} section={section} />
-          ))}
+          <CasePasswordGate>
+            {caseData.sections.map((section, index) => (
+              <CaseSectionRenderer key={index} section={section} />
+            ))}
+          </CasePasswordGate>
         </div>
 
         <Footer onContactClick={() => setContactOpen(true)} />

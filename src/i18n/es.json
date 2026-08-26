@@ -46,6 +46,13 @@
   "media": {
     "open": "Ver"
   },
+  "caseGate": {
+    "prompt": "Ingresa una contraseña para seguir leyendo.",
+    "placeholder": "Contraseña",
+    "submit": "Desbloquear",
+    "error": "Esa contraseña no es correcta — intenta de nuevo.",
+    "help": "¿Necesitas una contraseña? Escríbele a Lucy y pídesela."
+  },
   "notFound": {
     "title": "Página no encontrada",
     "body": "El case que buscas no existe.",

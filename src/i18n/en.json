@@ -46,6 +46,13 @@
   "media": {
     "open": "Open"
   },
+  "caseGate": {
+    "prompt": "Enter a password to keep reading.",
+    "placeholder": "Password",
+    "submit": "Unlock",
+    "error": "That password isn't right — try again.",
+    "help": "Need a password? Reach out to Lucy and request it."
+  },
   "notFound": {
     "title": "Page not found",
     "body": "The case you're looking for doesn't exist.",

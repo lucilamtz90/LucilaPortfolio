@@ -27,6 +27,13 @@
   pointer-events: none;
 }
 
+/* While a case's password gate is locked, this button (fixed to the viewport
+   bottom) can otherwise land right on top of the gate's panel on short
+   viewports — see CasePasswordGate.tsx, which toggles this class on <body>. */
+body.case-gate-locked .case-close-btn {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .case-close-btn {
     transition: opacity 0.15s ease;
