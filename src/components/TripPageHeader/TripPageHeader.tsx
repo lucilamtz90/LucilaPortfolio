@@ -32,7 +32,7 @@ export function TripPageHeader({ caseData, onShare, onBack }: TripPageHeaderProp
   }, []);
 
   const handleOpenExternal = () => {
-    window.open(window.location.href, '_blank', 'noopener');
+    window.open(caseData.externalUrl ?? window.location.href, '_blank', 'noopener');
   };
 
   return (

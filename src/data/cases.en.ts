@@ -23,9 +23,10 @@ export const casesEn: CaseData[] = [
     headerCompany: 'Etsy',
     headerYear: '2023',
     headerTitle: 'Dynamic Units: Turning Affiliates Into a Revenue Channel',
-    headerStatus: 'For US market only',
+    headerStatus: 'US market',
     headerMeta: 'Discovery to launch',
     headerRole: 'Sr. Product Designer',
+    externalUrl: 'https://www.etsy.com/affiliates',
 
     sections: [
       {

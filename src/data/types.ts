@@ -43,6 +43,8 @@ export interface CaseData {
   headerStatus: string;
   headerMeta: string;
   headerRole: string;
+  /** Where the header's "open external" icon links to. Defaults to the case's own page URL. */
+  externalUrl?: string;
 
   sections: CaseSection[];
 }
