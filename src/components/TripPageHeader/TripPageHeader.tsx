@@ -45,6 +45,11 @@ export function TripPageHeader({ caseData, onShare, onBack }: TripPageHeaderProp
         </button>
 
         <div className="trip-header__icons">
+          <button type="button" className="trip-header__icon-btn" onClick={onBack} aria-label={t('caseHeader.close')}>
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+              <path d="M1 1L15 15M15 1L1 15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+            </svg>
+          </button>
           {features.videoOverlay && (
             <button type="button" className="trip-header__icon-btn" aria-label="Record video">
               <img src={microphoneIcon} alt="" />
