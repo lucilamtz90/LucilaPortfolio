@@ -20,10 +20,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#root {
-  min-height: 100dvh;
-}
-
 img {
   max-width: 100%;
   display: block;
