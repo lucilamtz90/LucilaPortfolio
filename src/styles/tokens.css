@@ -19,6 +19,8 @@
 
   /* Type scale — mobile-first values; desktop overrides live in breakpoints.css */
   --text-display: 48px;
+  /* Mobile-only: keeps the Hero title to two lines instead of three at narrow widths. */
+  --text-display-sm: 40px;
   --text-heading: 28px;
   --text-heading-sm: 24px;
   --text-subheading: 28px;
