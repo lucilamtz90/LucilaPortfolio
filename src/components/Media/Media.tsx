@@ -54,6 +54,36 @@ export function Media({
     }
   }, [isHovered, isInteractive, isVideo]);
 
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (isInteractive || !isVideo) return;
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), { threshold: 0.25 });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [isInteractive, isVideo, ref]);
+
+  useEffect(() => {
+    // Plain autoplay isn't reliable once several videos exist on one page (e.g. the
+    // four Home cards) — mobile browsers can drop some of the simultaneous initial
+    // play() calls as a one-off race, and the passive autoplay attribute never
+    // retries. Pausing off-screen videos and (re)playing on-screen ones as visibility
+    // changes both frees up decode capacity and gives every video repeated chances to
+    // actually start.
+    if (isInteractive || !isVideo) return;
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isVisible) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isVisible, isInteractive, isVideo]);
+
   const updatePillPosition = (e: React.MouseEvent<HTMLElement>) => {
     if (!isInteractive) return;
     const rect = e.currentTarget.getBoundingClientRect();
