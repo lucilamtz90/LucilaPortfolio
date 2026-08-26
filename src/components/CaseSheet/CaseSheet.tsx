@@ -31,10 +31,35 @@ export function CaseSheet() {
   }, [slug]);
 
   useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    // overflow:hidden alone doesn't reliably lock background scroll on iOS Safari,
+    // and restoring it can leave the page with a stale/incorrect scrollable height
+    // (a "phantom" gap of extra scroll below the footer) until the page reloads.
+    // Pinning the body via position:fixed removes it from the scrollable flow
+    // entirely, which iOS respects, and restoring the saved scroll position on
+    // cleanup avoids that lingering layout glitch.
+    const { body } = document;
+    const scrollY = window.scrollY;
+    const previous = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      width: body.style.width,
+    };
+
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+
     return () => {
-      document.body.style.overflow = previousOverflow;
+      body.style.position = previous.position;
+      body.style.top = previous.top;
+      body.style.left = previous.left;
+      body.style.right = previous.right;
+      body.style.width = previous.width;
+      window.scrollTo(0, scrollY);
     };
   }, []);
 
