@@ -11,12 +11,24 @@
   padding-right: var(--container-inset);
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x proximity;
+  /* "proximity" only snaps when a scroll happens to stop near a card already —
+     a flicked swipe easily lands mid-way between two cards and just stays
+     there. "mandatory" always resolves to the nearest card once the scroll
+     ends, which is what a touch carousel needs. Desktop keeps the gentler
+     "proximity" since mouse-wheel/trackpad scrolling there isn't a swipe
+     gesture aimed at one card at a time. */
+  scroll-snap-type: x mandatory;
   scroll-padding-left: var(--container-inset);
   scroll-padding-right: var(--container-inset);
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* legacy Edge */
+}
+
+@media (min-width: 1024px) {
+  .projects-grid {
+    scroll-snap-type: x proximity;
+  }
 }
 
 .projects-grid::-webkit-scrollbar {
