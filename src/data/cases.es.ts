@@ -1,6 +1,5 @@
 import checkoutErrorsCover from '../assets/images/checkout-errors-cover.mp4';
 import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
-import dynamicUnitsPerformanceDashboard from '../assets/images/dynamic-units-performance-dashboard.mp4';
 import dynamicUnitsWorkshop from '../assets/images/dynamic-units-workshop.mp4';
 import dynamicUnitsWorkshopWidget from '../assets/images/dynamic-units-workshop-widget.jpg';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
@@ -59,7 +58,6 @@ export const casesEs: CaseData[] = [
         body2:
           'También lideré la estrategia de la campaña de lanzamiento por correo con Marketing, creando ilustraciones y adaptando el contenido por nivel de Affiliate junto con mi partner de UX Content, y construí un plan de correos de ciclo de vida para reactivar Affiliates inactivos.',
       },
-      { type: 'heroImage', image: dynamicUnitsPerformanceDashboard, player: true },
       {
         type: 'toolCredit',
         lead: 'Explora la demo en vivo que construí:',

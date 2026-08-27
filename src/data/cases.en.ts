@@ -1,6 +1,5 @@
 import checkoutErrorsCover from '../assets/images/checkout-errors-cover.mp4';
 import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
-import dynamicUnitsPerformanceDashboard from '../assets/images/dynamic-units-performance-dashboard.mp4';
 import dynamicUnitsWorkshop from '../assets/images/dynamic-units-workshop.mp4';
 import dynamicUnitsWorkshopWidget from '../assets/images/dynamic-units-workshop-widget.jpg';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
@@ -59,7 +58,6 @@ export const casesEn: CaseData[] = [
         body2:
           'I also led the launch email campaign strategy with Marketing, crafting illustrations and tailoring content per Affiliate tier with my UX Content partner, and built a lifecycle email plan to re-engage inactive Affiliates.',
       },
-      { type: 'heroImage', image: dynamicUnitsPerformanceDashboard, player: true },
       {
         type: 'toolCredit',
         lead: 'Explore the live demo I built:',
