@@ -7,9 +7,11 @@ interface ProcessStepProps {
   body: string;
   body2?: string;
   image?: string;
+  /** Overrides the default 321/440 frame — see HeroImage's aspectRatio prop. */
+  aspectRatio?: string;
 }
 
-export function ProcessStep({ heading, body, body2, image }: ProcessStepProps) {
+export function ProcessStep({ heading, body, body2, image, aspectRatio }: ProcessStepProps) {
   return (
     <div className={`process-step ${image ? '' : 'process-step--text-only'}`}>
       <div className="process-step__text">
@@ -20,7 +22,7 @@ export function ProcessStep({ heading, body, body2, image }: ProcessStepProps) {
         </div>
       </div>
       {image && (
-        <div className="process-step__media case-media">
+        <div className="process-step__media case-media" style={aspectRatio ? { aspectRatio } : undefined}>
           <Media src={image} alt="" />
         </div>
       )}

@@ -1,6 +1,14 @@
 export type CaseSection =
   | { type: 'sectionTwoColumn'; heading: string; body: string }
-  | { type: 'processStep'; heading: string; body: string; body2?: string; image?: string }
+  | {
+      type: 'processStep';
+      heading: string;
+      body: string;
+      body2?: string;
+      image?: string;
+      /** Overrides the default 321/440 frame — see heroImage's aspectRatio. */
+      aspectRatio?: string;
+    }
   | {
       type: 'processStepsRow';
       left: { heading: string; body: string; body2?: string };

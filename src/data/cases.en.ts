@@ -4,6 +4,8 @@ import dynamicUnitsWorkshop from '../assets/images/dynamic-units-workshop.mp4';
 import dynamicUnitsWorkshopWidget from '../assets/images/dynamic-units-workshop-widget.jpg';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import etsyInsiderRewardsFlows from '../assets/images/etsy-insider-rewards-flows.jpg';
+import etsyInsiderRewardsJourney from '../assets/images/etsy-insider-rewards-journey.mp4';
+import etsyInsiderRoadmap from '../assets/images/etsy-insider-roadmap.jpg';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
 import type { CaseData } from './types';
@@ -115,7 +117,8 @@ export const casesEn: CaseData[] = [
         type: 'processStep',
         heading: 'Turned a competitive benchmark into the strategic recommendation',
         body: 'I audited and synthesized loyalty and rewards programs from other companies, distilling patterns in visual treatment, positioning, and experience design. That synthesis became my recommendation for how and where to introduce Rewards — giving my PM and marketing partners a clear, evidence-backed view of where the benefit could land with the most impact for buyers, and it set the priorities for everything that followed.',
-        image: placeholder,
+        image: etsyInsiderRewardsJourney,
+        aspectRatio: '425 / 830',
       },
       {
         type: 'processStepsRow',
@@ -128,6 +131,7 @@ export const casesEn: CaseData[] = [
           body: 'That planning session became the throughline for 8+ projects that together built Etsy Insider V2, including Rewards. With a clear roadmap in hand, my PM could plan confidently across other product teams, while I broke every project down into smaller tasks and began connecting with the other designers involved.',
         },
       },
+      { type: 'heroImage', image: etsyInsiderRoadmap, aspectRatio: '2200 / 1093' },
       {
         type: 'processStepsRow',
         left: {

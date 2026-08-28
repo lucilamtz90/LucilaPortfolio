@@ -4,6 +4,8 @@ import dynamicUnitsWorkshop from '../assets/images/dynamic-units-workshop.mp4';
 import dynamicUnitsWorkshopWidget from '../assets/images/dynamic-units-workshop-widget.jpg';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import etsyInsiderRewardsFlows from '../assets/images/etsy-insider-rewards-flows.jpg';
+import etsyInsiderRewardsJourney from '../assets/images/etsy-insider-rewards-journey.mp4';
+import etsyInsiderRoadmap from '../assets/images/etsy-insider-roadmap.jpg';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
 import type { CaseData } from './types';
@@ -115,7 +117,8 @@ export const casesEs: CaseData[] = [
         type: 'processStep',
         heading: 'Convertí un benchmark competitivo en la recomendación estratégica',
         body: 'Auditué y sinteticé programas de lealtad y recompensas de otras empresas, destilando patrones de tratamiento visual, posicionamiento y diseño de experiencia. Esa síntesis se convirtió en mi recomendación sobre cómo y dónde introducir Rewards — dándole a mi PM y a mis partners de marketing una visión clara y respaldada por evidencia de dónde el beneficio tendría más impacto para los compradores, y eso marcó las prioridades de todo lo que siguió.',
-        image: placeholder,
+        image: etsyInsiderRewardsJourney,
+        aspectRatio: '425 / 830',
       },
       {
         type: 'processStepsRow',
@@ -128,6 +131,7 @@ export const casesEs: CaseData[] = [
           body: 'Esa sesión de planeación se convirtió en el hilo conductor de más de 8 proyectos que juntos construyeron Etsy Insider V2, incluyendo Rewards. Con un roadmap claro en mano, mi PM pudo planear con confianza junto a otros equipos de producto, mientras yo desglosaba cada proyecto en tareas más pequeñas y empezaba a coordinarme con los demás diseñadores involucrados.',
         },
       },
+      { type: 'heroImage', image: etsyInsiderRoadmap, aspectRatio: '2200 / 1093' },
       {
         type: 'processStepsRow',
         left: {

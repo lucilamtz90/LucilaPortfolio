@@ -14,7 +14,15 @@ export function CaseSectionRenderer({ section }: { section: CaseSection }) {
     case 'sectionTwoColumn':
       return <SectionTwoColumn heading={section.heading} body={section.body} />;
     case 'processStep':
-      return <ProcessStep heading={section.heading} body={section.body} body2={section.body2} image={section.image} />;
+      return (
+        <ProcessStep
+          heading={section.heading}
+          body={section.body}
+          body2={section.body2}
+          image={section.image}
+          aspectRatio={section.aspectRatio}
+        />
+      );
     case 'processStepsRow':
       return <ProcessStepsRow left={section.left} right={section.right} />;
     case 'heroImage':
