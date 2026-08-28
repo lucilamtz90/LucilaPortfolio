@@ -226,14 +226,14 @@ export const casesEn: CaseData[] = [
           {
             label: 'Experiment #1',
             image: etsyErrorCardAuth,
-            aspectRatio: '1214 / 1458',
+            aspectRatio: '1424 / 1893',
             title: 'Card Authentication: +1.7% conversion lift after 10 days',
             body: 'Usability and payment-friction enhancements such as clear content and dedicated UI components removed the need for high-intent buyers to manually re-enter an expired card reducing friction at critical purchase moments.',
           },
           {
             label: 'Experiment #2',
             image: etsyErrorPaypal,
-            aspectRatio: '1214 / 1458',
+            aspectRatio: '1424 / 1893',
             title: 'PayPal steering: +29% conversion lift after 15 days',
             body: 'When a card payment fails with an unlikely-to-succeed auth reason, steering buyers to PayPal in the decline message accelerated checkout completion and conversion, rather than showing a generic error or just manual retries.',
           },

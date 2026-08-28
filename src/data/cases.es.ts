@@ -227,14 +227,14 @@ export const casesEs: CaseData[] = [
           {
             label: 'Experimento #1',
             image: etsyErrorCardAuth,
-            aspectRatio: '1214 / 1458',
+            aspectRatio: '1424 / 1893',
             title: 'Autenticación de tarjeta: +1.7% de conversión tras 10 días',
             body: 'Mejoras de usabilidad y fricción de pago, como contenido más claro y componentes de UI dedicados, eliminaron la necesidad de que compradores de alta intención volvieran a capturar manualmente una tarjeta vencida, reduciendo la fricción en momentos críticos de la compra.',
           },
           {
             label: 'Experimento #2',
             image: etsyErrorPaypal,
-            aspectRatio: '1214 / 1458',
+            aspectRatio: '1424 / 1893',
             title: 'Redirección a PayPal: +29% de conversión tras 15 días',
             body: 'Cuando un pago con tarjeta falla por una razón de autenticación con poca probabilidad de éxito, redirigir a los compradores hacia PayPal en el mensaje de rechazo aceleró la conclusión del checkout y la conversión, en lugar de mostrar un error genérico o solo reintentos manuales.',
           },
