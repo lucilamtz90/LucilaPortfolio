@@ -233,7 +233,7 @@ export const casesEn: CaseData[] = [
           {
             label: 'Experiment #2',
             image: etsyErrorPaypal,
-            aspectRatio: '1932 / 3078',
+            aspectRatio: '1214 / 1458',
             title: 'PayPal steering: +29% conversion lift after 15 days',
             body: 'When a card payment fails with an unlikely-to-succeed auth reason, steering buyers to PayPal in the decline message accelerated checkout completion and conversion, rather than showing a generic error or just manual retries.',
           },

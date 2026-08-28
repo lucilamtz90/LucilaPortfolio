@@ -13,7 +13,9 @@ interface ProcessStepProps {
 
 export function ProcessStep({ heading, body, body2, image, aspectRatio }: ProcessStepProps) {
   return (
-    <div className={`process-step ${image ? '' : 'process-step--text-only'}`}>
+    <div
+      className={`process-step ${image ? '' : 'process-step--text-only'} ${aspectRatio ? 'process-step--wide-media' : ''}`}
+    >
       <div className="process-step__text">
         <p className="case-heading">{heading}</p>
         <div className="case-body">

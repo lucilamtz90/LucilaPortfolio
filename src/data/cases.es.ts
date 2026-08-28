@@ -234,7 +234,7 @@ export const casesEs: CaseData[] = [
           {
             label: 'Experimento #2',
             image: etsyErrorPaypal,
-            aspectRatio: '1932 / 3078',
+            aspectRatio: '1214 / 1458',
             title: 'Redirección a PayPal: +29% de conversión tras 15 días',
             body: 'Cuando un pago con tarjeta falla por una razón de autenticación con poca probabilidad de éxito, redirigir a los compradores hacia PayPal en el mensaje de rechazo aceleró la conclusión del checkout y la conversión, en lugar de mostrar un error genérico o solo reintentos manuales.',
           },

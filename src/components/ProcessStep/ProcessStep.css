@@ -33,4 +33,18 @@
     width: 321px;
     flex-shrink: 0;
   }
+
+  /* Used for media with a custom aspectRatio (landscape screenshots/recordings
+     that don't fit the default portrait 321/440 frame) — the text hugs its own
+     comfortable reading width instead of stretching to fill the row, so the
+     wider media can take up the rest of the space. */
+  .process-step--wide-media .process-step__text {
+    flex: 0 1 auto;
+    max-width: 400px;
+  }
+
+  .process-step--wide-media .process-step__media {
+    width: auto;
+    flex: 1;
+  }
 }
