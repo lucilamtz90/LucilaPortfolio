@@ -189,9 +189,10 @@ export const casesEs: CaseData[] = [
     headerCompany: 'Etsy',
     headerYear: '2026',
     headerTitle: 'Errores de checkout: convirtiendo la fricción en momentos recuperables',
-    headerStatus: 'Experimentos de tratamiento lanzados globalmente',
+    headerStatus: 'Lanzado globalmente',
     headerMeta: 'De definición a hand-off',
     headerRole: 'Sr. Product Designer',
+    externalUrl: 'https://www.etsy.com/?ref=lgo',
 
     sections: [
       {
