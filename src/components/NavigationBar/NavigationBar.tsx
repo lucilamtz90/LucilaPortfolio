@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
+import { features } from '../../config/features';
 import { LINKEDIN_URL } from '../../config/links';
 import { LanguageToggle } from '../LanguageToggle/LanguageToggle';
 import { PillStatus } from '../PillStatus/PillStatus';
@@ -23,9 +24,11 @@ export function NavigationBar({ playPillIntro = true }: NavigationBarProps) {
           <LanguageToggle className="nav-bar__mobile-toggle" />
         </div>
         <div className="nav-bar__links">
-          <Link to="/#hero" className="text-link">
-            {t('nav.aboutMe')}
-          </Link>
+          {features.aboutMePage && (
+            <Link to="/#hero" className="text-link">
+              {t('nav.aboutMe')}
+            </Link>
+          )}
           <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-link">
             {t('nav.linkedin')}
           </a>

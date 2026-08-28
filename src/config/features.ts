@@ -7,4 +7,5 @@ export const features = {
   voiceNote: false,
   aiCaseDistinctLayout: false,
   videoOverlay: false,
+  aboutMePage: false,
 } as const;
