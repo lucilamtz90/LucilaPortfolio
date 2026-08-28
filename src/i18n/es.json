@@ -2,7 +2,7 @@
   "nav": {
     "aboutMe": "Sobre mí",
     "linkedin": "LinkedIn",
-    "resume": "Currículum",
+    "resume": "CV",
     "contact": "Contacto",
     "back": "Volver"
   },
@@ -56,7 +56,17 @@
   },
   "notFound": {
     "title": "Página no encontrada",
-    "body": "El case que buscas no existe.",
+    "body": "El caso que buscas no existe.",
     "cta": "Volver al inicio"
+  },
+  "a11y": {
+    "language": "Idioma",
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "videoProgress": "Progreso del video",
+    "recordVideo": "Grabar video"
+  },
+  "voiceNote": {
+    "hint": "Déjame una nota de voz — incluye tu contacto y tu nombre, por favor"
   }
 }

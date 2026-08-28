@@ -2,21 +2,9 @@ import aiBloomStudio from '../assets/images/ai-bloom-studio.mp4';
 import aiBonittaBrandingHub from '../assets/images/ai-bonitta-branding-hub.mp4';
 import aiEtsyVideoFeed from '../assets/images/ai-etsy-video-feed.mp4';
 import aiNoorish from '../assets/images/ai-noorish.mp4';
+import type { AiCase } from './types';
 
-export interface AiCase {
-  number: string;
-  title: string;
-  /** Pre-joined duration • year • tooling text, e.g. "6 weeks • 2025 • Cursor, Claude Code". */
-  dateLine: string;
-  /** Short one-line project summary shown under the title. */
-  description: string;
-  /** External URL — opens in a new tab, these don't have an internal case sheet. */
-  url: string;
-  /** Captured screenshot or short clip of the live interface. */
-  image: string;
-}
-
-export const aiCases: AiCase[] = [
+export const aiCasesEn: AiCase[] = [
   {
     number: '01',
     title: 'Made at Etsy: Video Feed',

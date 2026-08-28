@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useInView } from '../../hooks/useInView';
 import './CaseVideoPlayer.css';
 
@@ -16,6 +17,7 @@ const SEEK_STEP_SECONDS = 5;
  * videos keep the default autoplay/loop `Media` treatment.
  */
 export function CaseVideoPlayer({ src }: CaseVideoPlayerProps) {
+  const { t } = useTranslation();
   const { ref: containerRef, isInView } = useInView<HTMLDivElement>();
   const videoRef = useRef<HTMLVideoElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -98,7 +100,7 @@ export function CaseVideoPlayer({ src }: CaseVideoPlayerProps) {
           type="button"
           className="case-video-player__play-btn"
           onClick={togglePlay}
-          aria-label={isPlaying ? 'Pause' : 'Play'}
+          aria-label={isPlaying ? t('a11y.pause') : t('a11y.play')}
         >
           {isPlaying ? (
             <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true">
@@ -117,7 +119,7 @@ export function CaseVideoPlayer({ src }: CaseVideoPlayerProps) {
           className="case-video-player__progress-hit"
           role="slider"
           tabIndex={0}
-          aria-label="Video progress"
+          aria-label={t('a11y.videoProgress')}
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={Math.round(progress * 100)}

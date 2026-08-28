@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './VoiceNoteRecorder.css';
 
 const MAX_DURATION_SECONDS = 50;
@@ -12,6 +13,7 @@ type RecorderStatus = 'idle' | 'recording' | 'recorded' | 'sent';
  * (e.g. a Google Apps Script Web App) that hasn't been provisioned yet.
  */
 export function VoiceNoteRecorder() {
+  const { t } = useTranslation();
   const [status, setStatus] = useState<RecorderStatus>('idle');
   const [seconds, setSeconds] = useState(0);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
@@ -81,7 +83,7 @@ export function VoiceNoteRecorder() {
 
   return (
     <div className="voice-note">
-      <p className="voice-note__hint">Leave me a voice note, include your contact and name, please</p>
+      <p className="voice-note__hint">{t('voiceNote.hint')}</p>
 
       {status === 'idle' && (
         <button type="button" className="btn-pill" onClick={startRecording}>

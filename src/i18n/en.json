@@ -58,5 +58,15 @@
     "title": "Page not found",
     "body": "The case you're looking for doesn't exist.",
     "cta": "Back to home"
+  },
+  "a11y": {
+    "language": "Language",
+    "play": "Play",
+    "pause": "Pause",
+    "videoProgress": "Video progress",
+    "recordVideo": "Record video"
+  },
+  "voiceNote": {
+    "hint": "Leave me a voice note, include your contact and name, please"
   }
 }

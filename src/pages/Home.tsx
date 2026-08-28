@@ -10,8 +10,7 @@ import { ProjectCard } from '../components/ProjectCard/ProjectCard';
 import { ProjectsGrid } from '../components/ProjectsGrid/ProjectsGrid';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import { features } from '../config/features';
-import { aiCases } from '../data/aiCases';
-import { getCases } from '../data';
+import { getAiCases, getCases } from '../data';
 import './Home.css';
 
 function preloadImage(src: string): Promise<void> {
@@ -32,6 +31,7 @@ function hasShownLoaderThisSession(): boolean {
 export function Home() {
   const { t, i18n } = useTranslation();
   const cases = getCases(i18n.language);
+  const aiCases = getAiCases(i18n.language);
 
   const [activeTab, setActiveTab] = useState<ProjectTab>('professional');
   const [contactOpen, setContactOpen] = useState(false);

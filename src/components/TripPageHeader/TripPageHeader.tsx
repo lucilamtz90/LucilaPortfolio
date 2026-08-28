@@ -51,7 +51,7 @@ export function TripPageHeader({ caseData, onShare, onBack }: TripPageHeaderProp
             </svg>
           </button>
           {features.videoOverlay && (
-            <button type="button" className="trip-header__icon-btn" aria-label="Record video">
+            <button type="button" className="trip-header__icon-btn" aria-label={t('a11y.recordVideo')}>
               <img src={microphoneIcon} alt="" />
             </button>
           )}
