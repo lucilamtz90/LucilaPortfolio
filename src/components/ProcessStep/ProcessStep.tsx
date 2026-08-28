@@ -11,9 +11,11 @@ interface ProcessStepProps {
   aspectRatio?: string;
   /** Widens the media column and hugs the text — see the CaseSection type's doc comment. */
   wideMedia?: boolean;
+  /** Drops the media container's own background — see the CaseSection type's doc comment. */
+  transparentMedia?: boolean;
 }
 
-export function ProcessStep({ heading, body, body2, image, aspectRatio, wideMedia }: ProcessStepProps) {
+export function ProcessStep({ heading, body, body2, image, aspectRatio, wideMedia, transparentMedia }: ProcessStepProps) {
   return (
     <div
       className={`process-step ${image ? '' : 'process-step--text-only'} ${wideMedia ? 'process-step--wide-media' : ''}`}
@@ -27,7 +29,7 @@ export function ProcessStep({ heading, body, body2, image, aspectRatio, wideMedi
       </div>
       {image && (
         <div className="process-step__media case-media" style={aspectRatio ? { aspectRatio } : undefined}>
-          <Media src={image} alt="" />
+          <Media src={image} alt="" className={transparentMedia ? 'media-container--transparent' : ''} />
         </div>
       )}
     </div>

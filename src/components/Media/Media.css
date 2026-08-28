@@ -28,6 +28,10 @@
   cursor: pointer;
 }
 
+.media-container--transparent {
+  background: transparent;
+}
+
 .media-container__pill {
   position: absolute;
   top: 0;

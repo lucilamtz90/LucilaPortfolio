@@ -291,6 +291,7 @@ export const casesEs: CaseData[] = [
           'En conjunto, estas señales apuntaron a tres áreas prioritarias: comunicación más clara del ciclo de pago, un flujo de pago más usable y recordatorios in-app mejor programados.',
         image: rappiScopeDiagram,
         aspectRatio: '1 / 1',
+        transparentMedia: true,
       },
       {
         type: 'processStepsRow',

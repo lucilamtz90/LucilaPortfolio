@@ -10,6 +10,8 @@ export type CaseSection =
       aspectRatio?: string;
       /** Widens the media column (and hugs the text to a comfortable reading width) for landscape media that needs more room than the default frame — opt in explicitly, since a custom aspectRatio alone doesn't mean the media should be bigger (e.g. a square diagram just needs the frame reshaped, not enlarged). */
       wideMedia?: boolean;
+      /** Drops the media container's own background so a transparent-PNG asset (e.g. a diagram with no baked-in background) blends straight into the page instead of sitting in a var(--color-surface) box. */
+      transparentMedia?: boolean;
     }
   | {
       type: 'processStepsRow';

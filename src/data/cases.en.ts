@@ -290,6 +290,7 @@ export const casesEn: CaseData[] = [
           'Together, these signals pointed to three priority areas: clearer payment-cycle communication, a more usable payment flow, and better-timed in-app reminders.',
         image: rappiScopeDiagram,
         aspectRatio: '1 / 1',
+        transparentMedia: true,
       },
       {
         type: 'processStepsRow',
