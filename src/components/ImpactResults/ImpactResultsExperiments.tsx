@@ -6,6 +6,8 @@ interface Experiment {
   image: string;
   title: string;
   body: string;
+  /** Overrides the default 1/1 frame — see HeroImage's aspectRatio prop. */
+  aspectRatio?: string;
 }
 
 interface ImpactResultsExperimentsProps {
@@ -22,7 +24,10 @@ export function ImpactResultsExperiments({ heading, experiments, summary }: Impa
         {experiments.map((experiment) => (
           <div className="impact-experiments__col" key={experiment.label}>
             <span className="impact-experiments__label">{experiment.label}</span>
-            <div className="impact-experiments__media case-media">
+            <div
+              className="impact-experiments__media case-media"
+              style={experiment.aspectRatio ? { aspectRatio: experiment.aspectRatio } : undefined}
+            >
               <Media src={experiment.image} alt="" />
             </div>
             <p className="impact-experiments__title">{experiment.title}</p>

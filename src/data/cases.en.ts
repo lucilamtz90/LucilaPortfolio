@@ -6,6 +6,11 @@ import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import etsyInsiderRewardsFlows from '../assets/images/etsy-insider-rewards-flows.jpg';
 import etsyInsiderRewardsJourney from '../assets/images/etsy-insider-rewards-journey.mp4';
 import etsyInsiderRoadmap from '../assets/images/etsy-insider-roadmap.jpg';
+import etsyErrorCardAuth from '../assets/images/etsy-error-card-auth.jpg';
+import etsyErrorDocumentation from '../assets/images/etsy-error-documentation.mp4';
+import etsyErrorMocks from '../assets/images/etsy-error-mocks.jpg';
+import etsyErrorPaypal from '../assets/images/etsy-error-paypal.jpg';
+import etsyErrorSystemOverview from '../assets/images/etsy-error-system-overview.mp4';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
 import type { CaseData } from './types';
@@ -197,13 +202,15 @@ export const casesEn: CaseData[] = [
         type: 'processStep',
         heading: 'Prioritized by real business impact, then grounded in technical reality',
         body: 'Analytics, my PM, and I prioritized the errors by recurring buyer failures and business impact. My tech lead then audited and delivered the full set of backend errors — a key handoff that let me quickly understand what was actually feasible to experiment with. From there, I built test accounts to experience every prioritized error myself, surfacing navigation patterns, bugs, and opportunities I could act on in the new design.',
-        image: placeholder,
+        image: etsyErrorDocumentation,
+        aspectRatio: '700 / 347',
       },
       {
         type: 'processStep',
         heading: 'Built a system, not a set of screens',
         body: 'I defined three reusable primitives within the design system — Section Banner, In-line Message, and Input Validation — each with clear rules for when to use it, priority level, and tone of voice. This reduced technical implementation effort and increased consistency along the purchase journey, turning every future error into a matter of applying the right pattern, not designing from scratch.',
-        image: placeholder,
+        image: etsyErrorSystemOverview,
+        aspectRatio: '1400 / 720',
       },
       {
         type: 'sectionTwoColumn',
@@ -216,13 +223,15 @@ export const casesEn: CaseData[] = [
         experiments: [
           {
             label: 'Experiment #1',
-            image: placeholder,
+            image: etsyErrorCardAuth,
+            aspectRatio: '1214 / 1458',
             title: 'Card Authentication: +1.7% conversion lift after 10 days',
             body: 'Usability and payment-friction enhancements such as clear content and dedicated UI components removed the need for high-intent buyers to manually re-enter an expired card reducing friction at critical purchase moments.',
           },
           {
             label: 'Experiment #2',
-            image: placeholder,
+            image: etsyErrorPaypal,
+            aspectRatio: '1932 / 3078',
             title: 'PayPal steering: +29% conversion lift after 15 days',
             body: 'When a card payment fails with an unlikely-to-succeed auth reason, steering buyers to PayPal in the decline message accelerated checkout completion and conversion, rather than showing a generic error or just manual retries.',
           },
@@ -235,7 +244,7 @@ export const casesEn: CaseData[] = [
         lead: 'Explore the live demo I built:',
         url: 'https://error-demo.figma.site/',
       },
-      { type: 'heroImage', image: placeholder },
+      { type: 'heroImage', image: etsyErrorMocks, aspectRatio: '2400 / 1095' },
       {
         type: 'reflection',
         heading: "What I'd do differently",

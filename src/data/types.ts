@@ -26,7 +26,14 @@ export type CaseSection =
   | {
       type: 'impactResultsExperiments';
       heading: string;
-      experiments: { label: string; image: string; title: string; body: string }[];
+      experiments: {
+        label: string;
+        image: string;
+        title: string;
+        body: string;
+        /** Overrides the default 1/1 frame — see heroImage's aspectRatio. */
+        aspectRatio?: string;
+      }[];
       summary: string;
     }
   | { type: 'extendedNarrative'; heading: string; body: string }

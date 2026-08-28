@@ -6,6 +6,11 @@ import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
 import etsyInsiderRewardsFlows from '../assets/images/etsy-insider-rewards-flows.jpg';
 import etsyInsiderRewardsJourney from '../assets/images/etsy-insider-rewards-journey.mp4';
 import etsyInsiderRoadmap from '../assets/images/etsy-insider-roadmap.jpg';
+import etsyErrorCardAuth from '../assets/images/etsy-error-card-auth.jpg';
+import etsyErrorDocumentation from '../assets/images/etsy-error-documentation.mp4';
+import etsyErrorMocks from '../assets/images/etsy-error-mocks.jpg';
+import etsyErrorPaypal from '../assets/images/etsy-error-paypal.jpg';
+import etsyErrorSystemOverview from '../assets/images/etsy-error-system-overview.mp4';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
 import type { CaseData } from './types';
@@ -198,13 +203,15 @@ export const casesEs: CaseData[] = [
         type: 'processStep',
         heading: 'Prioricé por impacto real de negocio, y lo fundamenté en la realidad técnica',
         body: 'Analytics, mi PM y yo priorizamos los errores según fallos recurrentes de los compradores e impacto de negocio. Mi tech lead después auditó y entregó el set completo de errores del backend — un hand-off clave que me permitió entender rápidamente qué era realmente viable experimentar. A partir de ahí, construí cuentas de prueba para vivir cada error priorizado yo misma, detectando patrones de navegación, bugs y oportunidades sobre las que actuar en el nuevo diseño.',
-        image: placeholder,
+        image: etsyErrorDocumentation,
+        aspectRatio: '700 / 347',
       },
       {
         type: 'processStep',
         heading: 'Construí un sistema, no un conjunto de pantallas',
         body: 'Definí tres primitivos reutilizables dentro del design system — Section Banner, In-line Message e Input Validation — cada uno con reglas claras de cuándo usarlo, nivel de prioridad y tono de voz. Esto redujo el esfuerzo de implementación técnica y aumentó la consistencia a lo largo del journey de compra, convirtiendo cada error futuro en aplicar el patrón correcto, no en diseñar desde cero.',
-        image: placeholder,
+        image: etsyErrorSystemOverview,
+        aspectRatio: '1400 / 720',
       },
       {
         type: 'sectionTwoColumn',
@@ -217,13 +224,15 @@ export const casesEs: CaseData[] = [
         experiments: [
           {
             label: 'Experimento #1',
-            image: placeholder,
+            image: etsyErrorCardAuth,
+            aspectRatio: '1214 / 1458',
             title: 'Autenticación de tarjeta: +1.7% de conversión tras 10 días',
             body: 'Mejoras de usabilidad y fricción de pago, como contenido más claro y componentes de UI dedicados, eliminaron la necesidad de que compradores de alta intención volvieran a capturar manualmente una tarjeta vencida, reduciendo la fricción en momentos críticos de la compra.',
           },
           {
             label: 'Experimento #2',
-            image: placeholder,
+            image: etsyErrorPaypal,
+            aspectRatio: '1932 / 3078',
             title: 'Redirección a PayPal: +29% de conversión tras 15 días',
             body: 'Cuando un pago con tarjeta falla por una razón de autenticación con poca probabilidad de éxito, redirigir a los compradores hacia PayPal en el mensaje de rechazo aceleró la conclusión del checkout y la conversión, en lugar de mostrar un error genérico o solo reintentos manuales.',
           },
@@ -236,7 +245,7 @@ export const casesEs: CaseData[] = [
         lead: 'Explora la demo en vivo que construí:',
         url: 'https://error-demo.figma.site/',
       },
-      { type: 'heroImage', image: placeholder },
+      { type: 'heroImage', image: etsyErrorMocks, aspectRatio: '2400 / 1095' },
       {
         type: 'reflection',
         heading: 'Qué haría diferente',
