@@ -324,7 +324,7 @@ export const casesEs: CaseData[] = [
       },
       {
         type: 'toolCredit',
-        lead: 'Explora el prototipo de Figma:',
+        lead: 'Explora la demo en vivo que construí:',
         url: 'https://error-demo.figma.site/',
       },
       {

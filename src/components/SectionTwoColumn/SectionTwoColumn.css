@@ -11,17 +11,18 @@
 
 @media (min-width: 1024px) {
   .section-two-col {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 100px;
-    align-items: flex-start;
+    align-items: start;
   }
 
   .section-two-col__heading {
-    width: 154px;
-    flex-shrink: 0;
+    grid-column: span 1;
+    width: auto;
   }
 
   .section-two-col__body {
-    flex: 1;
+    grid-column: span 2;
   }
 }
