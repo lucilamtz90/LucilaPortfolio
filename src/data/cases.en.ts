@@ -11,8 +11,9 @@ import etsyErrorDocumentation from '../assets/images/etsy-error-documentation.mp
 import etsyErrorMocks from '../assets/images/etsy-error-mocks.jpg';
 import etsyErrorPaypal from '../assets/images/etsy-error-paypal.jpg';
 import etsyErrorSystemOverview from '../assets/images/etsy-error-system-overview.mp4';
-import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
+import rappiProgramBoard from '../assets/images/rappi-program-board.jpg';
+import rappiScopeDiagram from '../assets/images/rappi-scope-diagram.jpg';
 import type { CaseData } from './types';
 
 export const casesEn: CaseData[] = [
@@ -284,7 +285,8 @@ export const casesEn: CaseData[] = [
         body: 'I ran a workshop with lead CX staff and my researcher to dig into ticket volume, investigate the underlying frictions, and prioritize them into concrete action items — surfacing a high volume of support tickets tied directly to complaints about the payment flow and confusion over financial terminology, a gap that hit hardest for buyers less familiar with credit and finance concepts.',
         body2:
           'Together, these signals pointed to three priority areas: clearer payment-cycle communication, a more usable payment flow, and better-timed in-app reminders.',
-        image: placeholder,
+        image: rappiScopeDiagram,
+        aspectRatio: '1 / 1',
       },
       {
         type: 'processStepsRow',
@@ -300,13 +302,12 @@ export const casesEn: CaseData[] = [
             'That flexibility paid off at launch: because the system already accounted for multi-currency cases, engineering effort to ship it was meaningfully reduced.',
         },
       },
-      { type: 'heroImage', image: placeholder },
       {
         type: 'extendedNarrative',
         heading: 'Extended tone and voice into a cross-channel system',
         body: "The content direction I led with my UX Content partner didn't stop at in-app messaging — it extended to CRM reminders, FAQs, and off-app touchpoints like landing pages and social media. I audited every touchpoint tied to payment reminders and credit card status, giving my partners the full view of the credit-payment journey.\n\nWith CX helping identify where terminology broke down for users, we built a single tone-and-voice guide so app, web, and support all spoke the same language. This sat outside the core redesign's scope, but I saw how much it mattered to the experience as a whole and pushed to lead it as a related, parallel workstream.",
       },
-      { type: 'heroImage', image: placeholder },
+      { type: 'heroImage', image: rappiProgramBoard, aspectRatio: '1667 / 664' },
       {
         type: 'impactResults',
         heading: 'Impact & results',

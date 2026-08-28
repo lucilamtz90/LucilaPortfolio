@@ -11,8 +11,9 @@ import etsyErrorDocumentation from '../assets/images/etsy-error-documentation.mp
 import etsyErrorMocks from '../assets/images/etsy-error-mocks.jpg';
 import etsyErrorPaypal from '../assets/images/etsy-error-paypal.jpg';
 import etsyErrorSystemOverview from '../assets/images/etsy-error-system-overview.mp4';
-import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
+import rappiProgramBoard from '../assets/images/rappi-program-board.jpg';
+import rappiScopeDiagram from '../assets/images/rappi-scope-diagram.jpg';
 import type { CaseData } from './types';
 
 export const casesEs: CaseData[] = [
@@ -285,7 +286,8 @@ export const casesEs: CaseData[] = [
         body: 'Realicé un taller con el equipo líder de CX y mi investigadora para analizar el volumen de tickets, investigar las fricciones de fondo y priorizarlas en acciones concretas — revelando un alto volumen de tickets de soporte ligados directamente a quejas sobre el flujo de pago y confusión con terminología financiera, una brecha que golpeaba más fuerte a los compradores menos familiarizados con conceptos de crédito y finanzas.',
         body2:
           'En conjunto, estas señales apuntaron a tres áreas prioritarias: comunicación más clara del ciclo de pago, un flujo de pago más usable y recordatorios in-app mejor programados.',
-        image: placeholder,
+        image: rappiScopeDiagram,
+        aspectRatio: '1 / 1',
       },
       {
         type: 'processStepsRow',
@@ -301,13 +303,12 @@ export const casesEs: CaseData[] = [
             'Esa flexibilidad rindió frutos en el lanzamiento: como el sistema ya contemplaba los casos multi-moneda, el esfuerzo de ingeniería para lanzarlo se redujo de forma importante.',
         },
       },
-      { type: 'heroImage', image: placeholder },
       {
         type: 'extendedNarrative',
         heading: 'Extendí el tono y la voz a un sistema multicanal',
         body: 'La dirección de contenido que lideré junto con mi partner de UX Content no se quedó en la mensajería in-app — se extendió a recordatorios de CRM, FAQs y puntos de contacto fuera de la app, como landing pages y redes sociales. Auditué cada punto de contacto ligado a recordatorios de pago y al estatus de la tarjeta de crédito, dándole a mis partners la vista completa del journey de crédito y pago.\n\nCon la ayuda de CX para identificar dónde se perdía la terminología para los usuarios, construimos una sola guía de tono y voz para que app, web y soporte hablaran el mismo idioma. Esto quedaba fuera del alcance del rediseño principal, pero vi cuánto importaba para la experiencia en conjunto y empujé para liderarlo como un workstream paralelo relacionado.',
       },
-      { type: 'heroImage', image: placeholder },
+      { type: 'heroImage', image: rappiProgramBoard, aspectRatio: '1667 / 664' },
       {
         type: 'impactResults',
         heading: 'Impacto y resultados',
