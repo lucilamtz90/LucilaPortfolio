@@ -111,6 +111,7 @@ export const casesEn: CaseData[] = [
     headerStatus: 'US market',
     headerMeta: 'Ideation to hand-off',
     headerRole: 'Sr. Product Designer',
+    externalUrl: 'https://www.etsy.com/news/meet-etsy-insider-etsys-new-buyer-membership-beta-program',
 
     sections: [
       {
