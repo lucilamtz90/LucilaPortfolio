@@ -20,7 +20,7 @@ export const aiCases: AiCase[] = [
   {
     number: '01',
     title: 'Made at Etsy: Video Feed',
-    dateLine: '1 week • 2026 • Figma Make',
+    dateLine: '6 hours • 2026 • Figma Make',
     description:
       'A mobile, personalized short-form video feed — letting users see the real people behind each handcrafted item. Designed in Figma and published live with Figma Make.',
     url: 'https://etsy-made-design-concept.figma.site/',
