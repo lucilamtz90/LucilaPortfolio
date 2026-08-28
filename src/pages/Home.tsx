@@ -8,8 +8,9 @@ import { LoadingScreen } from '../components/LoadingScreen/LoadingScreen';
 import { NavigationBar } from '../components/NavigationBar/NavigationBar';
 import { ProjectCard } from '../components/ProjectCard/ProjectCard';
 import { ProjectsGrid } from '../components/ProjectsGrid/ProjectsGrid';
+import placeholder from '../assets/images/project-placeholder.jpg';
 import { features } from '../config/features';
-import { aiCasesPlaceholder } from '../data/aiCases.placeholder';
+import { aiCases } from '../data/aiCases';
 import { getCases } from '../data';
 import './Home.css';
 
@@ -87,15 +88,26 @@ export function Home() {
 
           {activeTab === 'ai' && !features.aiCaseDistinctLayout && (
             <ProjectsGrid>
-              {aiCasesPlaceholder.map((c) => (
+              {aiCases.length > 0 ? (
+                aiCases.map((c) => (
+                  <ProjectCard
+                    key={c.number}
+                    number={c.number}
+                    dateLine={c.dateLine}
+                    title={c.title}
+                    description={c.description}
+                    image={c.image}
+                    href={c.url}
+                  />
+                ))
+              ) : (
                 <ProjectCard
-                  key={c.number}
-                  number={c.number}
+                  number="01"
                   company={t('aiCases.comingSoonTitle')}
                   title={t('aiCases.comingSoonBody')}
-                  image={c.image}
+                  image={placeholder}
                 />
-              ))}
+              )}
             </ProjectsGrid>
           )}
         </section>
