@@ -273,6 +273,7 @@ export const casesEs: CaseData[] = [
     headerStatus: 'Lanzado a clientes de Latinoamérica',
     headerMeta: 'De discovery a hand-off',
     headerRole: 'Lead Product Designer',
+    externalUrl: 'https://rappicard.mx/',
 
     sections: [
       {
