@@ -9,12 +9,14 @@ interface ProcessStepProps {
   image?: string;
   /** Overrides the default 321/440 frame — see HeroImage's aspectRatio prop. */
   aspectRatio?: string;
+  /** Widens the media column and hugs the text — see the CaseSection type's doc comment. */
+  wideMedia?: boolean;
 }
 
-export function ProcessStep({ heading, body, body2, image, aspectRatio }: ProcessStepProps) {
+export function ProcessStep({ heading, body, body2, image, aspectRatio, wideMedia }: ProcessStepProps) {
   return (
     <div
-      className={`process-step ${image ? '' : 'process-step--text-only'} ${aspectRatio ? 'process-step--wide-media' : ''}`}
+      className={`process-step ${image ? '' : 'process-step--text-only'} ${wideMedia ? 'process-step--wide-media' : ''}`}
     >
       <div className="process-step__text">
         <p className="case-heading">{heading}</p>

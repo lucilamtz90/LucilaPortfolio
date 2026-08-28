@@ -21,6 +21,7 @@ export function CaseSectionRenderer({ section }: { section: CaseSection }) {
           body2={section.body2}
           image={section.image}
           aspectRatio={section.aspectRatio}
+          wideMedia={section.wideMedia}
         />
       );
     case 'processStepsRow':

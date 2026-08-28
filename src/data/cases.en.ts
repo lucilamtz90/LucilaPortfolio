@@ -13,7 +13,7 @@ import etsyErrorPaypal from '../assets/images/etsy-error-paypal.jpg';
 import etsyErrorSystemOverview from '../assets/images/etsy-error-system-overview.mp4';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
 import rappiProgramBoard from '../assets/images/rappi-program-board.jpg';
-import rappiScopeDiagram from '../assets/images/rappi-scope-diagram.jpg';
+import rappiScopeDiagram from '../assets/images/rappi-scope-diagram.png';
 import type { CaseData } from './types';
 
 export const casesEn: CaseData[] = [
@@ -207,6 +207,7 @@ export const casesEn: CaseData[] = [
         body: 'Analytics, my PM, and I prioritized the errors by recurring buyer failures and business impact. My tech lead then audited and delivered the full set of backend errors — a key handoff that let me quickly understand what was actually feasible to experiment with. From there, I built test accounts to experience every prioritized error myself, surfacing navigation patterns, bugs, and opportunities I could act on in the new design.',
         image: etsyErrorDocumentation,
         aspectRatio: '700 / 347',
+        wideMedia: true,
       },
       {
         type: 'processStep',
@@ -214,6 +215,7 @@ export const casesEn: CaseData[] = [
         body: 'I defined three reusable primitives within the design system — Section Banner, In-line Message, and Input Validation — each with clear rules for when to use it, priority level, and tone of voice. This reduced technical implementation effort and increased consistency along the purchase journey, turning every future error into a matter of applying the right pattern, not designing from scratch.',
         image: etsyErrorSystemOverview,
         aspectRatio: '1400 / 720',
+        wideMedia: true,
       },
       {
         type: 'sectionTwoColumn',

@@ -13,7 +13,7 @@ import etsyErrorPaypal from '../assets/images/etsy-error-paypal.jpg';
 import etsyErrorSystemOverview from '../assets/images/etsy-error-system-overview.mp4';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
 import rappiProgramBoard from '../assets/images/rappi-program-board.jpg';
-import rappiScopeDiagram from '../assets/images/rappi-scope-diagram.jpg';
+import rappiScopeDiagram from '../assets/images/rappi-scope-diagram.png';
 import type { CaseData } from './types';
 
 export const casesEs: CaseData[] = [
@@ -208,6 +208,7 @@ export const casesEs: CaseData[] = [
         body: 'Analytics, mi PM y yo priorizamos los errores según fallos recurrentes de los compradores e impacto de negocio. Mi tech lead después auditó y entregó el set completo de errores del backend — un hand-off clave que me permitió entender rápidamente qué era realmente viable experimentar. A partir de ahí, construí cuentas de prueba para vivir cada error priorizado yo misma, detectando patrones de navegación, bugs y oportunidades sobre las que actuar en el nuevo diseño.',
         image: etsyErrorDocumentation,
         aspectRatio: '700 / 347',
+        wideMedia: true,
       },
       {
         type: 'processStep',
@@ -215,6 +216,7 @@ export const casesEs: CaseData[] = [
         body: 'Definí tres primitivos reutilizables dentro del design system — Section Banner, In-line Message e Input Validation — cada uno con reglas claras de cuándo usarlo, nivel de prioridad y tono de voz. Esto redujo el esfuerzo de implementación técnica y aumentó la consistencia a lo largo del journey de compra, convirtiendo cada error futuro en aplicar el patrón correcto, no en diseñar desde cero.',
         image: etsyErrorSystemOverview,
         aspectRatio: '1400 / 720',
+        wideMedia: true,
       },
       {
         type: 'sectionTwoColumn',
