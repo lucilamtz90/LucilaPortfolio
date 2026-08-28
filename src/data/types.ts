@@ -11,6 +11,8 @@ export type CaseSection =
       image: string;
       /** Opt-in custom video player (loop + play/pause + progress bar) instead of the default autoplay/loop media. Video only. */
       player?: boolean;
+      /** Overrides the default 952/440 frame — use the source asset's own ratio (e.g. "2400 / 877") for images much wider or narrower than that, so object-fit:cover never crops them. */
+      aspectRatio?: string;
     }
   | { type: 'impactResults'; heading: string; stats: { label: string; value: string | string[] }[] }
   | {

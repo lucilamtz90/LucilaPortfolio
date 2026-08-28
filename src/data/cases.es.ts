@@ -3,6 +3,7 @@ import dynamicUnitsCover from '../assets/images/dynamic-units-cover.mp4';
 import dynamicUnitsWorkshop from '../assets/images/dynamic-units-workshop.mp4';
 import dynamicUnitsWorkshopWidget from '../assets/images/dynamic-units-workshop-widget.jpg';
 import etsyInsiderCover from '../assets/images/etsy-insider-rewards-cover.mp4';
+import etsyInsiderRewardsFlows from '../assets/images/etsy-insider-rewards-flows.jpg';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import rappiCardCover from '../assets/images/rappi-card-cover.mp4';
 import type { CaseData } from './types';
@@ -157,7 +158,7 @@ export const casesEs: CaseData[] = [
           },
         ],
       },
-      { type: 'heroImage', image: placeholder },
+      { type: 'heroImage', image: etsyInsiderRewardsFlows, aspectRatio: '2400 / 877' },
       {
         type: 'reflection',
         heading: 'Qué haría diferente',

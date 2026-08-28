@@ -18,7 +18,7 @@ export function CaseSectionRenderer({ section }: { section: CaseSection }) {
     case 'processStepsRow':
       return <ProcessStepsRow left={section.left} right={section.right} />;
     case 'heroImage':
-      return <HeroImage image={section.image} player={section.player} />;
+      return <HeroImage image={section.image} player={section.player} aspectRatio={section.aspectRatio} />;
     case 'impactResults':
       return <ImpactResults heading={section.heading} stats={section.stats} />;
     case 'impactResultsExperiments':

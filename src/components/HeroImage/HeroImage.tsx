@@ -9,14 +9,16 @@ interface HeroImageProps {
   image: string;
   /** Opt-in custom video player (loop + play/pause + progress bar) instead of the default autoplay/loop media. Desktop only — on mobile these just autoplay/loop like a gif, no tap-to-play or controls. */
   player?: boolean;
+  /** Overrides the default 952/440 frame — see CaseSection's heroImage type. */
+  aspectRatio?: string;
 }
 
-export function HeroImage({ image, player = false }: HeroImageProps) {
+export function HeroImage({ image, player = false, aspectRatio }: HeroImageProps) {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const useCustomPlayer = player && isDesktop && VIDEO_EXTENSIONS.test(image);
 
   return (
-    <div className="hero-image case-media">
+    <div className="hero-image case-media" style={aspectRatio ? { aspectRatio } : undefined}>
       {useCustomPlayer ? <CaseVideoPlayer src={image} /> : <Media src={image} alt="" />}
     </div>
   );
