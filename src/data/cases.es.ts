@@ -103,7 +103,7 @@ export const casesEs: CaseData[] = [
     headerCompany: 'Etsy',
     headerYear: '2025',
     headerTitle: 'Etsy Insider Rewards: diseñando un nuevo beneficio a escala',
-    headerStatus: 'Proyecto lanzado al mercado de EE. UU.',
+    headerStatus: 'Mercado de EE. UU.',
     headerMeta: 'De ideación a hand-off',
     headerRole: 'Sr. Product Designer',
 
