@@ -325,7 +325,7 @@ export const casesEs: CaseData[] = [
       {
         type: 'toolCredit',
         lead: 'Explora la demo en vivo que construí:',
-        url: 'https://error-demo.figma.site/',
+        url: 'https://embed.figma.com/proto/13USGrzwxfp7yjb6DWCqdD/04.-PAGAR-TDC---FINAL--MX?node-id=1-706&starting-point-node-id=1%3A706&page-id=0%3A1&embed-host=share',
       },
       {
         type: 'reflection',
