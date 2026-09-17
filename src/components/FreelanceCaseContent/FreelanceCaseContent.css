@@ -1,0 +1,25 @@
+/* Mobile: the fixed left column and scrolling carousel don't apply below desktop —
+   stack them as a plain, non-sticky column instead. */
+.freelance-case-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xl);
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .freelance-case-content {
+    flex-direction: row;
+    gap: 72px;
+  }
+
+  .freelance-case-content > :first-child {
+    flex: 0 0 484px;
+  }
+
+  .freelance-case-content > :last-child {
+    flex: 1;
+    min-width: 0;
+  }
+}

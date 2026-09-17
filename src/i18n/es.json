@@ -16,7 +16,8 @@
   },
   "buttonPills": {
     "professionalWork": "Casos de estudio",
-    "aiSideProjects": "Ai-playground"
+    "aiSideProjects": "Ai-playground",
+    "freelanceWork": "Freelance"
   },
   "aiCases": {
     "comingSoonTitle": "Proyecto con IA",

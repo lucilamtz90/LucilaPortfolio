@@ -12,6 +12,8 @@
   /* Figma "Buttons/Primary/Hover". */
   --color-button-primary-hover: #2f2f50;
   --color-button-primary-hover-rgb: 47, 47, 80;
+  /* Figma "Button/Secondary Hover". */
+  --color-button-secondary-hover: #f0f0fc;
 
   /* Font families */
   --font-display: 'Gabarito', 'Helvetica Neue', Arial, sans-serif;
@@ -29,6 +31,8 @@
   --text-label: 16px;
   --text-badge: 16px;
   --text-overline: 14px;
+  /* Figma "Caption Tooling" text style. */
+  --text-caption-tooling: 14px;
   --tracking-tight: -0.3px;
 
   /* Spacing scale (px) */

@@ -4,12 +4,13 @@ import externalLinkIcon from '../../assets/icons/external-link.svg';
 import microphoneIcon from '../../assets/icons/microphone.svg';
 import shareIcon from '../../assets/icons/share.svg';
 import { StatusDot } from '../PillStatus/StatusDot';
+import { SignalPill } from '../SignalPill/SignalPill';
 import { features } from '../../config/features';
-import type { CaseData } from '../../data/types';
+import type { CaseHeaderData } from '../../data/types';
 import './TripPageHeader.css';
 
 interface TripPageHeaderProps {
-  caseData: CaseData;
+  caseData: CaseHeaderData;
   onShare: () => void;
   onBack: () => void;
 }
@@ -41,7 +42,9 @@ export function TripPageHeader({ caseData, onShare, onBack }: TripPageHeaderProp
         <button type="button" className="trip-header__handle-text" onClick={onBack}>
           <strong>{caseData.headerMeta}</strong> {t('caseHeader.metaYearConnector')} {caseData.headerYear}
           <span className="trip-header__handle-dot">•</span>
-          {caseData.headerRole} {t('caseHeader.roleCompanyConnector')} <strong>{caseData.headerCompany}</strong>
+          {caseData.headerRole}
+          {caseData.headerRoleConnector ?? ` ${t('caseHeader.roleCompanyConnector')} `}
+          <strong>{caseData.headerCompany}</strong>
         </button>
 
         <div className="trip-header__icons">
@@ -78,6 +81,14 @@ export function TripPageHeader({ caseData, onShare, onBack }: TripPageHeaderProp
           </div>
         </div>
       </div>
+
+      {caseData.headerSignals && caseData.headerSignals.length > 0 && (
+        <div className="trip-header__signals">
+          {caseData.headerSignals.map((label) => (
+            <SignalPill key={label} label={label} />
+          ))}
+        </div>
+      )}
     </header>
   );
 }

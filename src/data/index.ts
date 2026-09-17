@@ -2,7 +2,9 @@ import { aiCasesEn } from './aiCases.en';
 import { aiCasesEs } from './aiCases.es';
 import { casesEn } from './cases.en';
 import { casesEs } from './cases.es';
-import type { AiCase, CaseData } from './types';
+import { freelanceCasesEn } from './freelanceCases.en';
+import { freelanceCasesEs } from './freelanceCases.es';
+import type { AiCase, CaseData, FreelanceCase } from './types';
 
 export function getCases(language: string): CaseData[] {
   return language === 'es' ? casesEs : casesEn;
@@ -16,4 +18,12 @@ export function getAiCases(language: string): AiCase[] {
   return language === 'es' ? aiCasesEs : aiCasesEn;
 }
 
-export type { AiCase, CaseData, CaseSection, ProjectType } from './types';
+export function getFreelanceCases(language: string): FreelanceCase[] {
+  return language === 'es' ? freelanceCasesEs : freelanceCasesEn;
+}
+
+export function getFreelanceCaseBySlug(language: string, slug: string): FreelanceCase | undefined {
+  return getFreelanceCases(language).find((c) => c.slug === slug);
+}
+
+export type { AiCase, CaseData, CaseHeaderData, CaseSection, FreelanceCase, FreelanceMedia, FreelanceNarrative, ProjectType } from './types';

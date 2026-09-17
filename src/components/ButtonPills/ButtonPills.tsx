@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import './ButtonPills.css';
 
-export type ProjectTab = 'professional' | 'ai';
+export type ProjectTab = 'professional' | 'ai' | 'freelance';
 
 interface ButtonPillsProps {
   active: ProjectTab;
@@ -30,6 +30,15 @@ export function ButtonPills({ active, onChange }: ButtonPillsProps) {
         onClick={() => onChange('ai')}
       >
         {t('buttonPills.aiSideProjects')}
+      </button>
+      <button
+        type="button"
+        role="tab"
+        aria-selected={active === 'freelance'}
+        className={`button-pills__tab ${active === 'freelance' ? 'button-pills__tab--active' : ''}`}
+        onClick={() => onChange('freelance')}
+      >
+        {t('buttonPills.freelanceWork')}
       </button>
     </div>
   );

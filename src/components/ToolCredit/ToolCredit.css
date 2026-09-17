@@ -70,3 +70,29 @@
   height: 100%;
   border: none;
 }
+
+/* Plain-link mode (see the `linkText` prop): a left-aligned lead line + inline hyperlink,
+   for credits that can't be embedded (e.g. a social post) instead of the default icon + iframe. */
+.tool-credit--link {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.tool-credit__link {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-link);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Media-only mode (see the `mediaOnly` prop): just the embedded frame, no icon or lead text —
+   for a social platform's own embed (e.g. Instagram), which already carries its own chrome. */
+.tool-credit--media-only .tool-credit__embed {
+  background: transparent;
+  border: none;
+}

@@ -1,0 +1,19 @@
+.media-vertical-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 100%;
+}
+
+.media-vertical-carousel__item {
+  width: 100%;
+  /* Flex items default to min-height:auto, i.e. their content's natural size — for an
+     <img> taller (relative to its width) than this item's own aspect-ratio, that
+     automatic minimum wins over the ratio and stretches the item past it. Zeroing it
+     lets aspect-ratio (and the img's own object-fit:cover) be the real, final size. */
+  min-height: 0;
+  /* Lets each asset settle fully in view instead of stopping mid-scroll cut off —
+     same technique as .project-card's snap-align (see ProjectsGrid.css); the scroll
+     container declaring scroll-snap-type is .case-sheet__scroll (see CaseSheet.css). */
+  scroll-snap-align: start;
+}

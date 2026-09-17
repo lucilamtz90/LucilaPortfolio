@@ -98,6 +98,16 @@
   color: var(--color-text-secondary);
 }
 
+.trip-header__signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  width: 100%;
+  /* .trip-header is display:contents (see comment above), so this sits directly in
+     .case-detail's flex flow like .trip-header__main — same 32px-from-64px pullback. */
+  margin-top: calc(var(--space-xl) - var(--space-3xl));
+}
+
 .trip-header__icon-btn {
   display: flex;
   align-items: center;

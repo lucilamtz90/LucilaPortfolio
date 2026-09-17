@@ -5,15 +5,28 @@
   margin: 0;
   overflow: hidden;
   background: var(--color-surface);
-  opacity: 0;
+  /* Visible-but-blurred instead of hidden outright, so scrolling toward an
+   * off-screen asset previews it before it comes into focus. A caller can still
+   * override either variable (see MediaVerticalCarousel.tsx for the stagger/easing
+   * that go with it). */
+  opacity: var(--media-reveal-start-opacity, 1);
+  filter: blur(var(--media-reveal-start-blur, 8px));
   transform: translateY(24px);
   transition:
-    opacity var(--duration-fade) ease-out,
-    transform var(--duration-fade) ease-out;
+    opacity var(--duration-fade) var(--media-reveal-easing, ease-out),
+    transform var(--duration-fade) var(--media-reveal-easing, ease-out),
+    /* Always a plain ease, even when opacity/transform above go springy — a blur
+       clearing reads better as a soft, steady focus pull than as a bounce. */
+    filter var(--duration-fade) ease-out;
+  /* Lets a caller stagger several Media instances' scroll-reveal, and/or swap its
+   * easing for a springier one (see MediaVerticalCarousel.tsx) — both default to
+   * today's plain fade, unchanged for every other usage that doesn't set them. */
+  transition-delay: var(--media-reveal-delay, 0s);
 }
 
 .media-container--visible {
   opacity: 1;
+  filter: blur(0);
   transform: translateY(0);
 }
 

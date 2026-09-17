@@ -12,6 +12,8 @@ interface MediaProps {
   objectPosition?: 'center' | 'top' | 'bottom';
   /** Desktop-only hover treatment (hover-to-play once, "Open" pill) — used for Home's linked project cards. */
   interactive?: boolean;
+  /** How much of the element must be visible before its scroll-reveal fires — see useInView. Defaults to its own 0.15. */
+  revealThreshold?: number;
 }
 
 const VIDEO_EXTENSIONS = /\.(mp4|webm|mov)($|\?)/i;
@@ -28,9 +30,10 @@ export function Media({
   className = '',
   objectPosition = 'center',
   interactive = false,
+  revealThreshold,
 }: MediaProps) {
   const { t } = useTranslation();
-  const { ref, isInView } = useInView<HTMLElement>();
+  const { ref, isInView } = useInView<HTMLElement>(revealThreshold);
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   const isVideo = VIDEO_EXTENSIONS.test(src);
   const style = { objectPosition };

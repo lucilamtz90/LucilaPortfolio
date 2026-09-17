@@ -1,0 +1,29 @@
+.case-content-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 56px;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .case-content-left {
+    position: sticky;
+    /* Clears .trip-header__handle (the sticky breadcrumb bar above) so the two
+       sticky elements don't overlap — see TripPageHeader.css. */
+    top: var(--space-3xl);
+    /* On short viewports this column's own content (3 narratives + credit) can be
+       taller than the space left below the sticky offset — without a cap, the text
+       only fully scrolls into view once the column unsticks near the end of the
+       (taller) media carousel. Capping it and scrolling internally instead means
+       hovering the text and scrolling reads it independently of the carousel. */
+    max-height: calc(100vh - var(--space-2xl) - var(--space-3xl) - var(--space-3xl));
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* legacy Edge */
+  }
+
+  .case-content-left::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge Chromium */
+  }
+}

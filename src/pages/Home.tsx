@@ -10,7 +10,7 @@ import { ProjectCard } from '../components/ProjectCard/ProjectCard';
 import { ProjectsGrid } from '../components/ProjectsGrid/ProjectsGrid';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import { features } from '../config/features';
-import { getAiCases, getCases } from '../data';
+import { getAiCases, getCases, getFreelanceCases } from '../data';
 import './Home.css';
 
 function preloadImage(src: string): Promise<void> {
@@ -32,6 +32,7 @@ export function Home() {
   const { t, i18n } = useTranslation();
   const cases = getCases(i18n.language);
   const aiCases = getAiCases(i18n.language);
+  const freelanceCases = getFreelanceCases(i18n.language);
 
   const [activeTab, setActiveTab] = useState<ProjectTab>('professional');
   const [contactOpen, setContactOpen] = useState(false);
@@ -108,6 +109,23 @@ export function Home() {
                   image={placeholder}
                 />
               )}
+            </ProjectsGrid>
+          )}
+
+          {activeTab === 'freelance' && (
+            <ProjectsGrid>
+              {freelanceCases.map((c) => (
+                <ProjectCard
+                  key={c.slug}
+                  number={c.cardNumber}
+                  dateLine={c.dateLine}
+                  title={c.cardTitle}
+                  description={c.description}
+                  image={c.heroMedia}
+                  imagePosition={c.heroMediaPosition}
+                  to={`/case/${c.slug}`}
+                />
+              ))}
             </ProjectsGrid>
           )}
         </section>

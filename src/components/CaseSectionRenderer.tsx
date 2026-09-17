@@ -38,7 +38,7 @@ export function CaseSectionRenderer({ section }: { section: CaseSection }) {
     case 'extendedNarrative':
       return <ExtendedNarrative heading={section.heading} body={section.body} />;
     case 'toolCredit':
-      return <ToolCredit lead={section.lead} url={section.url} />;
+      return <ToolCredit lead={section.lead} url={section.url} linkText={section.linkText} />;
     case 'reflection':
       return <Reflection heading={section.heading} body={section.body} />;
     default:
