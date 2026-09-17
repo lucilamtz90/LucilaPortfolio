@@ -18,10 +18,20 @@
   width: fit-content;
   max-width: 100%;
   overflow-x: auto;
-  scroll-snap-type: x proximity;
+  /* "mandatory" always resolves to the nearest tab once a touch scroll ends, so a
+     swipe never leaves a tab resting cut off mid-way — same reasoning as
+     ProjectsGrid.css's card carousel. Desktop relaxes to "proximity" below since
+     mouse/trackpad scrolling isn't a swipe gesture aimed at one tab at a time. */
+  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* legacy Edge */
+}
+
+@media (min-width: 1024px) {
+  .button-pills {
+    scroll-snap-type: x proximity;
+  }
 }
 
 .button-pills::-webkit-scrollbar {
