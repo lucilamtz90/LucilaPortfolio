@@ -7,16 +7,12 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-background);
-  /* Hugs its tabs' own content width instead of always stretching to fill
-     the row — a fixed 100% left the pill-shaped border stretched past its
-     buttons (with an odd gap after them) whenever the three tabs' natural
-     width was narrower than the container. max-width keeps it from forcing
-     the page itself to scroll horizontally on narrow screens; below, three
-     tabs' natural label widths (e.g. "Case studies" + "Side-hustle") can
-     still exceed even that width, so the row scrolls like a small carousel
-     instead — same technique as ProjectsGrid.css's card carousel. */
+  /* Hugs its tabs' own content width instead of always stretching to fill the
+     row — a fixed 100% left the pill-shaped border stretched past its buttons
+     (with an odd gap after them) whenever the three tabs' natural width was
+     narrower than the container. fit-content alone still caps at the parent's
+     own available width though (see the breakout below for going past that). */
   width: fit-content;
-  max-width: 100%;
   overflow-x: auto;
   /* "mandatory" always resolves to the nearest tab once a touch scroll ends, so a
      swipe never leaves a tab resting cut off mid-way — same reasoning as
@@ -26,6 +22,26 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* legacy Edge */
+}
+
+@media (max-width: 1023.98px) {
+  .button-pills {
+    /* fit-content never actually grows past its containing block's available
+       width — it's clamped there by definition, the same as an explicit
+       max-width:100% would do. To let the three tabs use more room than
+       .container's own padded column (still not enough to avoid scrolling on
+       the narrowest phones, but noticeably more than before), break out of
+       that column and center on the true viewport instead, capped so it can
+       never exceed it — same full-bleed technique as ProjectsGrid.css's card
+       carousel, just capped at the tabs' width instead of a fixed 100vw. It
+       ends up centered on the viewport rather than left-aligned with the
+       rest of the page, which is fine here: only needs its own internal
+       scroll (never the page's) when even that full width isn't enough. */
+    max-width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 @media (min-width: 1024px) {
