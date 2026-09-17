@@ -1,13 +1,27 @@
 .button-pills {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-xs);
   padding: var(--space-xs);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-background);
   width: 100%;
+  /* Below 1024px, three tabs' natural label widths (e.g. "Case studies" +
+     "Side-hustle") can exceed the container — rather than force them into
+     equal thirds (which clipped the longer labels), let the row scroll
+     horizontally like a small carousel instead, one tab snapping into place
+     at a time. Same technique as ProjectsGrid.css's card carousel. */
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge */
+}
+
+.button-pills::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge Chromium */
 }
 
 @media (min-width: 1024px) {
@@ -17,7 +31,8 @@
 }
 
 .button-pills__tab {
-  flex: 1 0 0;
+  flex: none;
+  scroll-snap-align: start;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,12 +47,6 @@
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
-}
-
-@media (min-width: 1024px) {
-  .button-pills__tab {
-    flex: none;
-  }
 }
 
 .button-pills__tab--active {
