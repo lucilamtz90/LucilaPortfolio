@@ -7,12 +7,16 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-background);
-  width: 100%;
-  /* Below 1024px, three tabs' natural label widths (e.g. "Case studies" +
-     "Side-hustle") can exceed the container — rather than force them into
-     equal thirds (which clipped the longer labels), let the row scroll
-     horizontally like a small carousel instead, one tab snapping into place
-     at a time. Same technique as ProjectsGrid.css's card carousel. */
+  /* Hugs its tabs' own content width instead of always stretching to fill
+     the row — a fixed 100% left the pill-shaped border stretched past its
+     buttons (with an odd gap after them) whenever the three tabs' natural
+     width was narrower than the container. max-width keeps it from forcing
+     the page itself to scroll horizontally on narrow screens; below, three
+     tabs' natural label widths (e.g. "Case studies" + "Side-hustle") can
+     still exceed even that width, so the row scrolls like a small carousel
+     instead — same technique as ProjectsGrid.css's card carousel. */
+  width: fit-content;
+  max-width: 100%;
   overflow-x: auto;
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
@@ -22,12 +26,6 @@
 
 .button-pills::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge Chromium */
-}
-
-@media (min-width: 1024px) {
-  .button-pills {
-    width: fit-content;
-  }
 }
 
 .button-pills__tab {
