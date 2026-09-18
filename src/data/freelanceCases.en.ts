@@ -23,6 +23,7 @@ export const freelanceCasesEn: FreelanceCase[] = [
     headerRoleConnector: ' ',
     headerSignals: ['Photo & Video', 'Branding', 'Printing', 'Social media'],
     externalUrl: 'https://www.instagram.com/todaycoffee.mx/',
+    passwordProtected: false,
     heroMedia: todayCoffeeSignage,
 
     narratives: [

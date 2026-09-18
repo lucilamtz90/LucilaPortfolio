@@ -29,9 +29,13 @@ export function CaseDetail({ onBack }: CaseDetailProps) {
         />
 
         <div className="case-detail__content">
-          <CasePasswordGate>
+          {freelanceCase.passwordProtected === false ? (
             <FreelanceCaseContent caseData={freelanceCase} />
-          </CasePasswordGate>
+          ) : (
+            <CasePasswordGate>
+              <FreelanceCaseContent caseData={freelanceCase} />
+            </CasePasswordGate>
+          )}
         </div>
       </div>
     );
@@ -46,11 +50,15 @@ export function CaseDetail({ onBack }: CaseDetailProps) {
       <TripPageHeader caseData={caseData} onShare={() => share(caseData.headerTitle)} onBack={onBack} />
 
       <div className="case-detail__content">
-        <CasePasswordGate>
-          {caseData.sections.map((section, index) => (
-            <CaseSectionRenderer key={index} section={section} />
-          ))}
-        </CasePasswordGate>
+        {caseData.passwordProtected === false ? (
+          caseData.sections.map((section, index) => <CaseSectionRenderer key={index} section={section} />)
+        ) : (
+          <CasePasswordGate>
+            {caseData.sections.map((section, index) => (
+              <CaseSectionRenderer key={index} section={section} />
+            ))}
+          </CasePasswordGate>
+        )}
       </div>
     </div>
   );

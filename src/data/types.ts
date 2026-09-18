@@ -68,7 +68,7 @@ export interface CaseHeaderData {
   headerSignals?: string[];
   /** Where the header's "open external" icon links to. Defaults to the case's own page URL. */
   externalUrl?: string;
-  /** Image/video shared via the header's share action. */
+  /** Home grid card thumbnail. */
   heroMedia: string;
 }
 
@@ -82,6 +82,8 @@ export interface CaseData extends CaseHeaderData {
   cardType: ProjectType;
   /** Crop anchor for heroMedia in the home grid card, when its aspect ratio doesn't match the frame. Defaults to centered. */
   heroMediaPosition?: 'center' | 'top' | 'bottom';
+  /** Set to false to skip CasePasswordGate for this case. Defaults to true (protected). */
+  passwordProtected?: boolean;
 
   sections: CaseSection[];
 }
@@ -110,6 +112,8 @@ export interface FreelanceCase extends CaseHeaderData {
   /** Short one-line project summary shown under the title on the Home card. */
   description: string;
   heroMediaPosition?: 'center' | 'top' | 'bottom';
+  /** Set to false to skip CasePasswordGate for this case. Defaults to true (protected). */
+  passwordProtected?: boolean;
 
   narratives: FreelanceNarrative[];
   credit: {

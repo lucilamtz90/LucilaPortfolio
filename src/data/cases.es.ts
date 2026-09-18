@@ -276,6 +276,7 @@ export const casesEs: CaseData[] = [
     headerMeta: 'De discovery a hand-off',
     headerRole: 'Lead Product Designer',
     externalUrl: 'https://rappicard.mx/',
+    passwordProtected: false,
 
     sections: [
       {
