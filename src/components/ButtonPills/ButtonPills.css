@@ -12,8 +12,15 @@
      (with an odd gap after them) whenever the three tabs' natural width was
      narrower than the container. Below 1024px the border/background/padding
      this hugs are removed anyway (see the media query below), leaving just
-     the tabs, so this only matters at desktop width. */
+     the tabs, so this only matters at desktop width.
+     max-width is NOT redundant with fit-content here: .home__projects uses
+     align-items:flex-start (not the stretch default), and a flex item sized
+     that way computes fit-content against its own max-content size with no
+     cross-axis bound to clamp against — so without this, the row grew past
+     the tabs' available space and dragged the whole page into a horizontal
+     scroll instead of scrolling just itself. */
   width: fit-content;
+  max-width: 100%;
   overflow-x: auto;
   /* "mandatory" always resolves to the nearest tab once a touch scroll ends, so a
      swipe never leaves a tab resting cut off mid-way — same reasoning as
