@@ -1,6 +1,7 @@
 import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PillStatus } from '../PillStatus/PillStatus';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { useTypewriter } from '../../hooks/useTypewriter';
 import './Hero.css';
 
@@ -21,10 +22,24 @@ export function Hero({ playPillIntro = true }: HeroProps) {
 
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [minHeight, setMinHeight] = useState<number>();
+  // Below 1024px the reserve-the-tallest-phrase approach itself becomes the problem: the
+  // narrower column makes the longest phrase ("Adoption and Engagement Designer") wrap to 3
+  // lines while most others fit in 1–2, so reserving that max leaves a big empty gap under
+  // every shorter phrase. Desktop's gap between phrases' line counts is small enough that a
+  // fixed reservation reads as intentional spacing rather than a gap, so it stays there —
+  // below 1024px, don't reserve at all and let the bio genuinely shift with the title's
+  // real height as it types.
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   useLayoutEffect(() => {
     const liveEl = titleRef.current;
-    if (!liveEl) return;
+    if (!liveEl || !isDesktop) {
+      // Crossing back below 1024px (e.g. resizing down from desktop) must drop any
+      // previously-measured desktop value — otherwise mobile would inherit a stale
+      // reservation instead of reflowing naturally.
+      setMinHeight(undefined);
+      return;
+    }
 
     // How many lines each phrase wraps to varies with viewport width (e.g. a phrase that
     // fits on one line at 1440px can take three at 1024px), so a fixed CSS min-height
@@ -60,7 +75,7 @@ export function Hero({ playPillIntro = true }: HeroProps) {
     measure();
     window.addEventListener('resize', measure);
     return () => window.removeEventListener('resize', measure);
-  }, [titles]);
+  }, [titles, isDesktop]);
 
   return (
     <section id="hero" className="hero">
