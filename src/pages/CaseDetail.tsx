@@ -24,7 +24,7 @@ export function CaseDetail({ onBack }: CaseDetailProps) {
       <div className="case-detail container">
         <TripPageHeader
           caseData={freelanceCase}
-          onShare={() => share(freelanceCase.headerTitle, freelanceCase.heroMedia)}
+          onShare={() => share(freelanceCase.headerTitle)}
           onBack={onBack}
         />
 
@@ -43,7 +43,7 @@ export function CaseDetail({ onBack }: CaseDetailProps) {
 
   return (
     <div className="case-detail container">
-      <TripPageHeader caseData={caseData} onShare={() => share(caseData.headerTitle, caseData.heroMedia)} onBack={onBack} />
+      <TripPageHeader caseData={caseData} onShare={() => share(caseData.headerTitle)} onBack={onBack} />
 
       <div className="case-detail__content">
         <CasePasswordGate>
