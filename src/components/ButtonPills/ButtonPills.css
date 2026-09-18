@@ -34,12 +34,21 @@
 
 @media (max-width: 1023.98px) {
   .button-pills {
-    /* No wrapping pill on mobile — just the tabs themselves, left-aligned
-       with the rest of the page like any other element, scrolling as a row
-       when they don't all fit. */
-    padding: 0;
+    /* No wrapping pill on mobile — just the tabs themselves, scrolling exactly
+       like ProjectsGrid.css's card carousel: full-bleed to the true viewport
+       edge (rather than clamped to .home__projects's own available width),
+       left-aligned with the rest of the page via --container-inset on the
+       side that matters, scrolling only itself and never the whole page. */
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 var(--container-inset);
     border: none;
     background: none;
+    scroll-padding-left: var(--container-inset);
+    scroll-padding-right: var(--container-inset);
   }
 }
 
