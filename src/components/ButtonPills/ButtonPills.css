@@ -10,8 +10,9 @@
   /* Hugs its tabs' own content width instead of always stretching to fill the
      row — a fixed 100% left the pill-shaped border stretched past its buttons
      (with an odd gap after them) whenever the three tabs' natural width was
-     narrower than the container. fit-content alone still caps at the parent's
-     own available width though (see the breakout below for going past that). */
+     narrower than the container. Below 1024px the border/background/padding
+     this hugs are removed anyway (see the media query below), leaving just
+     the tabs, so this only matters at desktop width. */
   width: fit-content;
   overflow-x: auto;
   /* "mandatory" always resolves to the nearest tab once a touch scroll ends, so a
@@ -26,21 +27,12 @@
 
 @media (max-width: 1023.98px) {
   .button-pills {
-    /* fit-content never actually grows past its containing block's available
-       width — it's clamped there by definition, the same as an explicit
-       max-width:100% would do. To let the three tabs use more room than
-       .container's own padded column (still not enough to avoid scrolling on
-       the narrowest phones, but noticeably more than before), break out of
-       that column and center on the true viewport instead, capped so it can
-       never exceed it — same full-bleed technique as ProjectsGrid.css's card
-       carousel, just capped at the tabs' width instead of a fixed 100vw. It
-       ends up centered on the viewport rather than left-aligned with the
-       rest of the page, which is fine here: only needs its own internal
-       scroll (never the page's) when even that full width isn't enough. */
-    max-width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    /* No wrapping pill on mobile — just the tabs themselves, left-aligned
+       with the rest of the page like any other element, scrolling as a row
+       when they don't all fit. */
+    padding: 0;
+    border: none;
+    background: none;
   }
 }
 
