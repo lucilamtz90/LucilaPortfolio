@@ -7,7 +7,13 @@
     "back": "Back"
   },
   "hero": {
-    "title": "Strategic Product Designer",
+    "titles": [
+      "Strategic Product Designer",
+      "Experience Designer",
+      "Conversion Designer",
+      "Adoption and Engagement Designer",
+      "AI Prototyping Designer"
+    ],
     "bio1": "Hi, I'm Lucila — a product designer who turns complex problems into experiences people enjoy using.",
     "bio2": "My focus: growth, retention, and experimentation, with 10+ years doing it at scale."
   },
