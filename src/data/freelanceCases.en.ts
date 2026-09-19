@@ -1,8 +1,8 @@
-import todayCoffeeSignage from '../assets/images/today-coffee-signage.png';
-import todayCoffeeInstagramCards from '../assets/images/today-coffee-instagram-cards.png';
-import todayCoffeeAsset03 from '../assets/images/today-coffee-asset-03.png';
-import todayCoffeeAsset04 from '../assets/images/today-coffee-asset-04.png';
-import todayCoffeeAsset05 from '../assets/images/today-coffee-asset-05.png';
+import todayCoffeeSignage from '../assets/images/today-coffee-signage.jpg';
+import todayCoffeeInstagramCards from '../assets/images/today-coffee-instagram-cards.jpg';
+import todayCoffeeAsset03 from '../assets/images/today-coffee-asset-03.jpg';
+import todayCoffeeAsset04 from '../assets/images/today-coffee-asset-04.jpg';
+import todayCoffeeAsset05 from '../assets/images/today-coffee-asset-05.jpg';
 import type { FreelanceCase } from './types';
 
 export const freelanceCasesEn: FreelanceCase[] = [
