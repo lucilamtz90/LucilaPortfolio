@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ButtonPills, type ProjectTab } from '../components/ButtonPills/ButtonPills';
 import { ContactFab } from '../components/ContactFab/ContactFab';
@@ -11,6 +11,7 @@ import { ProjectsGrid } from '../components/ProjectsGrid/ProjectsGrid';
 import placeholder from '../assets/images/project-placeholder.jpg';
 import { features } from '../config/features';
 import { getAiCases, getCases, getFreelanceCases } from '../data';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import './Home.css';
 
 function preloadImage(src: string): Promise<void> {
@@ -37,6 +38,18 @@ export function Home() {
   const [activeTab, setActiveTab] = useState<ProjectTab>('professional');
   const [contactOpen, setContactOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(() => !hasShownLoaderThisSession());
+  const projectsRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  /** Jumps the cards into view on tab switch — on a phone the hero can push them
+   * fully below the fold, so without this the tap looks like it did nothing. */
+  const handleTabChange = (tab: ProjectTab) => {
+    setActiveTab(tab);
+    projectsRef.current?.scrollIntoView({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    });
+  };
 
   useEffect(() => {
     if (!isLoading) return;
@@ -65,8 +78,8 @@ export function Home() {
         <NavigationBar playPillIntro={!isLoading} />
         <Hero playPillIntro={!isLoading} />
 
-        <section className="home__projects" aria-label={t('buttonPills.professionalWork')}>
-          <ButtonPills active={activeTab} onChange={setActiveTab} />
+        <section className="home__projects" aria-label={t('buttonPills.professionalWork')} ref={projectsRef}>
+          <ButtonPills active={activeTab} onChange={handleTabChange} />
 
           {activeTab === 'professional' && (
             <ProjectsGrid>
