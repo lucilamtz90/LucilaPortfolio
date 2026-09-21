@@ -58,9 +58,14 @@
     inset: -50%;
     width: 200%;
     height: 200%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    /* Approximates a Figma noise fill's "Noise size X 2.1 / Y 2, Density 100%" via
+       feTurbulence's anisotropic baseFrequency (X/Y). Single-octave turbulence turned out
+       too low-contrast to register at all through mix-blend-mode at a subtle opacity — back
+       to fractalNoise (2 octaves) with a feComponentTransfer contrast stretch, which is what
+       actually makes the grain visible instead of a flat gray haze. */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.1 2' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='3' intercept='-1'/%3E%3CfeFuncG type='linear' slope='3' intercept='-1'/%3E%3CfeFuncB type='linear' slope='3' intercept='-1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 75px 75px;
-    opacity: 0.16;
+    opacity: 0.22;
     mix-blend-mode: overlay;
     pointer-events: none;
     animation: gradient-noise-shift 0.9s steps(12) infinite;
