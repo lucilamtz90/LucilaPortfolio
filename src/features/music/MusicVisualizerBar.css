@@ -63,9 +63,14 @@
   animation: music-bar-marquee 14s linear infinite;
 }
 
-.music-bar__duration {
-  flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.7);
+/* The marquee travels 100% of its own width, which includes the padding-left above —
+   itself a percentage of the (much wider) desktop bar. Same duration as mobile would
+   cover that much more distance in the same time, reading as a lot faster; a longer
+   duration here keeps the pace closer to mobile's. */
+@media (min-width: 1024px) {
+  .music-bar__title {
+    animation-duration: 40s;
+  }
 }
 
 @keyframes music-bar-marquee {

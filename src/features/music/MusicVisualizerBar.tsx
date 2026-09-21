@@ -4,15 +4,9 @@ import { useMusic } from './MusicContext';
 import { MUSIC_ALBUM_NAME } from './youtubePlaylist';
 import './MusicVisualizerBar.css';
 
-function formatDuration(totalSeconds: number): string {
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = Math.floor(totalSeconds % 60);
-  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-}
-
 /**
  * Full-width control bar pinned to the true top of the viewport (above CaseSheet's
- * z-index) while the Music feature is on — song name, duration and a play/pause button.
+ * z-index) while the Music feature is on — song name and a play/pause button.
  */
 export function MusicVisualizerBar() {
   const { t } = useTranslation();
@@ -54,7 +48,6 @@ export function MusicVisualizerBar() {
                 : t('music.loading')}
           </span>
         </div>
-        {track && <span className="music-bar__duration">{formatDuration(track.durationSeconds)}</span>}
       </div>
     </div>
   );
