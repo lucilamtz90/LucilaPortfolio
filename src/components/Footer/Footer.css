@@ -17,7 +17,7 @@
 
 .footer__credit {
   font-family: var(--font-mono);
-  font-size: var(--text-label);
+  font-size: var(--text-overline);
   color: var(--color-text-primary);
   margin: 0;
 }

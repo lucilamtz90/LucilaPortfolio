@@ -39,6 +39,7 @@
   font-weight: 300;
   font-size: var(--text-overline);
   color: var(--color-text-secondary);
+  transition: color var(--duration-fade) ease;
 }
 
 .project-card__media {
@@ -61,6 +62,7 @@
   font-family: var(--font-mono);
   font-size: var(--text-label);
   color: var(--color-text-secondary);
+  transition: color var(--duration-fade) ease;
 }
 
 .project-card__meta {
@@ -85,6 +87,7 @@
   letter-spacing: var(--tracking-tight);
   color: var(--color-text-secondary);
   line-height: 1.4;
+  transition: color var(--duration-fade) ease;
 }
 
 .project-card__credit-link {
@@ -93,4 +96,13 @@
   color: var(--color-text-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+/* While the Music feature's gradient background is showing, the secondary text color
+   reads poorly against it — switch these to the primary color for legibility. */
+body.music-background-active .project-card__number,
+body.music-background-active .project-card__date,
+body.music-background-active .project-card__meta,
+body.music-background-active .project-card__description {
+  color: var(--color-text-primary);
 }
