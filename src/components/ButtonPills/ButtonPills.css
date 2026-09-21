@@ -107,9 +107,7 @@
    tab, which is permanently filled via .button-pills__tab--active above. */
 .button-pills__tab-fill {
   position: absolute;
-  top: 4px;
-  bottom: 4px;
-  left: 4px;
+  inset: 0;
   width: 0;
   border-radius: var(--radius-pill);
   background: var(--color-border);
@@ -124,7 +122,7 @@
 }
 
 .button-pills__tab:not(.button-pills__tab--active):hover .button-pills__tab-fill {
-  width: calc(100% - 8px);
+  width: 100%;
 }
 
 .button-pills__tab:not(.button-pills__tab--active):hover .button-pills__tab-label {
