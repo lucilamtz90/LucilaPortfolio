@@ -19,6 +19,18 @@
   pointer-events: auto;
 }
 
+/* CaseSheet locks <body> to position:fixed while open (see CaseSheet.tsx) so the
+   page behind it can't scroll — which incidentally makes body this element's
+   containing block, since it's otherwise absolute with no positioned ancestor.
+   That freezes the bar at whatever scroll position Home was at when the sheet
+   opened, which can push it off-screen entirely if Home had been scrolled down.
+   Switching to fixed here re-anchors it to the actual viewport instead, matching
+   this component's own doc comment ("pinned to the true top of the viewport...
+   while the Music feature is on"). */
+body.case-sheet-open .music-bar-clip {
+  position: fixed;
+}
+
 .music-bar {
   height: 48px;
   display: flex;

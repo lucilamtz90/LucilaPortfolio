@@ -52,6 +52,12 @@ export function CaseSheet() {
     body.style.left = '0';
     body.style.right = '0';
     body.style.width = '100%';
+    // Lets MusicVisualizerBar switch itself from absolute (document-relative, so it
+    // scrolls away with Home) to fixed (viewport-relative) — see the comment on
+    // body.case-sheet-open .music-bar-clip in MusicVisualizerBar.css for why: without
+    // it, the bar inherits the pinned body above as its containing block and renders
+    // at Home's old scroll offset, which can put it off-screen entirely.
+    body.classList.add('case-sheet-open');
 
     return () => {
       body.style.position = previous.position;
@@ -59,6 +65,7 @@ export function CaseSheet() {
       body.style.left = previous.left;
       body.style.right = previous.right;
       body.style.width = previous.width;
+      body.classList.remove('case-sheet-open');
       window.scrollTo(0, scrollY);
     };
   }, []);
