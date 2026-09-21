@@ -121,12 +121,18 @@
   transition: color 0.4s ease;
 }
 
-.button-pills__tab:not(.button-pills__tab--active):hover .button-pills__tab-fill {
-  width: 100%;
-}
+/* Fine-pointer devices only — on touch, tapping a tab can leave it "stuck" in :hover
+   (no pointer to move away and clear it), which raced against the click handler's own
+   .button-pills__tab--active swap and showed up as two overlapping fill/color animations
+   fighting each other. */
+@media (hover: hover) and (pointer: fine) {
+  .button-pills__tab:not(.button-pills__tab--active):hover .button-pills__tab-fill {
+    width: 100%;
+  }
 
-.button-pills__tab:not(.button-pills__tab--active):hover .button-pills__tab-label {
-  color: var(--color-surface);
+  .button-pills__tab:not(.button-pills__tab--active):hover .button-pills__tab-label {
+    color: var(--color-surface);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
