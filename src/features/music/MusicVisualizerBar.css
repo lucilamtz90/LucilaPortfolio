@@ -13,9 +13,18 @@
   height: 48px;
   overflow: hidden;
   pointer-events: none;
+  /* On top of the bar's own slide (below), an inset clip that closes in from the top
+     edge — like an opaque curtain descending over it — so on close the bar reads as
+     sliding down and being covered by what's above it, not just floating away on top
+     of everything until it's clipped by this box's fixed bottom edge. Kept as a
+     separate clip-path (rather than reusing the box's own height) so the box itself
+     stays a constant 48px hit/paint target and only the reveal animates. */
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path calc(var(--duration-fade) * 1.6) var(--ease-media);
 }
 
 .music-bar-clip--visible {
+  clip-path: inset(0 0 0 0);
   pointer-events: auto;
 }
 
@@ -95,6 +104,10 @@ body.case-sheet-open .music-bar-clip {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .music-bar-clip {
+    transition: clip-path var(--duration-fade) ease;
+  }
+
   .music-bar {
     transition: transform var(--duration-fade) ease;
   }
