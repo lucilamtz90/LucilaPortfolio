@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMusic } from './MusicContext';
+import { MUSIC_ALBUM_NAME } from './youtubePlaylist';
 import './MusicVisualizerBar.css';
 
 function formatDuration(totalSeconds: number): string {
@@ -46,7 +47,11 @@ export function MusicVisualizerBar() {
         </button>
         <div className="music-bar__marquee">
           <span className="music-bar__title">
-            {track ? track.title : unavailable ? t('music.unavailable') : t('music.loading')}
+            {track
+              ? [track.title, track.artist, MUSIC_ALBUM_NAME].filter(Boolean).join(' · ')
+              : unavailable
+                ? t('music.unavailable')
+                : t('music.loading')}
           </span>
         </div>
         {track && <span className="music-bar__duration">{formatDuration(track.durationSeconds)}</span>}

@@ -36,7 +36,14 @@ function loadYouTubeIframeApi(): Promise<void> {
 
 export interface Track {
   title: string;
+  artist: string;
   durationSeconds: number;
+}
+
+/** YouTube Music auto-uploads name their channel "<Artist> - Topic" — strip that suffix
+ * so the bar shows a plain artist name. */
+function cleanArtistName(author: string): string {
+  return author.replace(/\s*-\s*Topic$/i, '').trim();
 }
 
 export interface YouTubePlayerControls {
@@ -82,7 +89,11 @@ export function useYouTubePlayer(): YouTubePlayerControls {
     const data = player.getVideoData?.();
     const duration = player.getDuration?.();
     if (data?.title && typeof duration === 'number' && duration > 0) {
-      setTrack({ title: data.title, durationSeconds: duration });
+      setTrack({
+        title: data.title,
+        artist: data.author ? cleanArtistName(data.author) : '',
+        durationSeconds: duration,
+      });
       setUnavailable(false);
       attemptCount.current = 0;
     }
@@ -136,6 +147,10 @@ export function useYouTubePlayer(): YouTubePlayerControls {
           onReady: () => {
             if (cancelled) return;
             setIsReady(true);
+            // Keeps playback shuffled for the whole session — once the current track
+            // ends, the player auto-advances to a random one instead of the next in
+            // playlist order.
+            playerRef.current?.setShuffle?.(true);
             if (pendingPlayRandom.current) playRandomTrack();
           },
           onStateChange: (event: { data: number }) => {
