@@ -1,17 +1,31 @@
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { createGradientRenderer } from './gradientRenderer';
+import type { GradientTheme } from './gradientThemes';
 import './GradientBackground.css';
 
 interface GradientRenderer {
   start: () => void;
   stop: () => void;
+  setParams: (params: unknown) => void;
   destroy: () => void;
 }
 
 interface GradientBackgroundProps {
   /** Whether the background should be visible (dissolved in) right now. */
   active: boolean;
+  /** Which of the 3 gradient looks (colors, motion, direction) to render right now. */
+  theme: GradientTheme;
+}
+
+/** Matches the `params` shape renderGradientFrame (gradientRenderer.ts) reads per frame. */
+function themeToShaderParams(theme: GradientTheme) {
+  return {
+    gradient: { stops: theme.stops },
+    morphSpeed: theme.morphSpeed,
+    rotationSpeed: theme.rotationSpeedPercent,
+    gradientMethod: theme.gradientMethod,
+  };
 }
 
 /**
@@ -23,7 +37,7 @@ interface GradientBackgroundProps {
  * but adapter/device creation actually fails (e.g. hardware acceleration disabled) — that
  * failure is only known asynchronously, so it can't be decided up front.
  */
-export function GradientBackground({ active }: GradientBackgroundProps) {
+export function GradientBackground({ active, theme }: GradientBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rendererRef = useRef<GradientRenderer | null>(null);
   const [rendererReady, setRendererReady] = useState(false);
@@ -59,6 +73,11 @@ export function GradientBackground({ active }: GradientBackgroundProps) {
     }
   }, [active, rendererReady]);
 
+  useEffect(() => {
+    if (!rendererReady) return;
+    rendererRef.current?.setParams(themeToShaderParams(theme));
+  }, [theme, rendererReady]);
+
   // Lets the shader/CSS gradient show through — the site's own background is otherwise
   // opaque (see body { background } in global.css).
   useEffect(() => {
@@ -67,7 +86,19 @@ export function GradientBackground({ active }: GradientBackgroundProps) {
   }, [active]);
 
   return (
-    <div className={`gradient-background ${active ? 'gradient-background--active' : ''}`} aria-hidden="true">
+    <div
+      className={`gradient-background ${active ? 'gradient-background--active' : ''}`}
+      aria-hidden="true"
+      style={
+        {
+          '--gradient-angle': `${theme.cssAngleDeg}deg`,
+          '--gradient-color-1': theme.cssColors[0],
+          '--gradient-color-2': theme.cssColors[1],
+          '--gradient-color-3': theme.cssColors[2],
+          '--gradient-drift-duration': `${theme.cssDriftDurationS}s`,
+        } as React.CSSProperties
+      }
+    >
       <div className="gradient-background__css-fallback" />
       <canvas ref={canvasRef} className="gradient-background__canvas" />
     </div>

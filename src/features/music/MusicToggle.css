@@ -11,10 +11,10 @@
 .music-toggle__track {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);
-  padding: 4px;
+  padding: 5px;
   overflow: hidden;
   flex-shrink: 0;
   transition:
@@ -45,14 +45,22 @@ body.music-background-active .music-toggle__track {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius-pill);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1;
   color: var(--color-text-secondary);
   background: transparent;
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@media (min-width: 1024px) {
+  .music-toggle__option {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
 }
 
 .music-toggle__option--off {

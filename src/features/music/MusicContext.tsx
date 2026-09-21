@@ -1,5 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
+import { GRADIENT_THEMES, pickRandomGradientTheme } from './gradientThemes';
+import type { GradientTheme } from './gradientThemes';
 import { useYouTubePlayer } from './useYouTubePlayer';
 import type { Track } from './useYouTubePlayer';
 
@@ -10,6 +12,8 @@ interface MusicContextValue {
   togglePlayPause: () => void;
   track: Track | null;
   unavailable: boolean;
+  /** Which of the 3 gradient looks is active — re-shuffled every time the toggle turns on. */
+  gradientTheme: GradientTheme;
 }
 
 const MusicContext = createContext<MusicContextValue | null>(null);
@@ -21,6 +25,7 @@ const MusicContext = createContext<MusicContextValue | null>(null);
  */
 export function MusicProvider({ children }: { children: ReactNode }) {
   const [isOn, setIsOn] = useState(false);
+  const [gradientTheme, setGradientTheme] = useState<GradientTheme>(GRADIENT_THEMES[0]);
   const { isPlaying, track, unavailable, playRandom, togglePlayPause, stop } = useYouTubePlayer();
 
   const toggle = useCallback(() => {
@@ -29,6 +34,7 @@ export function MusicProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (isOn) {
+      setGradientTheme(pickRandomGradientTheme());
       playRandom();
     } else {
       stop();
@@ -37,8 +43,8 @@ export function MusicProvider({ children }: { children: ReactNode }) {
   }, [isOn]);
 
   const value = useMemo<MusicContextValue>(
-    () => ({ isOn, toggle, isPlaying, togglePlayPause, track, unavailable }),
-    [isOn, toggle, isPlaying, togglePlayPause, track, unavailable],
+    () => ({ isOn, toggle, isPlaying, togglePlayPause, track, unavailable, gradientTheme }),
+    [isOn, toggle, isPlaying, togglePlayPause, track, unavailable, gradientTheme],
   );
 
   return <MusicContext.Provider value={value}>{children}</MusicContext.Provider>;

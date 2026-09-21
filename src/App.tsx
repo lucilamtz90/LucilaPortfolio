@@ -23,12 +23,12 @@ function HomeLayout() {
 /** Reads music state and renders the background/bar — split out so it can sit inside
  * MusicProvider while App itself stays the thing that's actually exported/mounted. */
 function MusicChrome() {
-  const { isOn } = useMusic();
+  const { isOn, gradientTheme } = useMusic();
   return (
     <>
-      <GradientBackground active={isOn} />
+      <GradientBackground active={isOn} theme={gradientTheme} />
       <MusicVisualizerBar />
-      <CursorSparkles active={isOn} />
+      <CursorSparkles active={isOn} colors={gradientTheme.sparkleColors} shape={gradientTheme.sparkleShape} />
     </>
   );
 }

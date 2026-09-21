@@ -24,13 +24,13 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    120deg,
-    #75638f 0%,
-    #a882ad 50%,
-    #d6bfd6 100%
+    var(--gradient-angle, 120deg),
+    var(--gradient-color-1, #75638f) 0%,
+    var(--gradient-color-2, #a882ad) 50%,
+    var(--gradient-color-3, #d6bfd6) 100%
   );
   background-size: 220% 220%;
-  animation: gradient-background-drift 18s ease-in-out infinite;
+  animation: gradient-background-drift var(--gradient-drift-duration, 18s) ease-in-out infinite;
 }
 
 @keyframes gradient-background-drift {

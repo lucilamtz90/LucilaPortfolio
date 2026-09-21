@@ -1,8 +1,3 @@
-:root {
-  /* Matches the star colors in CursorSparkles.tsx. */
-  --cursor-sparkle-glow-rgb: 168 130 173;
-}
-
 .cursor-sparkle-star,
 .cursor-sparkle-glow-point {
   position: fixed;
@@ -24,7 +19,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgb(var(--cursor-sparkle-glow-rgb) / 0.6);
+  /* Background color is set inline per point (CursorSparkles.tsx), from the active
+     gradient theme's own sparkle colors. */
   filter: blur(1px);
   transform: translate(-50%, -50%);
 }

@@ -990,6 +990,10 @@ export async function createGradientRenderer(canvas) {
     let running = false;
     let rafId = 0;
     let startTime = performance.now();
+    // Same shape renderGradientFrame already expects for its `params` argument (gradient
+    // stops, morphSpeed, rotationSpeed, etc.) — swappable at any time via setParams() so a
+    // new gradient theme can take over an already-running renderer.
+    let currentParams = {};
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -1005,7 +1009,7 @@ export async function createGradientRenderer(canvas) {
       if (!running) return;
       resize();
       const texture = context.getCurrentTexture();
-      renderGradientFrame(device, { state: frame.state, output: texture, time: now - startTime, params: {} });
+      renderGradientFrame(device, { state: frame.state, output: texture, time: now - startTime, params: currentParams });
       rafId = requestAnimationFrame(tick);
     };
 
@@ -1024,6 +1028,9 @@ export async function createGradientRenderer(canvas) {
       stop() {
         running = false;
         if (rafId) cancelAnimationFrame(rafId);
+      },
+      setParams(params) {
+        currentParams = params ?? {};
       },
       destroy() {
         running = false;
