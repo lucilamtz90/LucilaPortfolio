@@ -25,7 +25,7 @@ export const aiCasesEs: AiCase[] = [
   },
   {
     number: '03',
-    title: 'Bonitta Studio Branding Hub',
+    title: 'Studio Branding Hub',
     dateLine: '5 horas • 2026 • Claude Code',
     description:
       'Una plataforma B2B, responsive, para centralizar el avance y los entregables de branding de cada cliente, con recolección de feedback integrada y personalización por cliente. Construida enteramente por prompting — un stylesheet generado por los agentes de IA de Figma se le entregó a Claude Code, que la construyó y la desplegó directo a GitHub Pages.',
