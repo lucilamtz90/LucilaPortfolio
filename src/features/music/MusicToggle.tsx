@@ -24,7 +24,7 @@ export function MusicToggle({ className = '' }: MusicToggleProps) {
           🔇
         </span>
         <span className="music-toggle__option music-toggle__option--on" aria-hidden="true">
-          🎧
+          💿
         </span>
       </span>
     </button>
