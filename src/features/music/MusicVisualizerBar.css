@@ -1,7 +1,5 @@
 /* Clips the bar to exactly its own height so it's fully hidden — not just faded — behind
-   the top of the page until it slides up into view; the bar itself never changes opacity,
-   only its position, so it reads as physically emerging from behind the page rather than
-   dissolving in. */
+   the top of the page until it slides up into view. */
 /* Absolute (not fixed) so it scrolls away with the page instead of staying pinned to
    the viewport while the user scrolls. */
 .music-bar-clip {
@@ -13,18 +11,27 @@
   height: 48px;
   overflow: hidden;
   pointer-events: none;
-  /* On top of the bar's own slide (below), an inset clip that closes in from the top
-     edge — like an opaque curtain descending over it — so on close the bar reads as
-     sliding down and being covered by what's above it, not just floating away on top
-     of everything until it's clipped by this box's fixed bottom edge. Kept as a
-     separate clip-path (rather than reusing the box's own height) so the box itself
-     stays a constant 48px hit/paint target and only the reveal animates. */
+  /* An inset clip that closes in from the top edge as the bar itself slides down
+     (see .music-bar's transform below) — reads as the bar sinking down and being
+     covered from above, not just sliding down in place. Since nothing is reliably
+     behind it to actually do that covering (Home's own top content has no solid,
+     full-bleed background of its own to rely on, and the Music feature's animated
+     gradient can't be color-matched by a static occluder), opacity below fades the
+     bar's last, nearly-clipped sliver out instead of leaving it as a stray line
+     drawn over whatever content is at that scroll position. */
   clip-path: inset(100% 0 0 0);
-  transition: clip-path calc(var(--duration-fade) * 1.6) var(--ease-media);
+  opacity: 0;
+  transition:
+    clip-path calc(var(--duration-fade) * 1.6) var(--ease-media),
+    /* Back-loaded (ease-in): stays fully opaque through most of the slide, then
+       drops away sharply right at the end, timed to where the clip-path above has
+       already reduced the bar to that thin sliver. */
+    opacity calc(var(--duration-fade) * 1.6) cubic-bezier(0.8, 0, 1, 1);
 }
 
 .music-bar-clip--visible {
   clip-path: inset(0 0 0 0);
+  opacity: 1;
   pointer-events: auto;
 }
 
@@ -105,7 +112,9 @@ body.case-sheet-open .music-bar-clip {
 
 @media (prefers-reduced-motion: reduce) {
   .music-bar-clip {
-    transition: clip-path var(--duration-fade) ease;
+    transition:
+      clip-path var(--duration-fade) ease,
+      opacity var(--duration-fade) ease;
   }
 
   .music-bar {
