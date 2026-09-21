@@ -9,6 +9,7 @@ import { MusicProvider, useMusic } from './features/music/MusicContext';
 import { MusicVisualizerBar } from './features/music/MusicVisualizerBar';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
+import { StyleGuide } from './pages/StyleGuide';
 
 /** Keeps Home mounted as the persistent base layer; the Outlet renders the case sheet on top of it. */
 function HomeLayout() {
@@ -49,6 +50,7 @@ function App() {
           <Route path="/" element={null} />
           <Route path="/case/:slug" element={<CaseSheet />} />
         </Route>
+        <Route path="/style-guide" element={<StyleGuide />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
