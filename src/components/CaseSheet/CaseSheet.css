@@ -1,6 +1,15 @@
 .case-sheet {
   position: fixed;
   inset: 0;
+  /* Explicit height, not just inset:0's implicit 100% — mobile Chrome sizes an
+     inset-only fixed element against the "large" viewport (toolbar retracted),
+     which is taller than what's actually visible when the address bar is showing,
+     leaving a white gap at the bottom (and, after scrolling shifts things, the
+     top) equal to the toolbar's height. 100dvh tracks the real, current visual
+     viewport instead. Keep the 100vh line first as a fallback for browsers that
+     don't support dvh. */
+  height: 100vh;
+  height: 100dvh;
   z-index: 80;
 }
 

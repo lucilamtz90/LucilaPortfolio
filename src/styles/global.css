@@ -47,6 +47,12 @@ button {
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
+  /* Without this, Safari/iOS keeps native button chrome (its own background, border
+     and corner radius) layered on top of our own — on a small circular icon button
+     like .music-bar__play-pause that hides the icon entirely and leaves visible
+     corners instead of a true circle. */
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .container {

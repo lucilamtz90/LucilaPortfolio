@@ -32,6 +32,21 @@
   box-shadow: 0 1px 0 var(--color-border);
 }
 
+/* CaseSheet is a fixed full-screen overlay, so it ignores body's own padding-top
+   (see body.music-bar-active in global.css) that normally reserves space under the
+   Music feature's fixed top bar. Without this, the bar (z-index 95) renders on top
+   of this handle (z-index 10) instead of above it. Desktop doesn't need this: the
+   sheet already sits below the top of the viewport there (see the min-width:1024px
+   rule below). Match the offset on both the sticky box (so it stays clear of the bar
+   the whole time it's scrolled) and its own static position (so it starts there too,
+   instead of jumping down 48px on the first scroll). */
+@media (max-width: 1023.98px) {
+  body.music-bar-active .trip-header__handle {
+    top: 48px;
+    margin-top: 48px;
+  }
+}
+
 .trip-header__handle-text {
   flex: 1;
   border: none;
