@@ -40,7 +40,13 @@ export function TripPageHeader({ caseData, onShare, onBack }: TripPageHeaderProp
     <header className="trip-header">
       <div ref={handleRef} className={`trip-header__handle ${scrolled ? 'trip-header__handle--scrolled' : ''}`}>
         <button type="button" className="trip-header__handle-text" onClick={onBack}>
-          <strong>{caseData.headerMeta}</strong> {t('caseHeader.metaYearConnector')} {caseData.headerYear}
+          <strong>{caseData.headerMeta}</strong>
+          {caseData.headerYear && (
+            <>
+              {' '}
+              {t('caseHeader.metaYearConnector')} {caseData.headerYear}
+            </>
+          )}
           <span className="trip-header__handle-dot">•</span>
           {caseData.headerRole}
           {caseData.headerRoleConnector ?? ` ${t('caseHeader.roleCompanyConnector')} `}

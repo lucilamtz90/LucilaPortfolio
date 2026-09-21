@@ -56,7 +56,8 @@ export type ProjectType = 'B2B' | 'B2C';
 /** Fields TripPageHeader needs — shared by both standard case studies (CaseData) and Freelance cases. */
 export interface CaseHeaderData {
   headerCompany: string;
-  headerYear: string;
+  /** Omit to hide the year (and its connecting word) from the header breadcrumb entirely. */
+  headerYear?: string;
   headerTitle: string;
   headerStatus: string;
   headerMeta: string;

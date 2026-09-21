@@ -88,7 +88,6 @@ export function Home() {
                   key={c.slug}
                   number={c.cardNumber}
                   company={c.cardCompany}
-                  year={c.cardYear}
                   title={c.cardTitle}
                   meta={c.cardMeta}
                   type={c.cardType}

@@ -29,7 +29,6 @@ export const casesEs: CaseData[] = [
     heroMediaPosition: 'top',
 
     headerCompany: 'Etsy',
-    headerYear: '2023',
     headerTitle: 'Dynamic Units: convirtiendo a los Affiliates en un canal de ingresos',
     headerStatus: 'Mercado de EE. UU.',
     headerMeta: 'De discovery a lanzamiento',
@@ -108,7 +107,6 @@ export const casesEs: CaseData[] = [
     heroMediaPosition: 'top',
 
     headerCompany: 'Etsy',
-    headerYear: '2025',
     headerTitle: 'Etsy Insider Rewards: diseñando un nuevo beneficio a escala',
     headerStatus: 'Mercado de EE. UU.',
     headerMeta: 'De ideación a hand-off',
@@ -191,7 +189,6 @@ export const casesEs: CaseData[] = [
     heroMediaPosition: 'top',
 
     headerCompany: 'Etsy',
-    headerYear: '2026',
     headerTitle: 'Errores de checkout: convirtiendo la fricción en momentos recuperables',
     headerStatus: 'Lanzado globalmente',
     headerMeta: 'De definición a hand-off',
@@ -273,7 +270,6 @@ export const casesEs: CaseData[] = [
     heroMediaPosition: 'top',
 
     headerCompany: 'Rappi Card',
-    headerYear: '2021',
     headerTitle: 'Rappi Card: reduciendo pagos tardíos con un pago con tarjeta más simple',
     headerStatus: 'Lanzado a clientes de Latinoamérica',
     headerMeta: 'De discovery a hand-off',
