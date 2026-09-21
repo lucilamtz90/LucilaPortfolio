@@ -48,6 +48,8 @@ export const aiCasesEs: AiCase[] = [
     dateLine: '3 horas • 2026 • Figma, Claude Code',
     description:
       'Una herramienta web que encuentra similitudes musicales entre una canción y otros artistas, visualizadas como un grafo de nodos interactivo. Construida en colaboración con Christian, software developer que implementó la lógica — yo lideré el diseño UI, motion y UX.',
+    creditName: 'Christian',
+    creditUrl: 'https://www.linkedin.com/in/cconsuelo/',
     url: 'https://node-record.netlify.app/',
     image: aiNodeRecord,
   },

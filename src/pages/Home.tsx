@@ -109,6 +109,8 @@ export function Home() {
                     dateLine={c.dateLine}
                     title={c.title}
                     description={c.description}
+                    creditName={c.creditName}
+                    creditUrl={c.creditUrl}
                     image={c.image}
                     href={c.url}
                   />

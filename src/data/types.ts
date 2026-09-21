@@ -138,6 +138,10 @@ export interface AiCase {
   dateLine: string;
   /** Short one-line project summary shown under the title. */
   description: string;
+  /** Turns one occurrence of this substring within `description` into a link to `creditUrl`
+   * (e.g. crediting a collaborator by name) — set both or neither. */
+  creditName?: string;
+  creditUrl?: string;
   /** External URL — opens in a new tab, these don't have an internal case sheet. */
   url: string;
   /** Captured screenshot or short clip of the live interface. */

@@ -10,6 +10,18 @@
   scroll-snap-align: start;
 }
 
+.project-card--external {
+  position: relative;
+}
+
+/* Covers the whole card so it's clickable everywhere except real links inside the
+   content (e.g. .project-card__credit-link), which sit above it via z-index. */
+.project-card__stretched-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 .project-card--static {
   cursor: default;
 }
@@ -73,4 +85,12 @@
   letter-spacing: var(--tracking-tight);
   color: var(--color-text-secondary);
   line-height: 1.4;
+}
+
+.project-card__credit-link {
+  position: relative;
+  z-index: 2;
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
