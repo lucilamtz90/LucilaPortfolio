@@ -35,6 +35,7 @@ export const casesEs: CaseData[] = [
     headerMeta: 'De discovery a lanzamiento',
     headerRole: 'Sr. Product Designer',
     externalUrl: 'https://www.etsy.com/affiliates',
+    headerSignals: ['Adoption', 'Onboarding', 'B2B', 'Revenue'],
 
     sections: [
       {
@@ -113,6 +114,7 @@ export const casesEs: CaseData[] = [
     headerMeta: 'De ideación a hand-off',
     headerRole: 'Sr. Product Designer',
     externalUrl: 'https://www.etsy.com/news/meet-etsy-insider-etsys-new-buyer-membership-beta-program',
+    headerSignals: ['Onboarding', 'Adoption', 'Retention', 'Engagement', 'B2C'],
 
     sections: [
       {
@@ -195,6 +197,7 @@ export const casesEs: CaseData[] = [
     headerMeta: 'De definición a hand-off',
     headerRole: 'Sr. Product Designer',
     externalUrl: 'https://www.etsy.com/?ref=lgo',
+    headerSignals: ['Conversion', 'Recovery', 'Revenue', 'B2C'],
 
     sections: [
       {
@@ -276,6 +279,7 @@ export const casesEs: CaseData[] = [
     headerMeta: 'De discovery a hand-off',
     headerRole: 'Lead Product Designer',
     externalUrl: 'https://rappicard.mx/',
+    headerSignals: ['Conversion', 'Revenue', 'Recovery', 'B2C'],
     passwordProtected: false,
 
     sections: [
