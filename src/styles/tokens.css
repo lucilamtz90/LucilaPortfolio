@@ -14,6 +14,9 @@
   --color-button-primary-hover-rgb: 47, 47, 80;
   /* Figma "Button/Secondary Hover". */
   --color-button-secondary-hover: #f0f0fc;
+  /* Recording/alert indicator (VoiceNoteRecorder's "recording" dot). */
+  --color-danger: #d64545;
+  --color-danger-rgb: 214, 69, 69;
 
   /* Font families */
   --font-display: 'Gabarito', 'Helvetica Neue', Arial, sans-serif;

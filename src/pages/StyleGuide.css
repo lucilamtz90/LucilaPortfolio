@@ -242,3 +242,38 @@
 .style-guide__row--center {
   align-items: center;
 }
+
+.style-guide__atom {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: var(--text-overline);
+  color: var(--color-text-secondary);
+}
+
+.style-guide__atom-note {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+
+.style-guide__frame {
+  display: flex;
+  padding: var(--space-xl);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--space-xs);
+  overflow: auto;
+}
+
+.style-guide__frame--start {
+  align-items: flex-start;
+}
+
+.style-guide__component-list {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-overline);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}

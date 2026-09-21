@@ -30,7 +30,9 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #d64545;
+  background: var(--color-danger);
+  /* Overrides status-dot-glow's default green halo with one matching this dot's own red. */
+  --status-dot-glow-rgb: var(--color-danger-rgb);
   animation: status-dot-glow 1s ease-in-out infinite;
 }
 

@@ -8,14 +8,17 @@
   animation: status-dot-glow 2.2s ease-in-out infinite;
 }
 
+/* The pulsing halo's color is a variable (defaulting to the accent green) rather than
+   hardcoded, so other dots reusing this same animation — see .voice-note__rec-dot — can
+   glow their own color instead of always glowing green regardless of their own dot color. */
 @keyframes status-dot-glow {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(148, 207, 19, 0.55);
+    box-shadow: 0 0 0 0 rgba(var(--status-dot-glow-rgb, var(--color-accent-primary-rgb)), 0.55);
     opacity: 0.85;
   }
   50% {
-    box-shadow: 0 0 6px 3px rgba(148, 207, 19, 0.55);
+    box-shadow: 0 0 6px 3px rgba(var(--status-dot-glow-rgb, var(--color-accent-primary-rgb)), 0.55);
     opacity: 1;
   }
 }

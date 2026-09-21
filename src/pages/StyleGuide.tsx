@@ -1,6 +1,14 @@
 import { useState } from 'react';
 import { MusicToggle } from '../features/music/MusicToggle';
 import { PillStatus } from '../components/PillStatus/PillStatus';
+import { StatusDot } from '../components/PillStatus/StatusDot';
+import { SignalPill } from '../components/SignalPill/SignalPill';
+import { ToolCredit } from '../components/ToolCredit/ToolCredit';
+import { NavigationBar } from '../components/NavigationBar/NavigationBar';
+import { Hero } from '../components/Hero/Hero';
+import { Footer } from '../components/Footer/Footer';
+import { ProjectCard } from '../components/ProjectCard/ProjectCard';
+import placeholder from '../assets/images/project-placeholder.jpg';
 import { GRADIENT_THEMES } from '../features/music/gradientThemes';
 import './StyleGuide.css';
 
@@ -220,6 +228,77 @@ export function StyleGuide() {
           <PillStatus />
           <MusicToggle />
         </div>
+      </section>
+
+      <section className="style-guide__section">
+        <h2>Small atoms</h2>
+        <div className="style-guide__row style-guide__row--center">
+          <div className="style-guide__atom">
+            <StatusDot />
+            <code>StatusDot</code>
+          </div>
+          <div className="style-guide__atom">
+            <span className="voice-note__rec-dot" />
+            <code>Recording indicator</code>
+            <span className="style-guide__atom-note">--color-danger, reuses status-dot-glow</span>
+          </div>
+          <SignalPill label="US market" />
+        </div>
+        <div className="style-guide__row" style={{ marginTop: 'var(--space-md)' }}>
+          <ToolCredit lead="Built with" url="https://claude.com/claude-code" linkText="Claude Code" />
+        </div>
+      </section>
+
+      <section className="style-guide__section">
+        <h2>Navigation bar</h2>
+        <div className="style-guide__frame">
+          <NavigationBar />
+        </div>
+      </section>
+
+      <section className="style-guide__section">
+        <h2>Hero</h2>
+        <div className="style-guide__frame">
+          <Hero playPillIntro={false} />
+        </div>
+      </section>
+
+      <section className="style-guide__section">
+        <h2>Project card</h2>
+        <div className="style-guide__frame style-guide__frame--start">
+          <ProjectCard
+            number="01"
+            company="Etsy"
+            year="2025"
+            title="Case study title"
+            meta="Discovery to launch"
+            type="B2B"
+            description="A short one-line summary of the case study goes here."
+            image={placeholder}
+          />
+        </div>
+      </section>
+
+      <section className="style-guide__section">
+        <h2>Footer</h2>
+        <div className="style-guide__frame">
+          <Footer onContactClick={() => {}} />
+        </div>
+      </section>
+
+      <section className="style-guide__section">
+        <h2>Not previewed here</h2>
+        <p className="style-guide__section-note">
+          Case-study layout components — tightly coupled to each case's own content/props, so a generic preview
+          wouldn't be representative. They still draw from the same tokens above.
+        </p>
+        <p className="style-guide__component-list">
+          CaseSheet · CasePasswordGate · CaseCloseButton · CaseVideoPlayer · CaseContentLeft · SectionTwoColumn ·
+          ExtendedNarrative · Reflection · ImpactResults · ImpactResultsExperiments · TripPageHeader · ProcessStep ·
+          ProcessStepsRow · FreelanceCaseContent · HeroImage · MediaVerticalCarousel · ProjectsGrid · ContactFab ·
+          VoiceNoteRecorder (full flow) · LoadingScreen · CustomCursor · CursorSparkles · GradientBackground ·
+          MusicVisualizerBar
+        </p>
       </section>
     </div>
   );
