@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { features } from '../../config/features';
 import { MusicToggle } from '../../features/music/MusicToggle';
+import { PillStatus } from '../PillStatus/PillStatus';
 import './NavigationBar.css';
 
-export function NavigationBar() {
+interface NavigationBarProps {
+  playPillIntro?: boolean;
+}
+
+export function NavigationBar({ playPillIntro = true }: NavigationBarProps) {
   const { t } = useTranslation();
 
   return (
@@ -25,6 +30,7 @@ export function NavigationBar() {
           )}
         </div>
         <div className="nav-bar__status">
+          <PillStatus playIntro={playPillIntro} className="nav-bar__pill-status" />
           <MusicToggle />
         </div>
       </div>

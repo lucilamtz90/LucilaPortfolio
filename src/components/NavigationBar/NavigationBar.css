@@ -38,6 +38,10 @@
   align-items: center;
 }
 
+.nav-bar__pill-status {
+  display: none;
+}
+
 @media (min-width: 1024px) {
   .nav-bar__row {
     flex-direction: row;
@@ -60,5 +64,13 @@
 
   .nav-bar__status {
     display: flex;
+    gap: var(--space-xl);
+  }
+
+  /* Sits to the left of the toggle, 32px away (the gap above) — same PillStatus style,
+     just repositioned; mobile keeps its own instance in the Hero, above the title. */
+  .nav-bar__pill-status {
+    display: flex;
+    text-align: right;
   }
 }

@@ -6,9 +6,10 @@ import './PillStatus.css';
 interface PillStatusProps {
   /** Set true once it's OK to play the one-time fill + wiggle intro (e.g. after loading finishes). */
   playIntro?: boolean;
+  className?: string;
 }
 
-export function PillStatus({ playIntro = true }: PillStatusProps) {
+export function PillStatus({ playIntro = true, className = '' }: PillStatusProps) {
   const { t } = useTranslation();
   const [animate, setAnimate] = useState(false);
   const hasPlayed = useRef(false);
@@ -21,7 +22,7 @@ export function PillStatus({ playIntro = true }: PillStatusProps) {
   }, [playIntro]);
 
   return (
-    <div className={`pill-status ${animate ? 'pill-status--intro' : ''}`}>
+    <div className={`pill-status ${animate ? 'pill-status--intro' : ''} ${className}`}>
       <span className="pill-status__label">{t('pillStatus.openToWork')}</span>
       <StatusDot />
     </div>
