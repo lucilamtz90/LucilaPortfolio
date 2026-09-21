@@ -1,0 +1,51 @@
+.gradient-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity calc(var(--duration-fade) * 2.4) ease;
+}
+
+.gradient-background--active {
+  opacity: 1;
+}
+
+.gradient-background__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.gradient-background__css-fallback {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    #cedbfd 0%,
+    #f6e0e3 50%,
+    #e2ddf1 100%
+  );
+  background-size: 220% 220%;
+  animation: gradient-background-drift 18s ease-in-out infinite;
+}
+
+@keyframes gradient-background-drift {
+  0%,
+  100% {
+    background-position: 0% 30%;
+  }
+  50% {
+    background-position: 100% 70%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-background__css-fallback {
+    animation: none;
+    background-position: 30% 50%;
+  }
+}

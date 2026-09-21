@@ -1,0 +1,87 @@
+/* Clips the bar to exactly its own height so it's fully hidden — not just faded — behind
+   the top of the page until it slides up into view; the bar itself never changes opacity,
+   only its position, so it reads as physically emerging from behind the page rather than
+   dissolving in. */
+.music-bar-clip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  height: 48px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.music-bar-clip--visible {
+  pointer-events: auto;
+}
+
+.music-bar {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-inline: var(--space-lg);
+  background: var(--color-border);
+  color: var(--color-surface);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  transform: translateY(100%);
+  transition: transform calc(var(--duration-fade) * 1.6) var(--ease-media);
+}
+
+.music-bar--visible {
+  transform: translateY(0);
+}
+
+.music-bar__play-pause {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: none;
+  color: inherit;
+}
+
+.music-bar__marquee {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+}
+
+.music-bar__title {
+  display: inline-block;
+  padding-left: 100%;
+  animation: music-bar-marquee 14s linear infinite;
+}
+
+.music-bar__duration {
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes music-bar-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-bar {
+    transition: transform var(--duration-fade) ease;
+  }
+
+  .music-bar__title {
+    animation: none;
+    padding-left: 0;
+  }
+}

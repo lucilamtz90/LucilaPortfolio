@@ -1,0 +1,75 @@
+:root {
+  /* Matches the star colors in CursorSparkles.tsx. */
+  --cursor-sparkle-glow-rgb: 237 105 150;
+}
+
+.cursor-sparkle-star,
+.cursor-sparkle-glow-point {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+  pointer-events: none;
+}
+
+.cursor-sparkle-star {
+  width: 1em;
+  height: 1em;
+  transform: translate(-50%, -50%);
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.cursor-sparkle-glow-point {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(var(--cursor-sparkle-glow-rgb) / 0.6);
+  filter: blur(1px);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes cursor-sparkle-fall-1 {
+  0% {
+    transform: translate(-50%, -50%) translate(0px, 0px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(0.25);
+    opacity: 0;
+  }
+  5% {
+    transform: translate(-50%, -50%) translate(10px, -10px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(25px, 200px) rotateX(180deg) rotateY(270deg) rotateZ(90deg) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes cursor-sparkle-fall-2 {
+  0% {
+    transform: translate(-50%, -50%) translate(0px, 0px) rotateX(-20deg) rotateY(10deg) scale(0.25);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(-50%, -50%) translate(-10px, -5px) rotateX(-20deg) rotateY(10deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(-10px, 160px) rotateX(-90deg) rotateY(45deg) scale(0.25);
+    opacity: 0;
+  }
+}
+
+@keyframes cursor-sparkle-fall-3 {
+  0% {
+    transform: translate(-50%, -50%) translate(0px, 0px) rotateX(0deg) rotateY(45deg) scale(0.5);
+    opacity: 0;
+  }
+  15% {
+    transform: translate(-50%, -50%) translate(7px, 5px) rotateX(0deg) rotateY(45deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translate(20px, 120px) rotateX(-180deg) rotateY(-90deg) scale(0.5);
+    opacity: 0;
+  }
+}

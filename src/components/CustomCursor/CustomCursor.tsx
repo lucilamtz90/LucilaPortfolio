@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useMusic } from '../../features/music/MusicContext';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 import './CustomCursor.css';
 
@@ -19,6 +20,7 @@ export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const { isOn: musicOn } = useMusic();
 
   useEffect(() => {
     const mql = window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -97,7 +99,11 @@ export function CustomCursor() {
   if (!enabled) return null;
 
   return (
-    <div ref={cursorRef} className="custom-cursor custom-cursor--idle custom-cursor--hidden" aria-hidden="true">
+    <div
+      ref={cursorRef}
+      className={`custom-cursor custom-cursor--idle custom-cursor--hidden ${musicOn ? 'custom-cursor--music-on' : ''}`}
+      aria-hidden="true"
+    >
       <span className="custom-cursor__circle" />
       <span className="custom-cursor__caret" />
     </div>

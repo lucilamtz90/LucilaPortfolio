@@ -7,6 +7,10 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-background);
+  transition:
+    background var(--duration-fade) ease,
+    border-color var(--duration-fade) ease,
+    backdrop-filter var(--duration-fade) ease;
   /* Hugs its tabs' own content width instead of always stretching to fill the
      row — a fixed 100% left the pill-shaped border stretched past its buttons
      (with an odd gap after them) whenever the three tabs' natural width was
@@ -55,6 +59,15 @@
 @media (min-width: 1024px) {
   .button-pills {
     scroll-snap-type: x proximity;
+  }
+
+  /* While the Music feature's gradient background is showing, give the pill container an
+     iOS-style frosted glass look instead of its normal flat background. */
+  body.music-background-active .button-pills {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
 }
 

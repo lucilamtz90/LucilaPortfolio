@@ -18,6 +18,20 @@ body {
   letter-spacing: var(--tracking-tight);
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
+  padding-top: 0;
+  transition:
+    background calc(var(--duration-fade) * 2.4) ease,
+    padding-top var(--duration-fade) ease;
+}
+
+/* Lets the Music feature's gradient background (fixed behind everything) show through. */
+body.music-background-active {
+  background: transparent;
+}
+
+/* Reserves space under the Music feature's fixed top bar so it doesn't cover content. */
+body.music-bar-active {
+  padding-top: 48px;
 }
 
 img {

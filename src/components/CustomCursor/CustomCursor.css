@@ -69,6 +69,16 @@ html.custom-cursor-active .media-container--interactive * {
   opacity: 0;
 }
 
+/* While the Music feature is on, the cursor swaps its usual near-black for an accent
+   drawn from the gradient background's palette (same tone as CursorSparkles.tsx) — plain
+   dark ink would barely register against the busier, colored backdrop — plus a small,
+   soft "milky" halo so it reads as glowing rather than just recolored. */
+.custom-cursor--music-on .custom-cursor__circle,
+.custom-cursor--music-on .custom-cursor__caret {
+  background: var(--color-text-primary);
+  box-shadow: 0 0 12px 4px rgba(255, 255, 255, 0.55);
+}
+
 @keyframes custom-cursor-blink {
   0%,
   49% {

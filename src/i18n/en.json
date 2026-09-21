@@ -75,5 +75,10 @@
   },
   "voiceNote": {
     "hint": "Leave me a voice note, include your contact and name, please"
+  },
+  "music": {
+    "listeningToday": "Listening today",
+    "loading": "Loading…",
+    "unavailable": "Playlist unavailable right now"
   }
 }
