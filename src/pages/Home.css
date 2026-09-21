@@ -24,6 +24,9 @@
   align-items: flex-start;
   gap: var(--space-2xl);
   width: 100%;
+  /* Breathing room above when Home.tsx's tab-switch scrollIntoView({ block: 'start' })
+     lands here, so the pills don't sit flush against the top edge. */
+  scroll-margin-top: var(--space-xl);
 }
 
 @media (min-width: 1024px) {
