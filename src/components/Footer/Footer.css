@@ -1,8 +1,9 @@
 .footer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  row-gap: var(--space-lg);
+  column-gap: var(--space-lg);
   width: 100%;
   padding-top: var(--space-xl);
   padding-bottom: var(--space-sm);
@@ -10,12 +11,17 @@
 }
 
 .footer__buttons {
+  grid-column: 1 / -1;
+  grid-row: 1;
   display: flex;
   gap: var(--space-lg);
   align-items: center;
 }
 
 .footer__credit {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
   font-family: var(--font-mono);
   font-size: var(--text-overline);
   color: var(--color-text-primary);
@@ -23,6 +29,9 @@
 }
 
 .footer__language {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
   display: flex;
 }
 

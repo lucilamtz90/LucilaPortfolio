@@ -29,8 +29,12 @@
   gap: var(--space-lg);
 }
 
-.nav-bar__status {
+.nav-bar__mobile-toggle {
   display: flex;
+}
+
+.nav-bar__status {
+  display: none;
   align-items: center;
 }
 
@@ -48,5 +52,13 @@
 
   .nav-bar__logo img {
     height: 38px;
+  }
+
+  .nav-bar__mobile-toggle {
+    display: none;
+  }
+
+  .nav-bar__status {
+    display: flex;
   }
 }

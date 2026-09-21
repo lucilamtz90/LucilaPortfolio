@@ -15,6 +15,7 @@ export function NavigationBar() {
           <Link to="/" className="nav-bar__logo">
             <img src={logo} alt="Lucila Martínez" />
           </Link>
+          <MusicToggle className="nav-bar__mobile-toggle" />
         </div>
         <div className="nav-bar__links">
           {features.aboutMePage && (
