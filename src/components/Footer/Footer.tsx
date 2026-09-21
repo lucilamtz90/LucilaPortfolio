@@ -13,13 +13,13 @@ export function Footer({ onContactClick }: FooterProps) {
   return (
     <footer className="footer">
       <div className="footer__buttons">
-        <button type="button" className="btn-pill" onClick={onContactClick}>
+        <button type="button" className="btn-pill btn-pill--small" onClick={onContactClick}>
           {t('nav.contact')}
         </button>
-        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="btn-pill">
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill--small">
           {t('nav.linkedin')}
         </a>
-        <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill--solid">
+        <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill--solid btn-pill--small">
           {t('nav.resume')}
         </a>
       </div>

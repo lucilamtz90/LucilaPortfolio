@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { createGradientRenderer } from './gradientRenderer';
 import './GradientBackground.css';
 
@@ -26,9 +27,13 @@ export function GradientBackground({ active }: GradientBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rendererRef = useRef<GradientRenderer | null>(null);
   const [rendererReady, setRendererReady] = useState(false);
+  // The shader is a 76k-vertex mesh redrawn every frame with 4x MSAA — costly enough that
+  // it can visibly lag lower-powered phones. Desktop only; mobile always gets the cheap
+  // CSS fallback below instead.
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   useEffect(() => {
-    if (!canvasRef.current) return;
+    if (!canvasRef.current || !isDesktop) return;
 
     let cancelled = false;
     createGradientRenderer(canvasRef.current).then((renderer) => {
@@ -41,8 +46,9 @@ export function GradientBackground({ active }: GradientBackgroundProps) {
       cancelled = true;
       rendererRef.current?.destroy();
       rendererRef.current = null;
+      setRendererReady(false);
     };
-  }, []);
+  }, [isDesktop]);
 
   useEffect(() => {
     if (!rendererReady) return;

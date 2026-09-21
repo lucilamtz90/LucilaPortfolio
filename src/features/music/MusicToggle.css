@@ -32,6 +32,15 @@ body.music-background-active .music-toggle__track {
   -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
+/* A lighter blur on mobile — full-strength backdrop-filter here compounds with the same
+   effect on the status pill and can visibly lag lower-powered phones. */
+@media (max-width: 1023.98px) {
+  body.music-background-active .music-toggle__track {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
 .music-toggle__option {
   display: flex;
   align-items: center;

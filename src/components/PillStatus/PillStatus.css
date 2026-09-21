@@ -44,6 +44,16 @@ body.music-background-active .pill-status--intro::before {
   -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
+/* A lighter blur on mobile — full-strength backdrop-filter here compounds with the same
+   effect on the music toggle and can visibly lag lower-powered phones. */
+@media (max-width: 1023.98px) {
+  body.music-background-active .pill-status:not(.pill-status--intro),
+  body.music-background-active .pill-status--intro::before {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
 /* One-time intro, played once loading finishes: the background fills in
    left to right, then the whole pill gives a small wiggle. */
 .pill-status--intro {

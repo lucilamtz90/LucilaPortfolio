@@ -22,6 +22,11 @@
   color: var(--color-surface);
 }
 
+.btn-pill--small {
+  padding: var(--space-3xs) var(--space-2xs);
+  font-size: var(--text-overline);
+}
+
 .panel-title {
   margin: 0;
   font-family: var(--font-display);

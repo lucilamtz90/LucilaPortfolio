@@ -4,7 +4,7 @@
   height: 100%;
   margin: 0;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 12px;
   background: var(--color-surface);
   /* Visible-but-blurred instead of hidden outright, so scrolling toward an
    * off-screen asset previews it before it comes into focus. A caller can still
