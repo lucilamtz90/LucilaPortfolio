@@ -1,6 +1,7 @@
 import aiBloomStudio from '../assets/images/ai-bloom-studio.mp4';
 import aiBonittaBrandingHub from '../assets/images/ai-bonitta-branding-hub.mp4';
 import aiEtsyVideoFeed from '../assets/images/ai-etsy-video-feed.mp4';
+import aiNodeRecord from '../assets/images/ai-node-record.mp4';
 import aiNoorish from '../assets/images/ai-noorish.mp4';
 import type { AiCase } from './types';
 
@@ -40,5 +41,14 @@ export const aiCasesEs: AiCase[] = [
       'Una app de protocolo nutricional personalizado de 14 días — pensada mobile-first, con planes de comida a la medida, badges de racha y una lista de compras inteligente. Este demo corre sobre datos estáticos, sin llamadas de IA en vivo, empaquetado y desplegado a GitHub Pages desde Claude Code.',
     url: 'https://lucilamtz90.github.io/noorish/',
     image: aiNoorish,
+  },
+  {
+    number: '05',
+    title: 'Node Record',
+    dateLine: '3 horas • 2026 • Figma, Claude Code',
+    description:
+      'Una herramienta web que encuentra similitudes musicales entre una canción y otros artistas, visualizadas como un grafo de nodos interactivo. Construida en colaboración con Christian, software developer que implementó la lógica — yo lideré el diseño UI, motion y UX.',
+    url: 'https://node-record.netlify.app/',
+    image: aiNodeRecord,
   },
 ];
