@@ -75,7 +75,7 @@ export function Home() {
     <>
       <LoadingScreen visible={isLoading} />
       <div className={`home container ${isLoading ? '' : 'home--revealed'}`}>
-        <NavigationBar playPillIntro={!isLoading} />
+        <NavigationBar />
         <Hero playPillIntro={!isLoading} />
 
         <section className="home__projects" aria-label={t('buttonPills.professionalWork')} ref={projectsRef}>

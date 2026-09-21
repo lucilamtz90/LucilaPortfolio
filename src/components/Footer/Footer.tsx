@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { RESUME_URL } from '../../config/links';
+import { LINKEDIN_URL, RESUME_URL } from '../../config/links';
 import { LanguageToggle } from '../LanguageToggle/LanguageToggle';
 import './Footer.css';
 
@@ -16,6 +16,9 @@ export function Footer({ onContactClick }: FooterProps) {
         <button type="button" className="btn-pill" onClick={onContactClick}>
           {t('nav.contact')}
         </button>
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="btn-pill">
+          {t('nav.linkedin')}
+        </a>
         <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="btn-pill btn-pill--solid">
           {t('nav.resume')}
         </a>

@@ -3,11 +3,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-xs);
-  padding: var(--space-2xs) var(--space-xs);
+  gap: var(--space-2xs);
+  padding: var(--space-3xs) var(--space-2xs);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-surface-accent);
+  transition:
+    background var(--duration-fade) ease,
+    border-color var(--duration-fade) ease,
+    backdrop-filter var(--duration-fade) ease;
 }
 
 .pill-status__label {
@@ -15,9 +19,29 @@
   z-index: 1;
   font-family: var(--font-mono);
   font-weight: 500;
-  font-size: var(--text-badge);
-  color: var(--color-text-secondary);
+  font-size: var(--text-overline);
+  color: var(--color-text-primary);
   white-space: nowrap;
+}
+
+/* While the Music feature's gradient background is showing, give the pill the same
+   iOS-style frosted glass look as the button-pills container and the music toggle. */
+body.music-background-active .pill-status {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+body.music-background-active .pill-status:not(.pill-status--intro) {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Once the one-time intro has played, the pill's visible background is actually its
+   ::before layer (see .pill-status--intro::before below), not .pill-status itself. */
+body.music-background-active .pill-status--intro::before {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
 /* One-time intro, played once loading finishes: the background fills in
@@ -35,6 +59,9 @@
   background: var(--color-surface-accent);
   clip-path: inset(0 100% 0 0);
   animation: pill-status-fill 500ms ease-out forwards;
+  transition:
+    background var(--duration-fade) ease,
+    backdrop-filter var(--duration-fade) ease;
 }
 
 .pill-status--intro .status-dot {

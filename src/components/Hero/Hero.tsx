@@ -79,7 +79,7 @@ export function Hero({ playPillIntro = true }: HeroProps) {
 
   return (
     <section id="hero" className="hero">
-      <div className="hero__mobile-status">
+      <div className="hero__status">
         <PillStatus playIntro={playPillIntro} />
       </div>
       <h1 className="hero__title" ref={titleRef} style={minHeight ? { minHeight } : undefined}>
