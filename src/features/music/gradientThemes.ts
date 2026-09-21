@@ -1,5 +1,3 @@
-export type SparkleShape = 'sparkle' | 'heart' | 'moon';
-
 export interface GradientTheme {
   id: string;
   /** WebGPU shader gradient stops (0–1 floats), passed straight into renderGradientFrame's
@@ -18,11 +16,6 @@ export interface GradientTheme {
   cssColors: [string, string, string];
   cssAngleDeg: number;
   cssDriftDurationS: number;
-  /** Cursor sparkle trail colors ("r g b", space-separated) and glyph shape — brighter/
-   * darker picks from within this same theme's own hue family, not a different palette,
-   * so the trail still reads as belonging to that gradient. */
-  sparkleColors: [string, string];
-  sparkleShape: SparkleShape;
 }
 
 export const GRADIENT_THEMES: GradientTheme[] = [
@@ -39,8 +32,6 @@ export const GRADIENT_THEMES: GradientTheme[] = [
     cssColors: ['#75638f', '#a882ad', '#d6bfd6'],
     cssAngleDeg: 120,
     cssDriftDurationS: 18,
-    sparkleColors: ['237 105 150', '100 130 250'],
-    sparkleShape: 'sparkle',
   },
   {
     id: 'teal',
@@ -55,8 +46,6 @@ export const GRADIENT_THEMES: GradientTheme[] = [
     cssColors: ['#255956', '#82918a', '#ad7880'],
     cssAngleDeg: 200,
     cssDriftDurationS: 30,
-    sparkleColors: ['62 207 192', '196 107 132'],
-    sparkleShape: 'heart',
   },
   {
     id: 'ember',
@@ -74,8 +63,6 @@ export const GRADIENT_THEMES: GradientTheme[] = [
     cssColors: ['#9e1226', '#e5705e', '#f2b25e'],
     cssAngleDeg: 40,
     cssDriftDurationS: 24,
-    sparkleColors: ['230 45 70', '224 150 55'],
-    sparkleShape: 'moon',
   },
 ];
 

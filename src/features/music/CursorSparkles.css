@@ -19,23 +19,24 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  /* Background color is set inline per point (CursorSparkles.tsx), from the active
-     gradient theme's own sparkle colors. */
+  /* Background color is set inline per point (CursorSparkles.tsx). */
   filter: blur(1px);
   transform: translate(-50%, -50%);
 }
 
+/* Fall distances scaled up from the original so each sparkle drifts further before fading —
+   makes the trail read as following the cursor instead of a few disconnected pops. */
 @keyframes cursor-sparkle-fall-1 {
   0% {
     transform: translate(-50%, -50%) translate(0px, 0px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(0.25);
     opacity: 0;
   }
   5% {
-    transform: translate(-50%, -50%) translate(10px, -10px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(1);
+    transform: translate(-50%, -50%) translate(13px, -13px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(1);
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -50%) translate(25px, 200px) rotateX(180deg) rotateY(270deg) rotateZ(90deg) scale(1);
+    transform: translate(-50%, -50%) translate(34px, 270px) rotateX(180deg) rotateY(270deg) rotateZ(90deg) scale(1);
     opacity: 0;
   }
 }
@@ -46,11 +47,11 @@
     opacity: 0;
   }
   10% {
-    transform: translate(-50%, -50%) translate(-10px, -5px) rotateX(-20deg) rotateY(10deg) scale(1);
+    transform: translate(-50%, -50%) translate(-13px, -7px) rotateX(-20deg) rotateY(10deg) scale(1);
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -50%) translate(-10px, 160px) rotateX(-90deg) rotateY(45deg) scale(0.25);
+    transform: translate(-50%, -50%) translate(-14px, 215px) rotateX(-90deg) rotateY(45deg) scale(0.25);
     opacity: 0;
   }
 }
@@ -61,11 +62,11 @@
     opacity: 0;
   }
   15% {
-    transform: translate(-50%, -50%) translate(7px, 5px) rotateX(0deg) rotateY(45deg) scale(1);
+    transform: translate(-50%, -50%) translate(9px, 7px) rotateX(0deg) rotateY(45deg) scale(1);
     opacity: 1;
   }
   100% {
-    transform: translate(-50%, -50%) translate(20px, 120px) rotateX(-180deg) rotateY(-90deg) scale(0.5);
+    transform: translate(-50%, -50%) translate(27px, 160px) rotateX(-180deg) rotateY(-90deg) scale(0.5);
     opacity: 0;
   }
 }

@@ -28,7 +28,7 @@ function MusicChrome() {
     <>
       <GradientBackground active={isOn} theme={gradientTheme} />
       <MusicVisualizerBar />
-      <CursorSparkles active={isOn} colors={gradientTheme.sparkleColors} shape={gradientTheme.sparkleShape} />
+      <CursorSparkles active={isOn} />
     </>
   );
 }
