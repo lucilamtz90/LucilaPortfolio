@@ -10,14 +10,17 @@ export interface GradientTheme {
   morphSpeed: number;
   rotationSpeedPercent: number;
   /** 0 = Height, 1 = Noise, 2 = Facing — see gradientRenderer.ts's objectGradientCoordinate.
-   * Using a different one per theme changes how color flows across the shape, not just when. */
+   * Using a different one per theme changes how color flows across the shape, not just when.
+   * Avoid 2 ("Facing") here: it forces an expensive per-pixel finite-difference normal
+   * (fs_main's `gradientMethod == 2 || material != 0` branch) that 0 and 1 skip entirely. */
   gradientMethod: 0 | 1 | 2;
   /** CSS fallback (non-WebGPU browsers, and always on mobile — see GradientBackground.tsx). */
   cssColors: [string, string, string];
   cssAngleDeg: number;
   cssDriftDurationS: number;
-  /** Cursor sparkle trail colors ("r g b", space-separated) and glyph shape — chosen to
-   * contrast against this theme's own palette rather than reuse its hues. */
+  /** Cursor sparkle trail colors ("r g b", space-separated) and glyph shape — brighter/
+   * darker picks from within this same theme's own hue family, not a different palette,
+   * so the trail still reads as belonging to that gradient. */
   sparkleColors: [string, string];
   sparkleShape: SparkleShape;
 }
@@ -52,7 +55,7 @@ export const GRADIENT_THEMES: GradientTheme[] = [
     cssColors: ['#255956', '#82918a', '#ad7880'],
     cssAngleDeg: 200,
     cssDriftDurationS: 30,
-    sparkleColors: ['240 200 120', '224 110 130'],
+    sparkleColors: ['62 207 192', '196 107 132'],
     sparkleShape: 'heart',
   },
   {
@@ -64,11 +67,14 @@ export const GRADIENT_THEMES: GradientTheme[] = [
     ],
     morphSpeed: 2.0,
     rotationSpeedPercent: 7,
-    gradientMethod: 2,
+    // NOT 2 ("Facing") — that path forces a per-pixel finite-difference normal (4 extra
+    // heightField/fbm evaluations every fragment) that the other two methods skip
+    // entirely, which was the actual cause of this theme visibly lagging the site.
+    gradientMethod: 0,
     cssColors: ['#9e1226', '#e5705e', '#f2b25e'],
     cssAngleDeg: 40,
     cssDriftDurationS: 24,
-    sparkleColors: ['150 200 230', '90 70 140'],
+    sparkleColors: ['230 45 70', '224 150 55'],
     sparkleShape: 'moon',
   },
 ];
