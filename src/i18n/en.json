@@ -18,11 +18,11 @@
     "bio2": "My focus: growth, retention, and experimentation, with 10+ years doing it at scale."
   },
   "pillStatus": {
-    "openToWork": "I'm open to work"
+    "openToWork": "Open to work"
   },
   "buttonPills": {
-    "professionalWork": "Professional work",
-    "aiSideProjects": "AI Case Studies",
+    "professionalWork": "Work Case Studies",
+    "aiSideProjects": "AI Concepts",
     "freelanceWork": "Graphic Design"
   },
   "aiCases": {
