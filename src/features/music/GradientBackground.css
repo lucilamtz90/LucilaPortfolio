@@ -43,9 +43,55 @@
   }
 }
 
+/* Mobile only, since desktop renders the real WebGPU shader instead of this CSS fallback.
+   A monochrome feTurbulence tile blended over the gradient, nudged around with `transform`
+   (compositor-only — no layout/paint per frame, unlike animating background-position)
+   so it reads as film grain without costing anything like the shader would. */
+.gradient-background__noise {
+  display: none;
+}
+
+@media (max-width: 1023.98px) {
+  .gradient-background__noise {
+    display: block;
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 120px 120px;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    animation: gradient-noise-shift 1.2s steps(4) infinite;
+  }
+}
+
+@keyframes gradient-noise-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-2%, 1%);
+  }
+  50% {
+    transform: translate(1%, -2%);
+  }
+  75% {
+    transform: translate(-1%, -1%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .gradient-background__css-fallback {
     animation: none;
     background-position: 30% 50%;
+  }
+
+  .gradient-background__noise {
+    animation: none;
   }
 }

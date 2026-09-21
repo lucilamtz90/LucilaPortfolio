@@ -100,6 +100,10 @@ export function GradientBackground({ active, theme }: GradientBackgroundProps) {
       }
     >
       <div className="gradient-background__css-fallback" />
+      {/* Mobile only (see GradientBackground.css) — a tiny, GPU-composited noise tile
+          gives the flat CSS gradient some texture/movement without the cost of a real
+          animated shader, which is exactly what mobile skips above. */}
+      <div className="gradient-background__noise" />
       <canvas ref={canvasRef} className="gradient-background__canvas" />
     </div>
   );
