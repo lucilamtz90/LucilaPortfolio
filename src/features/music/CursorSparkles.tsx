@@ -13,7 +13,7 @@ const MIN_DISTANCE_BETWEEN_STARS_PX = 75;
 const GLOW_DURATION_MS = 75;
 const MAX_GLOW_POINT_SPACING_PX = 10;
 // Plain space-separated RGB.
-const COLORS = ['237 105 150', '100 130 250'];
+const COLORS = ['117 99 143', '214 191 214'];
 const SIZES = ['1rem', '0.75rem', '0.5rem'];
 const ANIMATIONS = ['cursor-sparkle-fall-1', 'cursor-sparkle-fall-2', 'cursor-sparkle-fall-3'];
 

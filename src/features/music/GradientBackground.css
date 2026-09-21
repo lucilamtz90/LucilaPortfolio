@@ -25,9 +25,9 @@
   inset: 0;
   background: linear-gradient(
     120deg,
-    #cedbfd 0%,
-    #f6e0e3 50%,
-    #e2ddf1 100%
+    #75638f 0%,
+    #a882ad 50%,
+    #d6bfd6 100%
   );
   background-size: 220% 220%;
   animation: gradient-background-drift 18s ease-in-out infinite;
