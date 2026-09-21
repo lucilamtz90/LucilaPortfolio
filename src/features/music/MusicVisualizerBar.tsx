@@ -48,7 +48,7 @@ export function MusicVisualizerBar() {
         <div className="music-bar__marquee">
           <span className="music-bar__title">
             {track
-              ? [track.title, track.artist, MUSIC_ALBUM_NAME].filter(Boolean).join(' · ')
+              ? `${t('music.onRepeatLabel')} ${[track.title, track.artist, MUSIC_ALBUM_NAME].filter(Boolean).join(' · ')}`
               : unavailable
                 ? t('music.unavailable')
                 : t('music.loading')}

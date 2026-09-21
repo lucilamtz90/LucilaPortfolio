@@ -78,6 +78,7 @@
   },
   "music": {
     "listeningToday": "Listening today",
+    "onRepeatLabel": "On repeat lately:",
     "loading": "Loading…",
     "unavailable": "Playlist unavailable right now"
   }
