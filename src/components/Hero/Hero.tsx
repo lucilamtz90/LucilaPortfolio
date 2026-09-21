@@ -18,10 +18,6 @@ export function Hero({ playPillIntro = true }: HeroProps) {
   // stable across renders the way this needs).
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const titles = useMemo(() => t('hero.titles', { returnObjects: true }) as string[], [i18n.language]);
-  const { text, isAnimating } = useTypewriter(titles);
-
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const [minHeight, setMinHeight] = useState<number>();
   // Below 1024px the reserve-the-tallest-phrase approach itself becomes the problem: the
   // narrower column makes the longest phrase ("Adoption and Engagement Designer") wrap to 3
   // lines while most others fit in 1–2, so reserving that max leaves a big empty gap under
@@ -30,6 +26,11 @@ export function Hero({ playPillIntro = true }: HeroProps) {
   // below 1024px, don't reserve at all and let the bio genuinely shift with the title's
   // real height as it types.
   const isDesktop = useMediaQuery('(min-width: 1024px)');
+  // Mobile shows a plain, fixed title instead of cycling through the phrases.
+  const { text, isAnimating } = useTypewriter(titles, { disabled: !isDesktop });
+
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const [minHeight, setMinHeight] = useState<number>();
 
   useLayoutEffect(() => {
     const liveEl = titleRef.current;

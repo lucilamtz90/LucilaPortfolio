@@ -8,6 +8,9 @@ interface UseTypewriterOptions {
   pauseMs?: number;
   /** Total time (ms) to delete each phrase before typing the next one. */
   deleteDurationMs?: number;
+  /** Skips the animation entirely and shows the first phrase statically — same behavior
+   * as prefers-reduced-motion. Used to turn the effect off on mobile. */
+  disabled?: boolean;
 }
 
 const DEFAULT_TYPE_DURATION_MS = 4000;
@@ -21,13 +24,15 @@ export function useTypewriter(phrases: string[], options: UseTypewriterOptions =
     typeDurationMs = DEFAULT_TYPE_DURATION_MS,
     pauseMs = DEFAULT_PAUSE_MS,
     deleteDurationMs = DEFAULT_DELETE_DURATION_MS,
+    disabled = false,
   } = options;
   const prefersReducedMotion = usePrefersReducedMotion();
+  const skipAnimation = prefersReducedMotion || disabled;
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [text, setText] = useState('');
 
   useEffect(() => {
-    if (prefersReducedMotion) {
+    if (skipAnimation) {
       setText(phrases[0] ?? '');
       return;
     }
@@ -76,7 +81,7 @@ export function useTypewriter(phrases: string[], options: UseTypewriterOptions =
       timeouts.forEach((id) => window.clearTimeout(id));
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phraseIndex, phrases, prefersReducedMotion]);
+  }, [phraseIndex, phrases, skipAnimation]);
 
-  return { text, isAnimating: !prefersReducedMotion };
+  return { text, isAnimating: !skipAnimation };
 }

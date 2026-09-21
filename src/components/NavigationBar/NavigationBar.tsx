@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.svg';
 import { features } from '../../config/features';
 import { MusicToggle } from '../../features/music/MusicToggle';
-import { LanguageToggle } from '../LanguageToggle/LanguageToggle';
 import './NavigationBar.css';
 
 export function NavigationBar() {
@@ -16,7 +15,6 @@ export function NavigationBar() {
           <Link to="/" className="nav-bar__logo">
             <img src={logo} alt="Lucila Martínez" />
           </Link>
-          <LanguageToggle className="nav-bar__mobile-toggle" />
         </div>
         <div className="nav-bar__links">
           {features.aboutMePage && (

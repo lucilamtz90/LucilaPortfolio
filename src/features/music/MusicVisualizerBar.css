@@ -2,8 +2,10 @@
    the top of the page until it slides up into view; the bar itself never changes opacity,
    only its position, so it reads as physically emerging from behind the page rather than
    dissolving in. */
+/* Absolute (not fixed) so it scrolls away with the page instead of staying pinned to
+   the viewport while the user scrolls. */
 .music-bar-clip {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
