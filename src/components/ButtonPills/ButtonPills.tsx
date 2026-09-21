@@ -20,7 +20,8 @@ export function ButtonPills({ active, onChange }: ButtonPillsProps) {
         className={`button-pills__tab ${active === 'professional' ? 'button-pills__tab--active' : ''}`}
         onClick={() => onChange('professional')}
       >
-        {t('buttonPills.professionalWork')}
+        <span className="button-pills__tab-fill" aria-hidden="true" />
+        <span className="button-pills__tab-label">{t('buttonPills.professionalWork')}</span>
       </button>
       <button
         type="button"
@@ -29,7 +30,8 @@ export function ButtonPills({ active, onChange }: ButtonPillsProps) {
         className={`button-pills__tab ${active === 'ai' ? 'button-pills__tab--active' : ''}`}
         onClick={() => onChange('ai')}
       >
-        {t('buttonPills.aiSideProjects')}
+        <span className="button-pills__tab-fill" aria-hidden="true" />
+        <span className="button-pills__tab-label">{t('buttonPills.aiSideProjects')}</span>
       </button>
       <button
         type="button"
@@ -38,7 +40,8 @@ export function ButtonPills({ active, onChange }: ButtonPillsProps) {
         className={`button-pills__tab ${active === 'freelance' ? 'button-pills__tab--active' : ''}`}
         onClick={() => onChange('freelance')}
       >
-        {t('buttonPills.freelanceWork')}
+        <span className="button-pills__tab-fill" aria-hidden="true" />
+        <span className="button-pills__tab-label">{t('buttonPills.freelanceWork')}</span>
       </button>
     </div>
   );

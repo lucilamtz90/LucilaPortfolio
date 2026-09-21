@@ -76,11 +76,13 @@
 }
 
 .button-pills__tab {
+  position: relative;
   flex: none;
   scroll-snap-align: start;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   padding: var(--space-2xs) var(--space-xs);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
@@ -97,4 +99,41 @@
 .button-pills__tab--active {
   background: var(--color-border);
   color: var(--color-surface);
+}
+
+/* Hover-only "wipe" fill, borrowed from a motion-button pattern — a small dot sitting at
+   the tab's left edge grows into a full-width pill behind the label, and the label's own
+   color crossfades to match once the fill has washed over it. Skipped on the already-active
+   tab, which is permanently filled via .button-pills__tab--active above. */
+.button-pills__tab-fill {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+  transition: width 0.4s ease;
+  z-index: 0;
+}
+
+.button-pills__tab-label {
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.button-pills__tab:not(.button-pills__tab--active):hover .button-pills__tab-fill {
+  width: calc(100% - 8px);
+}
+
+.button-pills__tab:not(.button-pills__tab--active):hover .button-pills__tab-label {
+  color: var(--color-surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button-pills__tab-fill,
+  .button-pills__tab-label {
+    transition: none;
+  }
 }
