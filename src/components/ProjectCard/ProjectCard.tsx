@@ -60,7 +60,14 @@ export function ProjectCard({
     <>
       <div className="project-card__content">
         <span className="project-card__number">{number}</span>
-        <div className="project-card__media">
+        <div
+          className="project-card__media"
+          // Sits above .project-card__stretched-link (see ProjectCard.css) so hover
+          // actually reaches it — which means clicks land here too, instead of falling
+          // through to the stretched link underneath. Re-open the same href manually so
+          // clicking the thumbnail still works like the rest of the card.
+          onClick={href ? () => window.open(href, '_blank', 'noopener,noreferrer') : undefined}
+        >
           <Media src={image} alt={title} objectPosition={imagePosition} interactive={isLink} />
         </div>
       </div>
