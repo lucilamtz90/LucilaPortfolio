@@ -33,6 +33,13 @@
   animation: gradient-background-drift var(--gradient-drift-duration, 18s) ease-in-out infinite;
 }
 
+/* Animating background-position repaints the whole viewport every frame — skip it while
+   the background is hidden, and once the WebGPU canvas is covering it anyway. */
+.gradient-background:not(.gradient-background--active) *,
+.gradient-background--shader-ready .gradient-background__css-fallback {
+  animation-play-state: paused;
+}
+
 @keyframes gradient-background-drift {
   0%,
   100% {

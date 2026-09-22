@@ -87,7 +87,7 @@ export function GradientBackground({ active, theme }: GradientBackgroundProps) {
 
   return (
     <div
-      className={`gradient-background ${active ? 'gradient-background--active' : ''}`}
+      className={`gradient-background ${active ? 'gradient-background--active' : ''} ${rendererReady ? 'gradient-background--shader-ready' : ''}`}
       aria-hidden="true"
       style={
         {

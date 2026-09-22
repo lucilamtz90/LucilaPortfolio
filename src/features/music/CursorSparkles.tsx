@@ -14,6 +14,9 @@ const MIN_TIME_BETWEEN_STARS_MS = 150;
 const MIN_DISTANCE_BETWEEN_STARS_PX = 45;
 const GLOW_DURATION_MS = 75;
 const MAX_GLOW_POINT_SPACING_PX = 10;
+// A fast flick can cover hundreds of px in one frame — capping the points keeps that from
+// dumping dozens of nodes into the DOM at once (which is what made the cursor stutter).
+const MAX_GLOW_POINTS_PER_FRAME = 6;
 const SIZES = ['1rem', '0.75rem', '0.5rem'];
 const ANIMATIONS = ['cursor-sparkle-fall-1', 'cursor-sparkle-fall-2', 'cursor-sparkle-fall-3'];
 // Milky-white only, same across every gradient theme.
@@ -67,7 +70,6 @@ export function CursorSparkles({ active }: CursorSparklesProps) {
       wrapper.style.top = `${position.y}px`;
       wrapper.style.fontSize = size;
       wrapper.style.color = `rgb(${color})`;
-      wrapper.style.textShadow = `0 0 1.5rem rgb(${color} / 0.5)`;
       wrapper.style.animationName = ANIMATIONS[starCount++ % ANIMATIONS.length];
       wrapper.style.animationDuration = `${STAR_ANIMATION_DURATION_MS}ms`;
       wrapper.innerHTML = STAR_SVG;
@@ -75,41 +77,57 @@ export function CursorSparkles({ active }: CursorSparklesProps) {
       document.body.appendChild(wrapper);
       liveNodes.add(wrapper);
 
-      window.setTimeout(() => {
+      wrapper.addEventListener('animationend', () => {
         wrapper.remove();
         liveNodes.delete(wrapper);
-      }, STAR_ANIMATION_DURATION_MS);
-    };
-
-    const createGlowPoint = (position: Point) => {
-      const glow = document.createElement('div');
-      glow.className = 'cursor-sparkle-glow-point';
-      glow.style.left = `${position.x}px`;
-      glow.style.top = `${position.y}px`;
-      glow.style.background = `rgb(${COLORS[0]} / 0.6)`;
-
-      document.body.appendChild(glow);
-      liveNodes.add(glow);
-
-      window.setTimeout(() => {
-        glow.remove();
-        liveNodes.delete(glow);
-      }, GLOW_DURATION_MS);
+      });
     };
 
     const createGlow = (last: Point, current: Point) => {
       const distance = calcDistance(last, current);
-      const quantity = Math.max(Math.floor(distance / MAX_GLOW_POINT_SPACING_PX), 1);
+      const quantity = Math.min(
+        Math.max(Math.floor(distance / MAX_GLOW_POINT_SPACING_PX), 1),
+        MAX_GLOW_POINTS_PER_FRAME,
+      );
       const dx = (current.x - last.x) / quantity;
       const dy = (current.y - last.y) / quantity;
+      const fragment = document.createDocumentFragment();
+      const batch: HTMLElement[] = [];
 
       for (let index = 0; index < quantity; index += 1) {
-        createGlowPoint({ x: last.x + dx * index, y: last.y + dy * index });
+        const glow = document.createElement('div');
+        glow.className = 'cursor-sparkle-glow-point';
+        glow.style.left = `${last.x + dx * index}px`;
+        glow.style.top = `${last.y + dy * index}px`;
+        fragment.appendChild(glow);
+        batch.push(glow);
+        liveNodes.add(glow);
       }
+
+      document.body.appendChild(fragment);
+      window.setTimeout(() => {
+        batch.forEach((glow) => {
+          glow.remove();
+          liveNodes.delete(glow);
+        });
+      }, GLOW_DURATION_MS);
     };
 
+    // mousemove can fire several times per frame on high-polling mice; only the latest
+    // position per frame matters, so the DOM work is coalesced into one rAF.
+    let pendingPosition: Point | null = null;
+    let rafId = 0;
+
     const handleMove = (event: MouseEvent) => {
-      const mousePosition = { x: event.clientX, y: event.clientY };
+      pendingPosition = { x: event.clientX, y: event.clientY };
+      if (!rafId) rafId = requestAnimationFrame(flush);
+    };
+
+    const flush = () => {
+      rafId = 0;
+      if (!pendingPosition) return;
+      const mousePosition = pendingPosition;
+      pendingPosition = null;
 
       if (lastMousePosition.x === 0 && lastMousePosition.y === 0) {
         lastMousePosition = mousePosition;
@@ -137,6 +155,7 @@ export function CursorSparkles({ active }: CursorSparklesProps) {
     document.body.addEventListener('mouseleave', handleLeave);
 
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener('mousemove', handleMove);
       document.body.removeEventListener('mouseleave', handleLeave);
       liveNodes.forEach((node) => node.remove());

@@ -19,8 +19,9 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  /* Background color is set inline per point (CursorSparkles.tsx). */
-  filter: blur(1px);
+  /* Soft edge baked into the gradient instead of `filter: blur()`, which gave every one
+     of these short-lived points its own filter layer to rasterize. */
+  background: radial-gradient(circle, rgb(255 255 255 / 0.6) 30%, rgb(255 255 255 / 0) 70%);
   transform: translate(-50%, -50%);
 }
 

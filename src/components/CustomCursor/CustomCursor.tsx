@@ -96,12 +96,18 @@ export function CustomCursor() {
     };
   }, [enabled, prefersReducedMotion]);
 
+  // Toggled imperatively like the moving/idle classes above — putting it in the JSX
+  // className made React overwrite those classes whenever the music state flipped.
+  useEffect(() => {
+    cursorRef.current?.classList.toggle('custom-cursor--music-on', musicOn);
+  }, [enabled, musicOn]);
+
   if (!enabled) return null;
 
   return (
     <div
       ref={cursorRef}
-      className={`custom-cursor custom-cursor--idle custom-cursor--hidden ${musicOn ? 'custom-cursor--music-on' : ''}`}
+      className="custom-cursor custom-cursor--idle custom-cursor--hidden"
       aria-hidden="true"
     >
       <span className="custom-cursor__circle" />

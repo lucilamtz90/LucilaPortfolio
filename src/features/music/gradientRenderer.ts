@@ -995,15 +995,26 @@ export async function createGradientRenderer(canvas) {
     // new gradient theme can take over an already-running renderer.
     let currentParams = {};
 
+    // Rendered at 1x even on retina: the gradient is soft enough that 2x is visually
+    // identical, and at 2x + 4x MSAA a full-viewport redraw every frame starves the rest of
+    // the page (most noticeably the custom cursor, which lags behind the pointer).
+    // Size is only re-read when the canvas actually resizes — reading clientWidth inside the
+    // rAF loop forced a synchronous layout every frame.
+    let sizeDirty = true;
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const width = Math.max(1, Math.round(canvas.clientWidth * dpr));
-      const height = Math.max(1, Math.round(canvas.clientHeight * dpr));
+      if (!sizeDirty) return;
+      sizeDirty = false;
+      const width = Math.max(1, Math.round(canvas.clientWidth));
+      const height = Math.max(1, Math.round(canvas.clientHeight));
       if (canvas.width !== width || canvas.height !== height) {
         canvas.width = width;
         canvas.height = height;
       }
     };
+    const resizeObserver = new ResizeObserver(() => {
+      sizeDirty = true;
+    });
+    resizeObserver.observe(canvas);
 
     const tick = (now) => {
       if (!running) return;
@@ -1035,6 +1046,7 @@ export async function createGradientRenderer(canvas) {
       destroy() {
         running = false;
         if (rafId) cancelAnimationFrame(rafId);
+        resizeObserver.disconnect();
         device.destroy();
       },
     };
